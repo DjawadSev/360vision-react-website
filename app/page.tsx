@@ -1,6 +1,6 @@
 "use client";
 
-import type { MouseEvent } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -37,13 +37,6 @@ const services = [
 
 const highlights = ["3D & Motion for Real Estate & Products", "End-to-End Growth Solutions", "Data-Backed Marketing Decisions"];
 
-const sectionFade = {
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: "easeOut" },
-  viewport: { once: true, margin: "-10%" },
-};
-
 const heroContainer = {
   hidden: { opacity: 0 },
   visible: {
@@ -78,6 +71,24 @@ function resetPointerGlow(event: MouseEvent<HTMLElement>) {
 }
 
 export default function Home() {
+  const [delayedReveal, setDelayedReveal] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setDelayedReveal(true), 600);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const baseTransition = { duration: 0.6, ease: "easeOut" };
+
+  const sectionFade = {
+    initial: { opacity: 0, y: 30 },
+    animate: delayedReveal
+      ? { opacity: 1, y: 0, transition: { ...baseTransition, delay: 0.6 } }
+      : undefined,
+    whileInView: { opacity: 1, y: 0, transition: baseTransition },
+    viewport: { once: true, margin: "-10%" },
+  };
+
   return (
     <div className="space-y-20">
       <motion.section
@@ -194,8 +205,7 @@ export default function Home() {
               onMouseMove={handlePointerMove}
               onMouseLeave={resetPointerGlow}
               className="interactive-card relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/40 via-black/60 to-black/60 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
-              whileHover={{ scale: 1.02, y: -4 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
+              whileHover={{ scale: 1.02, y: -4, transition: { duration: 0.2, ease: "easeOut" } }}
               {...sectionFade}
             >
               <div className="pointer-glow" aria-hidden />
