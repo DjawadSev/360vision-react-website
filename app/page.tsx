@@ -34,12 +34,12 @@ export default function Home() {
         <div className="gradient-spot right-12 bottom-[-60px] bg-[var(--brand-gold)]/30" />
         <div className="relative grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div className="space-y-6">
-            <Badge>Bold, cinematic marketing</Badge>
+            <Badge>Complete Digital Marketing Solution</Badge>
             <h1 className="text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-              We stage unforgettable launches for visionary teams.
+              We Build Brands That Demand Attention
             </h1>
             <p className="max-w-2xl text-lg text-white/70">
-              360 VISION is a creative and digital agency fusing film-grade storytelling with performance rigor. We architect the narrative, build the assets, and orchestrate every surface where your audience looks.
+              From digital campaigns to bold design systems, we create work that cuts through the noise and elevates your brand beyond the competition.
             </p>
             <div className="flex flex-wrap gap-3">
               {highlights.map((item) => (
