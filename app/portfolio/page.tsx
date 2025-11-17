@@ -19,7 +19,7 @@ const caseStudies = [
 export default function PortfolioPage() {
   return (
     <div className="space-y-10">
-      <div>
+      <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/70 via-black to-black px-6 py-8 shadow-[0_20px_80px_rgba(0,0,0,0.45)] sm:px-10">
         <p className="text-sm uppercase tracking-[0.4em] text-white/50">Portfolio</p>
         <h1 className="mt-4 text-4xl font-semibold text-white">Selected work shaping the next decade of brands.</h1>
         <p className="mt-4 max-w-3xl text-lg text-white/70">
@@ -32,7 +32,7 @@ export default function PortfolioPage() {
         {caseStudies.map((project) => (
           <article
             key={project.client}
-            className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 via-white/0 to-white/5 p-8 shadow-lg"
+            className="overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 via-black/60 to-black/70 p-8 shadow-[0_16px_60px_rgba(0,0,0,0.35)]"
           >
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
@@ -41,10 +41,14 @@ export default function PortfolioPage() {
               </div>
               <div className="text-right">
                 <p className="text-sm uppercase tracking-[0.3em] text-white/50">Result</p>
-                <p className="text-2xl font-semibold text-emerald-300">{project.result}</p>
+                <p className="text-2xl font-semibold text-[var(--brand-gold)]">{project.result}</p>
               </div>
             </div>
             <p className="mt-6 text-white/70">{project.summary}</p>
+            <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-[var(--brand-gold)]">
+              View case study
+              <span aria-hidden>↗</span>
+            </div>
           </article>
         ))}
       </div>

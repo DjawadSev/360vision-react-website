@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #030712;
+  --background: #050505;
   --foreground: #f8fafc;
+  --brand-red: #9b0b0b;
+  --brand-red-dark: #5a0a0a;
+  --brand-red-bright: #b72121;
+  --brand-gold: #d4af37;
+  --brand-gray: #2c2c2c;
 }
 
 @theme inline {
@@ -15,18 +20,41 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: radial-gradient(circle at top, #0f172a, #020617 65%);
+  background: radial-gradient(circle at 20% 15%, rgba(155, 11, 11, 0.12), transparent 30%),
+    radial-gradient(circle at 80% 10%, rgba(212, 175, 55, 0.14), transparent 30%),
+    linear-gradient(160deg, #0b0b0d 0%, #050505 45%, #090909 100%);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
+  position: relative;
 }
 
 .gradient-spot {
   position: absolute;
   inset: auto;
-  height: 280px;
-  width: 280px;
+  height: 320px;
+  width: 320px;
   border-radius: 999px;
-  opacity: 0.6;
-  filter: blur(80px);
+  opacity: 0.55;
+  filter: blur(90px);
+}
+
+.mesh-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 20% 40%, rgba(155, 11, 11, 0.25), transparent 32%),
+    radial-gradient(circle at 80% 20%, rgba(183, 33, 33, 0.25), transparent 35%),
+    radial-gradient(circle at 60% 80%, rgba(212, 175, 55, 0.16), transparent 32%);
+  mix-blend-mode: screen;
+}
+
+.grid-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 120px 120px;
+  mask-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.6), transparent 70%);
 }
