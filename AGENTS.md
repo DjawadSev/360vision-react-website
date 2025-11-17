@@ -116,45 +116,99 @@ The agent must use logos according to the brand guidelines:
 - **App-style avatar / square icon:**  
   `logo-small-black-rounded-bg.png`
 
-### current task : 
+## Current Task — Add Premium Animations & Interactive Glow Effects
 
-change signature services section in the home page to : 
+Add high-quality animations and micro-interactions across the site to match 360 Vision’s premium brand identity. Use **Framer Motion** for component/section animations, and implement **mouse-reactive glow effects** around cards and interactive UI elements.
 
-Our Signature Capabilities
+### Animation Requirements
 
-Precision-crafted services designed to elevate your brand, accelerate growth, and create impact that lasts.
+1. **Section Fade-In Animations**
+   - All major sections (hero, services, about, stats) should animate in with:
+     - fade-in
+     - slide-up (20–30px)
+     - slight spring transition
+   - Use Framer Motion’s `motion.div` + viewport options:
+     ```tsx
+     initial={{ opacity: 0, y: 30 }}
+     whileInView={{ opacity: 1, y: 0 }}
+     transition={{ duration: 0.6, ease: "easeOut" }}
+     viewport={{ once: true }}
+     ```
 
-Branding & Creative Direction
+2. **Card Hover Effects**
+   Each service card should:
+   - slightly scale on hover
+   - lift upward (`-translate-y-1`)
+   - show a subtle red glow border
 
-Visual identities, logos, and full brand systems built for clarity, memorability, and long-term recognition.
+   Use Tailwind + Framer Motion
 
-→ Learn more
+   Mouse-Tracking Glow Around Cards
+Add a radial gradient or blur glow that follows the mouse position:
 
-Web Design & Development
+On mouse move, update CSS variables --mouse-x and --mouse-y
 
-Premium websites engineered for speed, aesthetics, and conversion — built with the latest frameworks and design standards.
+Use an absolutely positioned <div class="pointer-glow">
 
-→ Learn more
+Glow color: brand red (#9B0B0B)
 
-Performance Marketing
+Blur level: 40–80px
 
-Data-driven advertising across Meta, Google, TikTok, and more.
-We scale brands with strategies rooted in testing, optimization, and creative excellence.
+Opacity: 0.2–0.35
 
-→ Learn more
+Example structure:
 
-3D Visualization & Animation
+<div className="pointer-glow absolute inset-0 pointer-events-none" />
 
-Photorealistic 3D visuals, architectural renderings, and animated product showcases for maximum impact.
 
-→ Learn more
+Card background gradient should subtly react based on mouse position.
 
-Content Production
+Hero Section Motion
 
-Cinematic videos, modular ads, and storytelling-driven creatives that move audiences.
+Animate the hero headline with a staggered reveal
 
-→ Learn more
+Subheading fades in with slight delay
 
+The highlight tags slide in from the right with a stagger
+
+Use Framer Motion’s variants + stagger:
+
+variants={container}
+initial="hidden"
+animate="visible"
+
+
+Smooth Page Transitions (Optional)
+
+Fade between routes using Framer Motion or a layout wrapper
+
+Keep transitions subtle (0.3s fade)
+
+Performance Requirements
+
+Animations must remain smooth at 60 FPS
+
+Use transform rather than expensive CSS effects
+
+Avoid heavy box shadows on hover; use Tailwind + opacity/glow instead
+
+Technical Notes
+
+Framer Motion must be installed if not already:
+npm install framer-motion
+
+Components using interactive motion should be marked "use client".
+
+All animations must respect the site’s color scheme:
+
+glow: red (#9B0B0B) or deep red (#5A0A0A)
+
+text stays white
+
+background dark
+
+Ensure animations degrade gracefully on mobile.
+ 
 
 
 
