@@ -12,11 +12,16 @@ export default function ContactPage() {
         <div className="mt-10 space-y-4 text-white/70">
           <div>
             <p className="text-sm uppercase tracking-[0.3em] text-white/50">Email</p>
-            <p className="text-xl text-white">hello@360vision.studio</p>
+            <p className="text-xl text-white">contact@360vision.io</p>
           </div>
           <div>
             <p className="text-sm uppercase tracking-[0.3em] text-white/50">HQ</p>
-            <p>Remote-first across NYC · Austin · London</p>
+            <p className="text-white">Cité Saidi ahmed CICAD part N47 Bureau N17 Brodj</p>
+            <p className="text-white">el kiffan</p>
+          </div>
+          <div>
+            <p className="text-sm uppercase tracking-[0.3em] text-white/50">Phone</p>
+            <p className="text-white">+213 770072036</p>
           </div>
         </div>
       </div>

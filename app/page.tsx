@@ -9,6 +9,13 @@ const stats = [
   { label: "Avg. ROAS", value: "6.2x" },
 ];
 
+const contactInfo = {
+  addressLine1: "Cité Saidi ahmed CICAD part N47 Bureau N17 Brodj",
+  addressLine2: "el kiffan",
+  email: "contact@360vision.io",
+  phone: "+213 770072036",
+};
+
 const services = [
   {
     title: "Go-to-market Strategy",
@@ -65,6 +72,18 @@ export default function Home() {
                 </div>
               ))}
             </dl>
+            <div className="mt-8 grid gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 text-white/80 shadow-inner sm:grid-cols-2">
+              <div className="space-y-2">
+                <p className="text-xs uppercase tracking-[0.3em] text-white/50">Visit us</p>
+                <p>{contactInfo.addressLine1}</p>
+                <p>{contactInfo.addressLine2}</p>
+              </div>
+              <div className="space-y-2">
+                <p className="text-xs uppercase tracking-[0.3em] text-white/50">Contact</p>
+                <p className="font-semibold text-white">{contactInfo.email}</p>
+                <p className="font-semibold text-white">{contactInfo.phone}</p>
+              </div>
+            </div>
           </div>
 
           <div className="relative">
@@ -121,6 +140,26 @@ export default function Home() {
               </div>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="rounded-3xl border border-white/10 bg-gradient-to-br from-black via-[var(--brand-red-dark)]/40 to-black px-6 py-12 shadow-[0_20px_80px_rgba(0,0,0,0.45)] sm:px-10">
+        <div className="grid gap-6 lg:grid-cols-[0.45fr_1fr] lg:items-center">
+          <div>
+            <p className="text-sm uppercase tracking-[0.35em] text-white/50">About</p>
+            <h2 className="mt-3 text-3xl font-semibold text-white">About Us.</h2>
+          </div>
+          <div className="space-y-4 text-lg text-white/75">
+            <p>We’re not just a social media agency. We’re a growth partner.</p>
+            <p>
+              360 Vision is a full-stack creative and marketing agency built by strategists, designers, developers, and analysts —
+              all focused on one thing: helping brands grow with precision and impact.
+            </p>
+            <p>
+              From content creation to paid media, 3D production to CRM integration, we don’t just offer services — we build systems
+              that convert attention into results.
+            </p>
+          </div>
         </div>
       </section>
     </div>
