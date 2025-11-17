@@ -11,16 +11,17 @@ export interface ButtonProps
 }
 
 const baseStyles =
-  "inline-flex items-center justify-center rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex items-center justify-center rounded-full font-semibold transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-black disabled:pointer-events-none disabled:opacity-50";
 
 const variantStyles: Record<ButtonVariant, string> = {
   default:
-    "bg-white text-slate-950 shadow-lg shadow-blue-500/30 hover:bg-slate-100 focus-visible:ring-blue-400",
+    "bg-[var(--brand-red)] text-white shadow-[0_0_32px_rgba(155,11,11,0.35)] hover:bg-[var(--brand-red-bright)] focus-visible:ring-[var(--brand-red-bright)]",
   secondary:
-    "bg-blue-600 text-white hover:bg-blue-500 focus-visible:ring-blue-300",
+    "bg-[var(--brand-gold)] text-black shadow-[0_10px_50px_rgba(212,175,55,0.35)] hover:bg-[#e1c25d] focus-visible:ring-[var(--brand-gold)]",
   outline:
-    "border border-white/40 text-white hover:bg-white/10 focus-visible:ring-blue-200",
-  ghost: "text-white/80 hover:text-white hover:bg-white/10",
+    "border border-white/30 text-white hover:border-[var(--brand-gold)] hover:text-[var(--brand-gold)] hover:bg-white/5 focus-visible:ring-[var(--brand-gold)]",
+  ghost:
+    "text-white/80 hover:text-white hover:bg-white/10 focus-visible:ring-[var(--brand-red-bright)] focus-visible:ring-1",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
