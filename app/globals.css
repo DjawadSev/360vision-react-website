@@ -72,20 +72,14 @@ body {
   inset: -30%;
   pointer-events: none;
   background: radial-gradient(
-      260px 360px at var(--mouse-x) var(--mouse-y),
-      rgba(183, 33, 33, 0.48),
-      rgba(212, 175, 55, 0.24),
-      transparent 70%
-    ),
-    radial-gradient(
-      520px 520px at var(--mouse-x) var(--mouse-y),
-      rgba(155, 11, 11, 0.14),
-      transparent 65%
-    );
+    300px circle at var(--mouse-x) var(--mouse-y),
+    rgba(155, 11, 11, 0.55),
+    rgba(183, 33, 33, 0.35),
+    transparent 72%
+  );
   opacity: 0;
-  filter: blur(40px);
-  transition: opacity 260ms ease;
-  mix-blend-mode: screen;
+  filter: blur(70px);
+  transition: opacity 280ms ease;
 }
 
 .interactive-card:hover .pointer-glow,
@@ -99,12 +93,11 @@ body {
   inset: 0;
   pointer-events: none;
   background: radial-gradient(
-      220px 300px at var(--mouse-x) var(--mouse-y),
-      rgba(155, 11, 11, 0.28),
-      rgba(212, 175, 55, 0.14),
-      transparent 68%
-    ),
-    radial-gradient(520px 520px at 50% 40%, rgba(155, 11, 11, 0.12), transparent 60%);
+    240px circle at var(--mouse-x) var(--mouse-y),
+    rgba(155, 11, 11, 0.28),
+    rgba(212, 175, 55, 0.18),
+    transparent 70%
+  );
   opacity: 0;
   transition: opacity 260ms ease;
 }
