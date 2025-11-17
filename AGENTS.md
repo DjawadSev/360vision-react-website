@@ -118,7 +118,34 @@ The agent must use logos according to the brand guidelines:
 
 ### current task : 
 
-apply the visual identity to the website, use the hero image and decide on changes to overall make it better looking and more aesthetically pleaseing
+add the following contact information to the hero section and the contact page "Cité Saidi ahmed CICAD part N47 Bureau N17 Brodj el kiffan
+contact@360vision.io
++213 770072036" 
+
+changes the services to 
+
+
+"3D Visualization
+Discover captivating 3D visualization and animation services with 360 Vision.
+From photorealistic product renders to immersive brand experiences, our expert team transforms your concepts into high-impact visuals that boost engagement, increase conversions, and strengthen brand recall.
+
+Digital Marketing
+Achieve real results with our full-service digital marketing solutions at 360 Vision.
+From data-driven SEO and PPC to engaging social campaigns and conversion-focused content, we help brands expand their visibility, attract qualified leads, and improve their return on investment (ROI).
+
+Flatlay of a business analytics report, keyboard, pen, and smartphone on a wooden desk.
+
+Branding & Creative Design Services
+At 360 Vision, we craft brands that stand out and leave a lasting impression.
+From logo creation to complete visual identity systems, we combine strategic thinking with artistic precision to design visuals that capture attention, build trust, and tell your story with impact."
+
+add an about us section in the home page that contains : "
+About Us.
+We’re not just a social media agency. We’re a growth partner.
+360 Vision is a full-stack creative and marketing agency built by strategists, designers, developers, and analysts — all focused on one thing: helping brands grow with precision and impact.
+From content creation to paid media, 3D production to CRM integration, we don’t just offer services — we build systems that convert attention into results."
+
+
 
 
 
