@@ -24,10 +24,10 @@ export function SiteHeader() {
     <header className="sticky top-0 z-30 border-b border-white/10 bg-black/70 backdrop-blur-xl">
       <div className="mx-auto flex h-20 w-full max-w-6xl items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-3 text-lg font-semibold tracking-tight text-white">
-          <span className="relative h-12 w-12 overflow-hidden rounded-full border border-white/10 bg-white/0 p-1 shadow-[0_0_28px_rgba(155,11,11,0.35)]">
+          <span className="relative h-12 w-12 overflow-hidden rounded-2xl border border-white/10 bg-white/0 p-1 shadow-[0_0_28px_rgba(155,11,11,0.35)]">
             <Image
-              src="/logos/360vision-logo-full-transparent.png"
-              alt="360 Vision logo"
+              src="/logos/logo-small-black-rounded-bg.png"
+              alt="360 Vision icon"
               fill
               sizes="48px"
               className="object-contain"
@@ -82,10 +82,10 @@ export function SiteHeader() {
       >
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 text-lg font-semibold tracking-tight text-white" onClick={toggleMenu}>
-            <span className="relative h-10 w-10 overflow-hidden rounded-full border border-white/10 bg-white/0 p-1 shadow-[0_0_24px_rgba(155,11,11,0.35)]">
+            <span className="relative h-10 w-10 overflow-hidden rounded-2xl border border-white/10 bg-white/0 p-1 shadow-[0_0_24px_rgba(155,11,11,0.35)]">
               <Image
-                src="/logos/360vision-logo-full-transparent.png"
-                alt="360 Vision logo"
+                src="/logos/logo-small-black-rounded-bg.png"
+                alt="360 Vision icon"
                 fill
                 sizes="40px"
                 className="object-contain"

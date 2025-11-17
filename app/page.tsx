@@ -234,6 +234,10 @@ export default function Home() {
         onMouseMove={handlePointerMove}
         onMouseLeave={resetPointerGlow}
       >
+        <div
+          className="pointer-events-none absolute inset-0 bg-[url('/logos/background-red.png')] bg-cover bg-center opacity-10 mix-blend-screen"
+          aria-hidden
+        />
         <div className="pointer-glow" aria-hidden />
         <div className="grid gap-6 lg:grid-cols-[0.45fr_1fr] lg:items-center">
           <div>
