@@ -4,9 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 
 const stats = [
-  { label: "Brands launched", value: "120+" },
-  { label: "Revenue influenced", value: "$48M" },
-  { label: "Avg. ROAS", value: "6.2x" },
+  { label: "Projects completed", value: "120+" },
+  { label: "Revenue influenced", value: "500m DA" },
+  { label: "Combined years of Exp", value: "40+" },
 ];
 
 const contactInfo = {
@@ -18,20 +18,24 @@ const contactInfo = {
 
 const services = [
   {
-    title: "Go-to-market Strategy",
-    body: "Positioning, research, and sequencing to cut through the noise with a cinematic launch moment.",
+    title: "Branding & Creative Direction",
+    body: "We build visual identities designed for high memorability, brand authority, and long-term positioning. From logo systems to full brand worlds — everything is built to convert, stand out, and support future scaling."
+           
   },
   {
-    title: "Creative Production",
-    body: "High-impact films, modular ads, and immersive visuals crafted for paid, social, and product surfaces.",
+    title: "Meta Ads, TikTok Ads & Performance Marketing",
+    body: "Full-funnel advertising engineered for ROAS, low CPA, and consistent scaling. We optimize based on real KPIs: cost per lead, message conversion rate, qualified lead rate, and acquisition cost. More growth, more traffic, more volume — without wasting budget."
+
+
   },
   {
-    title: "Lifecycle & Automation",
-    body: "CRM, email, and SMS ecosystems that turn spark into sustained demand and loyalty.",
+    title: "3D Visualization & Motion Design",
+    body: "Premium 3D renders, product visuals, and architectural animations that dramatically increase engagement, trust, and purchase intent. Perfect for real estate, e-commerce, and high-end brands that need a next-level presentation."
+
   },
 ];
 
-const highlights = ["End-to-end squads", "Motion-first storytelling", "Performance intelligence"];
+const highlights = ["3D & Motion for Real Estate & Products", "End-to-End Growth Solutions", "Data-Backed Marketing Decisions"];
 
 export default function Home() {
   return (
@@ -59,9 +63,9 @@ export default function Home() {
               ))}
             </div>
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button size="lg">Plan your launch</Button>
+              <Button size="lg">Launch your brand now</Button>
               <Link href="/portfolio" className={buttonVariants({ variant: "outline", size: "lg" })}>
-                View portfolio
+                Explore more
               </Link>
             </div>
             <dl className="grid gap-6 pt-8 text-sm text-white/70 sm:grid-cols-3">
@@ -91,7 +95,7 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-br from-white/10 via-white/0 to-white/5 p-4 shadow-[0_30px_120px_rgba(0,0,0,0.55)] backdrop-blur">
               <div className="overflow-hidden rounded-[22px] border border-white/10 bg-black/60">
                 <Image
-                  src="/images/Hero/Hero.png"
+                  src="/logos/360vision-logo-full-red.png"
                   alt="360 Vision creative hero"
                   width={900}
                   height={600}
@@ -101,11 +105,11 @@ export default function Home() {
               </div>
               <div className="mt-4 flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/80">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-white/50">Latest launch</p>
-                  <p className="text-lg font-semibold text-white">Aura Systems – Immersive reveal</p>
+                  <p className="text-xs uppercase tracking-[0.2em] text-white/50">Boost Your Business</p>
+                  <p className="text-lg font-semibold text-white">Explode your lead generation</p>
                 </div>
                 <span className="rounded-full border border-[var(--brand-red)]/40 bg-[var(--brand-red)]/30 px-3 py-1 text-[13px] font-semibold text-white">
-                  +214% signups
+                  +214% Total Growth
                 </span>
               </div>
             </div>
@@ -117,7 +121,7 @@ export default function Home() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-sm uppercase tracking-[0.35em] text-white/50">Signature services</p>
-            <h2 className="mt-2 text-3xl font-semibold text-white">Precision teams for every growth chapter.</h2>
+            <h2 className="mt-2 text-3xl font-semibold text-white">Precision-built capabilities for brands that want more than average.</h2>
           </div>
           <Link href="/services" className={buttonVariants({ variant: "ghost", size: "sm" })}>
             Explore services →
@@ -134,10 +138,14 @@ export default function Home() {
               <p className="text-xs uppercase tracking-[0.3em] text-white/60">Service</p>
               <h3 className="mt-3 text-2xl font-semibold text-white">{service.title}</h3>
               <p className="mt-3 text-white/70">{service.body}</p>
-              <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-gold)]">
-                Learn more
-                <span aria-hidden>→</span>
-              </div>
+              <Link
+                  href="/services"
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-gold)]"
+                    >
+                  Learn more
+  <span aria-hidden>→</span>
+</Link>
+
             </article>
           ))}
         </div>
