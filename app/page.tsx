@@ -44,11 +44,6 @@ const sectionFade = {
   viewport: { once: true, margin: "-10%" },
 };
 
-const serviceCardMotion = {
-  ...sectionFade,
-  transition: { duration: 0.2, ease: "easeOut" },
-};
-
 const heroContainer = {
   hidden: { opacity: 0 },
   visible: {
@@ -200,7 +195,8 @@ export default function Home() {
               onMouseLeave={resetPointerGlow}
               className="interactive-card relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/40 via-black/60 to-black/60 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
               whileHover={{ scale: 1.02, y: -4 }}
-              {...serviceCardMotion}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              {...sectionFade}
             >
               <div className="pointer-glow" aria-hidden />
               <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[var(--brand-red)]/20 blur-3xl" />

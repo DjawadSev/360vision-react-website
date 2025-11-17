@@ -118,96 +118,103 @@ The agent must use logos according to the brand guidelines:
 
 ## Current Task — Add Premium Animations & Interactive Glow Effects
 
-Add high-quality animations and micro-interactions across the site to match 360 Vision’s premium brand identity. Use **Framer Motion** for component/section animations, and implement **mouse-reactive glow effects** around cards and interactive UI elements.
+The Netlify deploy errored, with the following guidance provided:
 
-### Animation Requirements
+Diagnosis
+- Relevant error in the build log: see [lines 64–71](#L64-L71). The compiler reports a TypeScript/JSX error for ./app/page.tsx:198:15: "'transition' is specified more than once, so this usage will be overwritten." (see [line 64](#L64) and surrounding context at [lines 66–71](#L66-L71)).
+- The JSX element in your source (app/page.tsx) spreads an object (sectionFade) that contains a transition property while also declaring a transition prop explicitly on the same element. You can see the exact location in the repo here: app/page.tsx [lines 196–201](https://github.com/DjawadSev/360vision-react-website/blob/main/app/page.tsx#L196-L201).
 
-1. **Section Fade-In Animations**
-   - All major sections (hero, services, about, stats) should animate in with:
-     - fade-in
-     - slide-up (20–30px)
-     - slight spring transition
-   - Use Framer Motion’s `motion.div` + viewport options:
-     ```tsx
-     initial={{ opacity: 0, y: 30 }}
-     whileInView={{ opacity: 1, y: 0 }}
-     transition={{ duration: 0.6, ease: "easeOut" }}
-     viewport={{ once: true }}
-     ```
+Cause
+- TypeScript/JSX flags duplicate attributes on the same JSX element. You currently have two transition definitions for the same element (one explicit, one inside {...sectionFade}). This is a static compile-time error: even if one would overwrite the other at runtime, the compiler rejects duplicate props.
 
-2. **Card Hover Effects**
-   Each service card should:
-   - slightly scale on hover
-   - lift upward (`-translate-y-1`)
-   - show a subtle red glow border
+Solution
+Pick one of these clean fixes so the element has only a single transition prop:
 
-   Use Tailwind + Framer Motion
+1) Remove transition from sectionFade
+- If you want the explicit transition on this element to apply, remove the transition key from the sectionFade object (wherever it is defined). Keep your existing JSX as-is.
 
-   Mouse-Tracking Glow Around Cards
-Add a radial gradient or blur glow that follows the mouse position:
+2) Remove the explicit transition prop and let sectionFade supply it
+- If sectionFade already has the transition you want, delete the explicit transition prop from the JSX.
 
-On mouse move, update CSS variables --mouse-x and --mouse-y
+3) Merge them into a single object before spreading (recommended if you need to combine defaults)
+- Create a merged object and spread that, so transition is only set once. Example replacement in app/page.tsx:
 
-Use an absolutely positioned <div class="pointer-glow">
+```tsx
+// Instead of:
+<motion.div
+  className="interactive-card ..."
+  whileHover={{ scale: 1.02, y: -8 }}
+  transition={{ duration: 0.2, ease: "easeInOut" }}
+  {...sectionFade}
+>
+  ...
+</motion.div>
 
-Glow color: brand red (#9B0B0B)
+// Use a single merged prop:
+const mergedFade = { ...sectionFade, transition: { duration: 0.2, ease: "easeInOut" } };
 
-Blur level: 40–80px
+<motion.div
+  className="interactive-card ..."
+  whileHover={{ scale: 1.02, y: -8 }}
+  {...mergedFade}
+>
+  ...
+</motion.div>
+```
 
-Opacity: 0.2–0.35
+Notes and verification
+- Open app/page.tsx where the error occurs: https://github.com/DjawadSev/360vision-react-website/blob/main/app/page.tsx#L196-L201 and remove or merge the duplicate transition prop.
+- After making the change, run the build locally (npm run build) to verify it succeeds.
+- This is a code-level JSX/TypeScript issue — no Netlify config or package change is required.
 
-Example structure:
+The relevant error logs are:
 
-<div className="pointer-glow absolute inset-0 pointer-events-none" />
-
-
-Card background gradient should subtly react based on mouse position.
-
-Hero Section Motion
-
-Animate the hero headline with a staggered reveal
-
-Subheading fades in with slight delay
-
-The highlight tags slide in from the right with a stagger
-
-Use Framer Motion’s variants + stagger:
-
-variants={container}
-initial="hidden"
-animate="visible"
-
-
-Smooth Page Transitions (Optional)
-
-Fade between routes using Framer Motion or a layout wrapper
-
-Keep transitions subtle (0.3s fade)
-
-Performance Requirements
-
-Animations must remain smooth at 60 FPS
-
-Use transform rather than expensive CSS effects
-
-Avoid heavy box shadows on hover; use Tailwind + opacity/glow instead
-
-Technical Notes
-
-Framer Motion must be installed if not already:
-npm install framer-motion
-
-Components using interactive motion should be marked "use client".
-
-All animations must respect the site’s color scheme:
-
-glow: red (#9B0B0B) or deep red (#5A0A0A)
-
-text stays white
-
-background dark
-
-Ensure animations degrade gracefully on mobile.
+Line 52: [96m[1m────────────────────────────────────────────────────────────────[22m[39m
+Line 53: ​
+Line 54: [36m$ npm run build[39m
+Line 55: > 360visionreact@0.1.0 build
+Line 56: > next build
+Line 57: [33m[1m⚠[22m[39m No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/doc
+Line 58:    [1m[38;2;173;127;168m▲ Next.js 16.0.3[39m[22m (Turbopack)
+Line 59:  [37m[1m [22m[39m Creating an optimized production build ...
+Line 60:  [32m[1m✓[22m[39m Compiled successfully in 6.9s
+Line 61:  [37m[1m [22m[39m Running TypeScript ...
+Line 62: [31mFailed to compile.
+Line 63: [39m
+Line 64: [36m./app/page.tsx[39m:[33m198[39m:[33m15[39m
+Line 65: [31m[1mType error[22m[39m: 'transition' is specified more than once, so this usage will be overwritten.
+Line 66: [0m [90m 196 |[39m               className[33m=[39m[32m"interactive-card relative overflow-hidden rounded-2xl border borde
+Line 67:  [90m 197 |[39m               whileHover[33m=[39m{{ scale[33m:[39m [35m1.02[39m[33m,[39m y[33m:[39m [33m-[39m[35m
+Line 68: [31m[1m>[22m[39m[90m 198 |[39m               transition[33m=[39m{{ duration[33m:[39m [35m0.2[39m[33m,[39m ease[33
+Line 69:  [90m     |[39m               [31m[1m^[22m[39m
+Line 70:  [90m 199 |[39m               {[33m...[39msectionFade}
+Line 71:  [90m 200 |[39m             [33m>[39m
+Line 72:  [90m 201 |[39m               [33m<[39m[33mdiv[39m className[33m=[39m[32m"pointer-glow"[39m aria[33m-[39mhidden [33
+Line 73: Next.js build worker exited with code: 1 and signal: null
+Line 74: [91m[1m​[22m[39m
+Line 75: [91m[1m"build.command" failed                                        [22m[39m
+Line 76: [91m[1m────────────────────────────────────────────────────────────────[22m[39m
+Line 77: ​
+Line 78:   [31m[1mError message[22m[39m
+Line 79:   Command failed with exit code 1: npm run build
+Line 80: ​
+Line 81:   [31m[1mError location[22m[39m
+Line 82:   In Build command from Netlify app:
+Line 83:   npm run build
+Line 84: ​
+Line 85:   [31m[1mResolved config[22m[39m
+Line 86:   build:
+Line 87:     command: npm run build
+Line 88:     commandOrigin: ui
+Line 89:     publish: /opt/build/repo/.next
+Line 90:     publishOrigin: ui
+Line 91:   plugins:
+Line 92:     - inputs: {}
+Line 93:       origin: ui
+Line 94:       package: "@netlify/plugin-nextjs"
+Line 95: Build failed due to a user error: Build script returned non-zero exit code: 2
+Line 96: Failing build: Failed to build site
+Line 97: Finished processing build request in 31.551s
  
 
 
