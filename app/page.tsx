@@ -1,5 +1,9 @@
+"use client";
+
+import type { MouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 
@@ -19,64 +23,116 @@ const contactInfo = {
 const services = [
   {
     title: "Branding & Creative Direction",
-    body: "We build visual identities designed for high memorability, brand authority, and long-term positioning. From logo systems to full brand worlds — everything is built to convert, stand out, and support future scaling."
-           
+    body: "We build visual identities designed for high memorability, brand authority, and long-term positioning. From logo systems to full brand worlds — everything is built to convert, stand out, and support future scaling.",
   },
   {
     title: "Meta Ads, TikTok Ads & Performance Marketing",
-    body: "Full-funnel advertising engineered for ROAS, low CPA, and consistent scaling. We optimize based on real KPIs: cost per lead, message conversion rate, qualified lead rate, and acquisition cost. More growth, more traffic, more volume — without wasting budget."
-
-
+    body: "Full-funnel advertising engineered for ROAS, low CPA, and consistent scaling. We optimize based on real KPIs: cost per lead, message conversion rate, qualified lead rate, and acquisition cost. More growth, more traffic, more volume — without wasting budget.",
   },
   {
     title: "3D Visualization & Motion Design",
-    body: "Premium 3D renders, product visuals, and architectural animations that dramatically increase engagement, trust, and purchase intent. Perfect for real estate, e-commerce, and high-end brands that need a next-level presentation."
-
+    body: "Premium 3D renders, product visuals, and architectural animations that dramatically increase engagement, trust, and purchase intent. Perfect for real estate, e-commerce, and high-end brands that need a next-level presentation.",
   },
 ];
 
 const highlights = ["3D & Motion for Real Estate & Products", "End-to-End Growth Solutions", "Data-Backed Marketing Decisions"];
 
+const sectionFade = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: "easeOut" },
+  viewport: { once: true, margin: "-10%" },
+};
+
+const heroContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08 },
+  },
+};
+
+const heroItem = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: "easeOut" } },
+};
+
+const highlightItem = {
+  hidden: { opacity: 0, x: 16 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
+function handlePointerMove(event: MouseEvent<HTMLElement>) {
+  const card = event.currentTarget;
+  const rect = card.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  card.style.setProperty("--mouse-x", `${x}px`);
+  card.style.setProperty("--mouse-y", `${y}px`);
+}
+
+function resetPointerGlow(event: MouseEvent<HTMLElement>) {
+  const card = event.currentTarget;
+  card.style.setProperty("--mouse-x", "50%");
+  card.style.setProperty("--mouse-y", "50%");
+}
+
 export default function Home() {
   return (
     <div className="space-y-20">
-      <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/80 via-black to-black px-6 py-16 shadow-[0_40px_120px_rgba(0,0,0,0.6)] sm:px-12">
+      <motion.section
+        className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/80 via-black to-black px-6 py-16 shadow-[0_40px_120px_rgba(0,0,0,0.6)] sm:px-12"
+        {...sectionFade}
+      >
         <div className="gradient-spot left-6 top-4 bg-[var(--brand-red)]/40" />
         <div className="gradient-spot right-12 bottom-[-60px] bg-[var(--brand-gold)]/30" />
         <div className="relative grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <div className="space-y-6">
-            <Badge>Complete Digital Marketing Solution</Badge>
-            <h1 className="text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <motion.div className="space-y-6" variants={heroContainer} initial="hidden" animate="visible">
+            <motion.div variants={heroItem}>
+              <Badge>Complete Digital Marketing Solution</Badge>
+            </motion.div>
+            <motion.h1
+              className="text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl"
+              variants={heroItem}
+            >
               We Build Brands That Demand Attention
-            </h1>
-            <p className="max-w-2xl text-lg text-white/70">
-              From digital campaigns to bold design systems, we create work that cuts through the noise and elevates your brand beyond the competition.
-            </p>
-            <div className="flex flex-wrap gap-3">
+            </motion.h1>
+            <motion.p className="max-w-2xl text-lg text-white/70" variants={heroItem}>
+              From digital campaigns to bold design systems, we create work that cuts through the noise and elevates your brand
+              beyond the competition.
+            </motion.p>
+            <motion.div className="flex flex-wrap gap-3" variants={heroContainer}>
               {highlights.map((item) => (
-                <span
+                <motion.span
                   key={item}
+                  variants={highlightItem}
                   className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 shadow-[0_0_22px_rgba(255,255,255,0.08)]"
                 >
                   {item}
-                </span>
+                </motion.span>
               ))}
-            </div>
-            <div className="flex flex-wrap gap-4 pt-4">
+            </motion.div>
+            <motion.div className="flex flex-wrap gap-4 pt-4" variants={heroItem}>
               <Button size="lg">Launch your brand now</Button>
               <Link href="/portfolio" className={buttonVariants({ variant: "outline", size: "lg" })}>
                 Explore more
               </Link>
-            </div>
-            <dl className="grid gap-6 pt-8 text-sm text-white/70 sm:grid-cols-3">
+            </motion.div>
+            <motion.dl className="grid gap-6 pt-8 text-sm text-white/70 sm:grid-cols-3" variants={heroItem}>
               {stats.map((stat) => (
-                <div key={stat.label} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 shadow-inner">
+                <div
+                  key={stat.label}
+                  className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 shadow-inner transition hover:border-[var(--brand-red)]/50"
+                >
                   <dt className="text-[11px] uppercase tracking-[0.2em] text-white/50">{stat.label}</dt>
                   <dd className="mt-2 text-3xl font-semibold text-white">{stat.value}</dd>
                 </div>
               ))}
-            </dl>
-            <div className="mt-8 grid gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 text-white/80 shadow-inner sm:grid-cols-2">
+            </motion.dl>
+            <motion.div
+              className="mt-8 grid gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 text-white/80 shadow-inner sm:grid-cols-2"
+              variants={heroItem}
+            >
               <div className="space-y-2">
                 <p className="text-xs uppercase tracking-[0.3em] text-white/50">Visit us</p>
                 <p>{contactInfo.addressLine1}</p>
@@ -87,10 +143,10 @@ export default function Home() {
                 <p className="font-semibold text-white">{contactInfo.email}</p>
                 <p className="font-semibold text-white">{contactInfo.phone}</p>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div className="relative">
+          <motion.div className="relative" variants={heroItem}>
             <div className="absolute -left-10 -top-10 h-24 w-24 rounded-full border border-[var(--brand-gold)]/40 bg-[var(--brand-gold)]/10 blur-3xl" />
             <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-br from-white/10 via-white/0 to-white/5 p-4 shadow-[0_30px_120px_rgba(0,0,0,0.55)] backdrop-blur">
               <div className="overflow-hidden rounded-[22px] border border-white/10 bg-black/60">
@@ -113,11 +169,14 @@ export default function Home() {
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-      <section className="rounded-3xl border border-white/10 bg-white/5 px-6 py-10 shadow-[0_20px_80px_rgba(0,0,0,0.45)] sm:px-10">
+      <motion.section
+        className="rounded-3xl border border-white/10 bg-white/5 px-6 py-10 shadow-[0_20px_80px_rgba(0,0,0,0.45)] sm:px-10"
+        {...sectionFade}
+      >
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-sm uppercase tracking-[0.35em] text-white/50">Signature services</p>
@@ -130,28 +189,36 @@ export default function Home() {
 
         <div className="mt-8 grid gap-6 lg:grid-cols-3">
           {services.map((service) => (
-            <article
+            <motion.article
               key={service.title}
-              className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/40 via-black/60 to-black/60 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)] transition hover:-translate-y-1"
+              onMouseMove={handlePointerMove}
+              onMouseLeave={resetPointerGlow}
+              className="interactive-card relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/40 via-black/60 to-black/60 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
+              whileHover={{ scale: 1.02, y: -4 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              {...sectionFade}
             >
+              <div className="pointer-glow" aria-hidden />
               <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[var(--brand-red)]/20 blur-3xl" />
               <p className="text-xs uppercase tracking-[0.3em] text-white/60">Service</p>
               <h3 className="mt-3 text-2xl font-semibold text-white">{service.title}</h3>
               <p className="mt-3 text-white/70">{service.body}</p>
               <Link
-                  href="/services"
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-gold)]"
-                    >
-                  Learn more
-  <span aria-hidden>→</span>
-</Link>
-
-            </article>
+                href="/services"
+                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-gold)]"
+              >
+                Learn more
+                <span aria-hidden>→</span>
+              </Link>
+            </motion.article>
           ))}
         </div>
-      </section>
+      </motion.section>
 
-      <section className="rounded-3xl border border-white/10 bg-gradient-to-br from-black via-[var(--brand-red-dark)]/40 to-black px-6 py-12 shadow-[0_20px_80px_rgba(0,0,0,0.45)] sm:px-10">
+      <motion.section
+        className="rounded-3xl border border-white/10 bg-gradient-to-br from-black via-[var(--brand-red-dark)]/40 to-black px-6 py-12 shadow-[0_20px_80px_rgba(0,0,0,0.45)] sm:px-10"
+        {...sectionFade}
+      >
         <div className="grid gap-6 lg:grid-cols-[0.45fr_1fr] lg:items-center">
           <div>
             <p className="text-sm uppercase tracking-[0.35em] text-white/50">About</p>
@@ -169,7 +236,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }
