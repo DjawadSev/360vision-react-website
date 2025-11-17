@@ -2,19 +2,34 @@ import { Button } from "@/components/ui/button";
 
 const servicePackages = [
   {
-    title: "Launch Accelerator",
-    description: "60-day sprint for new product launches including positioning, creative, paid media, and lifecycle foundations.",
-    deliverables: ["Narrative workshop", "Funnel build", "Performance dashboard"],
+    title: "3D Visualization",
+    description:
+      "Discover captivating 3D visualization and animation services with 360 Vision. From photorealistic product renders to immersive brand experiences, our expert team transforms your concepts into high-impact visuals that boost engagement, increase conversions, and strengthen brand recall.",
+    deliverables: [
+      "Photorealistic product renders",
+      "Immersive brand experiences",
+      "High-impact visuals that boost engagement and conversions",
+    ],
   },
   {
-    title: "Growth Partnership",
-    description: "Embedded team for brands scaling past Series A with weekly experimentation and creative production.",
-    deliverables: ["Paid social pods", "Content studio", "Lifecycle automation"],
+    title: "Digital Marketing",
+    description:
+      "Achieve real results with our full-service digital marketing solutions at 360 Vision. From data-driven SEO and PPC to engaging social campaigns and conversion-focused content, we help brands expand their visibility, attract qualified leads, and improve their return on investment (ROI).",
+    deliverables: [
+      "Data-driven SEO and PPC",
+      "Engaging social campaigns and conversion-focused content",
+      "Flatlay of a business analytics report, keyboard, pen, and smartphone on a wooden desk.",
+    ],
   },
   {
-    title: "Enterprise Advisory",
-    description: "Executive strategy, team enablement, and modern playbooks for marketing leaders inside large organizations.",
-    deliverables: ["Audience mapping", "CMO office", "Innovation lab"],
+    title: "Branding & Creative Design Services",
+    description:
+      "At 360 Vision, we craft brands that stand out and leave a lasting impression. From logo creation to complete visual identity systems, we combine strategic thinking with artistic precision to design visuals that capture attention, build trust, and tell your story with impact.",
+    deliverables: [
+      "Logo creation and complete visual identity systems",
+      "Strategic thinking with artistic precision",
+      "Visuals that capture attention, build trust, and tell your story",
+    ],
   },
 ];
 
