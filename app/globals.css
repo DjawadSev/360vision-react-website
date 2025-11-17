@@ -58,3 +58,49 @@ body {
   background-size: 120px 120px;
   mask-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.6), transparent 70%);
 }
+
+.interactive-card {
+  position: relative;
+  overflow: hidden;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  transition: transform 180ms ease, border-color 250ms ease, box-shadow 250ms ease;
+}
+
+.interactive-card .pointer-glow {
+  position: absolute;
+  inset: -30%;
+  pointer-events: none;
+  background: radial-gradient(
+    260px circle at var(--mouse-x) var(--mouse-y),
+    rgba(155, 11, 11, 0.35),
+    rgba(90, 10, 10, 0.25),
+    transparent 68%
+  );
+  opacity: 0;
+  filter: blur(60px);
+  transition: opacity 280ms ease;
+}
+
+.interactive-card:hover .pointer-glow,
+.interactive-card:focus-within .pointer-glow {
+  opacity: 1;
+}
+
+.interactive-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    200px circle at var(--mouse-x) var(--mouse-y),
+    rgba(212, 175, 55, 0.12),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 280ms ease;
+}
+
+.interactive-card:hover::after,
+.interactive-card:focus-within::after {
+  opacity: 1;
+}
