@@ -118,32 +118,42 @@ The agent must use logos according to the brand guidelines:
 
 ### current task : 
 
-add the following contact information to the hero section and the contact page "Cité Saidi ahmed CICAD part N47 Bureau N17 Brodj el kiffan
-contact@360vision.io
-+213 770072036" 
+change signature services section in the home page to : 
 
-changes the services to 
+Our Signature Capabilities
 
+Precision-crafted services designed to elevate your brand, accelerate growth, and create impact that lasts.
 
-"3D Visualization
-Discover captivating 3D visualization and animation services with 360 Vision.
-From photorealistic product renders to immersive brand experiences, our expert team transforms your concepts into high-impact visuals that boost engagement, increase conversions, and strengthen brand recall.
+Branding & Creative Direction
 
-Digital Marketing
-Achieve real results with our full-service digital marketing solutions at 360 Vision.
-From data-driven SEO and PPC to engaging social campaigns and conversion-focused content, we help brands expand their visibility, attract qualified leads, and improve their return on investment (ROI).
+Visual identities, logos, and full brand systems built for clarity, memorability, and long-term recognition.
 
-Flatlay of a business analytics report, keyboard, pen, and smartphone on a wooden desk.
+→ Learn more
 
-Branding & Creative Design Services
-At 360 Vision, we craft brands that stand out and leave a lasting impression.
-From logo creation to complete visual identity systems, we combine strategic thinking with artistic precision to design visuals that capture attention, build trust, and tell your story with impact."
+Web Design & Development
 
-add an about us section in the home page that contains : "
-About Us.
-We’re not just a social media agency. We’re a growth partner.
-360 Vision is a full-stack creative and marketing agency built by strategists, designers, developers, and analysts — all focused on one thing: helping brands grow with precision and impact.
-From content creation to paid media, 3D production to CRM integration, we don’t just offer services — we build systems that convert attention into results."
+Premium websites engineered for speed, aesthetics, and conversion — built with the latest frameworks and design standards.
+
+→ Learn more
+
+Performance Marketing
+
+Data-driven advertising across Meta, Google, TikTok, and more.
+We scale brands with strategies rooted in testing, optimization, and creative excellence.
+
+→ Learn more
+
+3D Visualization & Animation
+
+Photorealistic 3D visuals, architectural renderings, and animated product showcases for maximum impact.
+
+→ Learn more
+
+Content Production
+
+Cinematic videos, modular ads, and storytelling-driven creatives that move audiences.
+
+→ Learn more
 
 
 
