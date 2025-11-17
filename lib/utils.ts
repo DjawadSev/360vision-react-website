@@ -1,12 +1,17 @@
 export type ClassValue =
   | string
   | number
+  | boolean
   | ClassValue[]
   | { [key: string]: boolean }
   | null
   | undefined;
 
 function resolveClass(value: ClassValue, acc: string[]) {
+  if (typeof value === "boolean") {
+    return;
+  }
+
   if (!value && value !== 0) {
     return;
   }
