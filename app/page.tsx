@@ -92,11 +92,14 @@ export default function Home() {
   return (
     <div className="space-y-20">
       <motion.section
-        className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/80 via-black to-black px-6 py-16 shadow-[0_40px_120px_rgba(0,0,0,0.6)] sm:px-12"
+        className="interactive-card relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/80 via-black to-black px-6 py-16 shadow-[0_40px_120px_rgba(0,0,0,0.6)] sm:px-12"
         {...sectionFade}
+        onMouseMove={handlePointerMove}
+        onMouseLeave={resetPointerGlow}
       >
         <div className="gradient-spot left-6 top-4 bg-[var(--brand-red)]/40" />
         <div className="gradient-spot right-12 bottom-[-60px] bg-[var(--brand-gold)]/30" />
+        <div className="pointer-glow" aria-hidden />
         <div className="relative grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <motion.div className="space-y-6" variants={heroContainer} initial="hidden" animate="visible">
             <motion.div variants={heroItem}>
@@ -226,9 +229,12 @@ export default function Home() {
       </motion.section>
 
       <motion.section
-        className="rounded-3xl border border-white/10 bg-gradient-to-br from-black via-[var(--brand-red-dark)]/40 to-black px-6 py-12 shadow-[0_20px_80px_rgba(0,0,0,0.45)] sm:px-10"
+        className="interactive-card rounded-3xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/55 via-[var(--brand-red)]/28 to-black px-6 py-12 shadow-[0_25px_100px_rgba(155,11,11,0.35)] sm:px-10"
         {...sectionFade}
+        onMouseMove={handlePointerMove}
+        onMouseLeave={resetPointerGlow}
       >
+        <div className="pointer-glow" aria-hidden />
         <div className="grid gap-6 lg:grid-cols-[0.45fr_1fr] lg:items-center">
           <div>
             <p className="text-sm uppercase tracking-[0.35em] text-white/50">About</p>
