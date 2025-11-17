@@ -95,7 +95,7 @@ These are the official 360 VISION logo variants available in the project:
 
 Do **not** rename these files unless necessary — instead, reference them exactly as listed.
 
-### 3.3 Usage Rules for the Agent
+#### 3.3 Usage Rules for the Agent
 
 The agent must use logos according to the brand guidelines:
 
@@ -118,103 +118,83 @@ The agent must use logos according to the brand guidelines:
 
 ## Current Task — Add Premium Animations & Interactive Glow Effects
 
-The Netlify deploy errored, with the following guidance provided:
 
-Diagnosis
-- Relevant error in the build log: see [lines 64–71](#L64-L71). The compiler reports a TypeScript/JSX error for ./app/page.tsx:198:15: "'transition' is specified more than once, so this usage will be overwritten." (see [line 64](#L64) and surrounding context at [lines 66–71](#L66-L71)).
-- The JSX element in your source (app/page.tsx) spreads an object (sectionFade) that contains a transition property while also declaring a transition prop explicitly on the same element. You can see the exact location in the repo here: app/page.tsx [lines 196–201](https://github.com/DjawadSev/360vision-react-website/blob/main/app/page.tsx#L196-L201).
+netlify is failing deployment in the build step and returns this message :
 
-Cause
-- TypeScript/JSX flags duplicate attributes on the same JSX element. You currently have two transition definitions for the same element (one explicit, one inside {...sectionFade}). This is a static compile-time error: even if one would overwrite the other at runtime, the compiler rejects duplicate props.
+4:16:03 PM: Netlify Build                                                 
+4:16:03 PM: ────────────────────────────────────────────────────────────────
+4:16:03 PM: ​
+4:16:03 PM: ❯ Version
+4:16:03 PM:   @netlify/build 35.3.4
+4:16:03 PM: ​
+4:16:03 PM: ❯ Flags
+4:16:03 PM:   accountId: 64872a033cc8363d8885098d
+4:16:03 PM:   baseRelDir: true
+4:16:03 PM:   buildId: 691b3c257400281b23e75886
+4:16:03 PM:   deployId: 691b3c257400281b23e75888
+4:16:03 PM: ​
+4:16:03 PM: ❯ Current directory
+4:16:03 PM:   /opt/build/repo
+4:16:03 PM: ​
+4:16:03 PM: ❯ Config file
+4:16:03 PM:   No config file was defined: using default values.
+4:16:03 PM: ​
+4:16:03 PM: ❯ Context
+4:16:03 PM:   production
+4:16:03 PM: ​
+4:16:03 PM: ❯ Using Next.js Runtime - v5.14.5
+4:16:04 PM: Next.js cache restored
+4:16:04 PM: ​
+4:16:04 PM: Build command from Netlify app                                
+4:16:04 PM: ────────────────────────────────────────────────────────────────
+4:16:04 PM: ​
+4:16:04 PM: $ npm run build
+4:16:04 PM: > 360visionreact@0.1.0 build
+4:16:04 PM: > next build
+4:16:05 PM:    ▲ Next.js 16.0.3 (Turbopack)
+4:16:05 PM:    Creating an optimized production build ...
+4:16:14 PM: Failed during stage 'building site': Build script returned non-zero exit code: 2 (https://ntl.fyi/exit-code-2)
+4:16:11 PM:  ✓ Compiled successfully in 6.1s
+4:16:11 PM:    Running TypeScript ...
+4:16:14 PM: Failed to compile.
+4:16:14 PM: 
+4:16:14 PM: ./app/page.tsx:198:15
+4:16:14 PM: Type error: 'transition' is specified more than once, so this usage will be overwritten.
+4:16:14 PM:   196 |               className="interactive-card relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/40 via-black/60 to-black/60 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
+4:16:14 PM:   197 |               whileHover={{ scale: 1.02, y: -4 }}
+4:16:14 PM: > 198 |               transition={{ duration: 0.2, ease: "easeOut" }}
+4:16:14 PM:       |               ^
+4:16:14 PM:   199 |               {...sectionFade}
+4:16:14 PM:   200 |             >
+4:16:14 PM:   201 |               <div className="pointer-glow" aria-hidden />
+4:16:14 PM: Next.js build worker exited with code: 1 and signal: null
+4:16:14 PM: ​
+4:16:14 PM: "build.command" failed                                        
+4:16:14 PM: ────────────────────────────────────────────────────────────────
+4:16:14 PM: ​
+4:16:14 PM:   Error message
+4:16:14 PM:   Command failed with exit code 1: npm run build (https://ntl.fyi/exit-code-1)
+4:16:14 PM: ​
+4:16:14 PM:   Error location
+4:16:14 PM:   In Build command from Netlify app:
+4:16:14 PM:   npm run build
+4:16:14 PM: ​
+4:16:14 PM:   Resolved config
+4:16:14 PM:   build:
+4:16:14 PM:     command: npm run build
+4:16:14 PM:     commandOrigin: ui
+4:16:14 PM:     publish: /opt/build/repo/.next
+4:16:14 PM:     publishOrigin: ui
+4:16:14 PM:   plugins:
+4:16:14 PM:     - inputs: {}
+4:16:14 PM:       origin: ui
+4:16:14 PM:       package: "@netlify/plugin-nextjs"
+4:16:14 PM: Build failed due to a user error: Build script returned non-zero exit code: 2
+4:16:14 PM: Failing build: Failed to build site
+4:16:14 PM: Finished processing build request in 23.493s
 
-Solution
-Pick one of these clean fixes so the element has only a single transition prop:
-
-1) Remove transition from sectionFade
-- If you want the explicit transition on this element to apply, remove the transition key from the sectionFade object (wherever it is defined). Keep your existing JSX as-is.
-
-2) Remove the explicit transition prop and let sectionFade supply it
-- If sectionFade already has the transition you want, delete the explicit transition prop from the JSX.
-
-3) Merge them into a single object before spreading (recommended if you need to combine defaults)
-- Create a merged object and spread that, so transition is only set once. Example replacement in app/page.tsx:
-
-```tsx
-// Instead of:
-<motion.div
-  className="interactive-card ..."
-  whileHover={{ scale: 1.02, y: -8 }}
-  transition={{ duration: 0.2, ease: "easeInOut" }}
-  {...sectionFade}
->
-  ...
-</motion.div>
-
-// Use a single merged prop:
-const mergedFade = { ...sectionFade, transition: { duration: 0.2, ease: "easeInOut" } };
-
-<motion.div
-  className="interactive-card ..."
-  whileHover={{ scale: 1.02, y: -8 }}
-  {...mergedFade}
->
-  ...
-</motion.div>
-```
-
-Notes and verification
-- Open app/page.tsx where the error occurs: https://github.com/DjawadSev/360vision-react-website/blob/main/app/page.tsx#L196-L201 and remove or merge the duplicate transition prop.
-- After making the change, run the build locally (npm run build) to verify it succeeds.
-- This is a code-level JSX/TypeScript issue — no Netlify config or package change is required.
-
-The relevant error logs are:
-
-Line 52: [96m[1m────────────────────────────────────────────────────────────────[22m[39m
-Line 53: ​
-Line 54: [36m$ npm run build[39m
-Line 55: > 360visionreact@0.1.0 build
-Line 56: > next build
-Line 57: [33m[1m⚠[22m[39m No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/doc
-Line 58:    [1m[38;2;173;127;168m▲ Next.js 16.0.3[39m[22m (Turbopack)
-Line 59:  [37m[1m [22m[39m Creating an optimized production build ...
-Line 60:  [32m[1m✓[22m[39m Compiled successfully in 6.9s
-Line 61:  [37m[1m [22m[39m Running TypeScript ...
-Line 62: [31mFailed to compile.
-Line 63: [39m
-Line 64: [36m./app/page.tsx[39m:[33m198[39m:[33m15[39m
-Line 65: [31m[1mType error[22m[39m: 'transition' is specified more than once, so this usage will be overwritten.
-Line 66: [0m [90m 196 |[39m               className[33m=[39m[32m"interactive-card relative overflow-hidden rounded-2xl border borde
-Line 67:  [90m 197 |[39m               whileHover[33m=[39m{{ scale[33m:[39m [35m1.02[39m[33m,[39m y[33m:[39m [33m-[39m[35m
-Line 68: [31m[1m>[22m[39m[90m 198 |[39m               transition[33m=[39m{{ duration[33m:[39m [35m0.2[39m[33m,[39m ease[33
-Line 69:  [90m     |[39m               [31m[1m^[22m[39m
-Line 70:  [90m 199 |[39m               {[33m...[39msectionFade}
-Line 71:  [90m 200 |[39m             [33m>[39m
-Line 72:  [90m 201 |[39m               [33m<[39m[33mdiv[39m className[33m=[39m[32m"pointer-glow"[39m aria[33m-[39mhidden [33
-Line 73: Next.js build worker exited with code: 1 and signal: null
-Line 74: [91m[1m​[22m[39m
-Line 75: [91m[1m"build.command" failed                                        [22m[39m
-Line 76: [91m[1m────────────────────────────────────────────────────────────────[22m[39m
-Line 77: ​
-Line 78:   [31m[1mError message[22m[39m
-Line 79:   Command failed with exit code 1: npm run build
-Line 80: ​
-Line 81:   [31m[1mError location[22m[39m
-Line 82:   In Build command from Netlify app:
-Line 83:   npm run build
-Line 84: ​
-Line 85:   [31m[1mResolved config[22m[39m
-Line 86:   build:
-Line 87:     command: npm run build
-Line 88:     commandOrigin: ui
-Line 89:     publish: /opt/build/repo/.next
-Line 90:     publishOrigin: ui
-Line 91:   plugins:
-Line 92:     - inputs: {}
-Line 93:       origin: ui
-Line 94:       package: "@netlify/plugin-nextjs"
-Line 95: Build failed due to a user error: Build script returned non-zero exit code: 2
-Line 96: Failing build: Failed to build site
-Line 97: Finished processing build request in 31.551s
+go through the code analyse and detect possible issues and fix them
+ run tests to make sure fixes are good, also make sure that animations trigger after a short period of time like 0.6 ms not just on scrolll
  
 
 
