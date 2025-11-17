@@ -1,3 +1,7 @@
+"use client";
+
+import type { MouseEvent } from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 const servicePackages = [
@@ -33,10 +37,35 @@ const servicePackages = [
   },
 ];
 
+const sectionFade = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: "easeOut" },
+  viewport: { once: true, margin: "-10%" },
+};
+
+function handlePointerMove(event: MouseEvent<HTMLElement>) {
+  const card = event.currentTarget;
+  const rect = card.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  card.style.setProperty("--mouse-x", `${x}px`);
+  card.style.setProperty("--mouse-y", `${y}px`);
+}
+
+function resetPointerGlow(event: MouseEvent<HTMLElement>) {
+  const card = event.currentTarget;
+  card.style.setProperty("--mouse-x", "50%");
+  card.style.setProperty("--mouse-y", "50%");
+}
+
 export default function ServicesPage() {
   return (
     <div className="space-y-12">
-      <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/70 via-black to-black px-6 py-8 shadow-[0_20px_80px_rgba(0,0,0,0.45)] sm:px-10">
+      <motion.div
+        className="rounded-3xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/70 via-black to-black px-6 py-8 shadow-[0_20px_80px_rgba(0,0,0,0.45)] sm:px-10"
+        {...sectionFade}
+      >
         <p className="text-sm uppercase tracking-[0.4em] text-white/50">Services</p>
         <h1 className="mt-4 text-4xl font-semibold text-white">Everything you need to go to market with confidence.</h1>
         <p className="mt-4 max-w-3xl text-lg text-white/70">
@@ -46,14 +75,20 @@ export default function ServicesPage() {
         <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-[var(--brand-gold)]/40 bg-[var(--brand-gold)]/10 px-4 py-2 text-sm font-semibold text-[var(--brand-gold)]">
           Premium, motion-led experiences • Conversion discipline
         </div>
-      </div>
+      </motion.div>
 
       <div className="grid gap-8 lg:grid-cols-3">
-        {servicePackages.map((pkg) => (
-          <article
+        {servicePackages.map((pkg, index) => (
+          <motion.article
             key={pkg.title}
-            className="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 via-black/70 to-black/70 p-6 shadow-[0_16px_60px_rgba(0,0,0,0.35)]"
+            className="interactive-card flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 via-black/70 to-black/70 p-6 shadow-[0_16px_60px_rgba(0,0,0,0.35)]"
+            whileHover={{ scale: 1.02, y: -4 }}
+            onMouseMove={handlePointerMove}
+            onMouseLeave={resetPointerGlow}
+            {...sectionFade}
+            transition={{ ...sectionFade.transition, delay: index * 0.05 }}
           >
+            <div className="pointer-glow" aria-hidden />
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-semibold text-white">{pkg.title}</h2>
               <span className="rounded-full border border-[var(--brand-red)]/40 bg-[var(--brand-red)]/20 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white">
@@ -72,7 +107,7 @@ export default function ServicesPage() {
             <Button className="mt-8" variant="outline">
               Book this service
             </Button>
-          </article>
+          </motion.article>
         ))}
       </div>
     </div>
