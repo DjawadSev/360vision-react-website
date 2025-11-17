@@ -72,13 +72,13 @@ body {
   inset: -30%;
   pointer-events: none;
   background: radial-gradient(
-    260px circle at var(--mouse-x) var(--mouse-y),
-    rgba(155, 11, 11, 0.35),
-    rgba(90, 10, 10, 0.25),
-    transparent 68%
+    300px circle at var(--mouse-x) var(--mouse-y),
+    rgba(155, 11, 11, 0.55),
+    rgba(183, 33, 33, 0.35),
+    transparent 72%
   );
   opacity: 0;
-  filter: blur(60px);
+  filter: blur(70px);
   transition: opacity 280ms ease;
 }
 
@@ -92,9 +92,10 @@ body {
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    200px circle at var(--mouse-x) var(--mouse-y),
-    rgba(212, 175, 55, 0.12),
-    transparent 65%
+    240px circle at var(--mouse-x) var(--mouse-y),
+    rgba(155, 11, 11, 0.28),
+    rgba(212, 175, 55, 0.18),
+    transparent 70%
   );
   opacity: 0;
   transition: opacity 280ms ease;
