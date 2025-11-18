@@ -23,7 +23,7 @@ export function SiteHeader() {
   const toggleMenu = () => setIsMenuOpen((open) => !open);
 
   return (
-    <header className="sticky top-0 z-30 border-b border-white/10 bg-black/70 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur-xl">
       <div className="mx-auto flex h-20 w-full max-w-6xl items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-3 text-lg font-semibold tracking-tight text-white">
           {/* Framed square avatar that matches the rounded background of the small logo asset. */}
@@ -75,7 +75,7 @@ export function SiteHeader() {
 
       <div
         className={cn(
-          "fixed inset-0 z-20 bg-black/70 backdrop-blur-sm transition-opacity duration-200 md:hidden",
+          "fixed inset-0 z-40 bg-black/70 backdrop-blur-sm transition-opacity duration-200 md:hidden",
           isMenuOpen ? "opacity-100" : "pointer-events-none opacity-0"
         )}
         onClick={toggleMenu}
