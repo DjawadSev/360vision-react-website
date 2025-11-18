@@ -50,9 +50,10 @@ export function NavigationMenuLink({ className, active, asChild, children, ...pr
   );
 
   if (asChild && isValidElement(children)) {
-    return cloneElement(children as React.ReactElement, {
-      className: cn((children as React.ReactElement).props.className, baseClasses),
-      ...props,
+    const child = children as React.ReactElement<{ className?: string }>;
+    return cloneElement(child, {
+      ...(props as Record<string, unknown>),
+      className: cn(child.props.className, baseClasses),
     });
   }
 

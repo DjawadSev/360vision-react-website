@@ -40,14 +40,16 @@ export function PopoverTrigger({ children, asChild, ...props }: React.PropsWithC
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     if (isValidElement(children)) {
-      children.props.onClick?.(event);
+      const child = children as React.ReactElement<{ onClick?: (event: React.MouseEvent<HTMLElement>) => void }>;
+      child.props.onClick?.(event);
     }
     onOpenChange(!open);
   };
 
   if (asChild && isValidElement(children)) {
-    return cloneElement(children as React.ReactElement, {
-      ...props,
+    const child = children as React.ReactElement<Record<string, unknown>>;
+    return cloneElement(child, {
+      ...(props as Record<string, unknown>),
       "data-state": open ? "open" : "closed",
       onClick: handleClick,
     });

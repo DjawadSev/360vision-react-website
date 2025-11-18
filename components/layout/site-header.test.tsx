@@ -37,19 +37,32 @@ describe("SiteHeader mobile drawer", () => {
 
     const menu = await screen.findByTestId("mobile-menu");
     expect(toggleButton).toHaveAttribute("aria-expanded", "true");
-    expect(menu).toBeVisible();
-    expect(menu.className).toContain("z-[24050]");
+    expect(menu).toHaveAttribute("role", "dialog");
+    expect(screen.getByTestId("mobile-menu-backdrop")).toBeInTheDocument();
 
-    const menuLinks = within(menu).getAllByRole("link");
-    expect(menuLinks.map((link) => link.textContent)).toEqual([
+    const nav = within(menu).getByRole("navigation", { name: /primary/i });
+    const menuLinks = within(nav).getAllByRole("link");
+    expect(menuLinks.map((link) => link.textContent?.replace("Active", "").trim())).toEqual([
       "Home",
       "Services",
       "Portfolio",
       "Contact",
     ]);
 
-    await user.click(within(menu).getByRole("link", { name: /contact/i }));
+    await user.click(menuLinks[3]);
 
+    expect(screen.queryByTestId("mobile-menu")).not.toBeInTheDocument();
+
+    await user.click(toggleButton);
+    expect(await screen.findByTestId("mobile-menu")).toBeInTheDocument();
+
+    await user.click(screen.getByTestId("mobile-menu-close"));
+    expect(screen.queryByTestId("mobile-menu")).not.toBeInTheDocument();
+
+    await user.click(toggleButton);
+    expect(await screen.findByTestId("mobile-menu")).toBeInTheDocument();
+
+    await user.click(screen.getByTestId("mobile-menu-backdrop"));
     expect(screen.queryByTestId("mobile-menu")).not.toBeInTheDocument();
   });
 });
