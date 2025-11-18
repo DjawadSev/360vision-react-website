@@ -37,6 +37,7 @@ const services = [
 
 const highlights = ["3D & Motion for Real Estate & Products", "End-to-End Growth Solutions", "Data-Backed Marketing Decisions"];
 
+// Shared staggered fade-in for hero content so multiple child elements animate in sequence.
 const heroContainer = {
   hidden: { opacity: 0 },
   visible: {
@@ -45,16 +46,19 @@ const heroContainer = {
   },
 };
 
+// Individual hero item animation that slides upward as it fades.
 const heroItem = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: "easeOut" } },
 };
 
+// Smaller horizontal slide for the bullet-like highlights beneath the hero copy.
 const highlightItem = {
   hidden: { opacity: 0, x: 16 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
+// Track the mouse position on any interactive card so CSS variables can drive the glow effect.
 function handlePointerMove(event: MouseEvent<HTMLElement>) {
   const card = event.currentTarget;
   const rect = card.getBoundingClientRect();
@@ -64,6 +68,7 @@ function handlePointerMove(event: MouseEvent<HTMLElement>) {
   card.style.setProperty("--mouse-y", `${y}px`);
 }
 
+// When the pointer leaves, reset the glow to the center so it fades evenly.
 function resetPointerGlow(event: MouseEvent<HTMLElement>) {
   const card = event.currentTarget;
   card.style.setProperty("--mouse-x", "50%");
@@ -74,12 +79,15 @@ export default function Home() {
   const [delayedReveal, setDelayedReveal] = useState(false);
 
   useEffect(() => {
+    // Delay the initial reveal so animations trigger shortly after load, not only on scroll.
     const timer = setTimeout(() => setDelayedReveal(true), 600);
     return () => clearTimeout(timer);
   }, []);
 
+  // Default timing used across scroll-based section fades.
   const baseTransition = { duration: 0.6, ease: "easeOut" };
 
+  // Motion config applied to each section to fade in on load and while entering the viewport.
   const sectionFade = {
     initial: { opacity: 0, y: 30 },
     animate: delayedReveal
@@ -229,7 +237,7 @@ export default function Home() {
       </motion.section>
 
       <motion.section
-        className="interactive-card rounded-3xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/55 via-[var(--brand-red)]/28 to-black px-6 py-12 shadow-[0_25px_100px_rgba(155,11,11,0.35)] sm:px-10"
+      className="interactive-card rounded-3xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/55 via-[var(--brand-red)]/28 to-black px-6 py-12 shadow-[0_25px_100px_rgba(155,11,11,0.35)] sm:px-10"
         {...sectionFade}
         onMouseMove={handlePointerMove}
         onMouseLeave={resetPointerGlow}

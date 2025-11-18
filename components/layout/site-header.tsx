@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 
+// Centralized nav links so desktop and mobile menus stay in sync.
 const links = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
@@ -18,12 +19,14 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Toggle the slide-in drawer on small screens.
   const toggleMenu = () => setIsMenuOpen((open) => !open);
 
   return (
     <header className="sticky top-0 z-30 border-b border-white/10 bg-black/70 backdrop-blur-xl">
       <div className="mx-auto flex h-20 w-full max-w-6xl items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-3 text-lg font-semibold tracking-tight text-white">
+          {/* Framed square avatar that matches the rounded background of the small logo asset. */}
           <span className="relative h-12 w-12 overflow-hidden rounded-2xl border border-white/10 bg-white/0 p-1 shadow-[0_0_28px_rgba(155,11,11,0.35)]">
             <Image
               src="/logos/logo-small-black-rounded-bg.png"
@@ -39,6 +42,7 @@ export function SiteHeader() {
           </div>
         </Link>
 
+        {/* Desktop navigation with simple active-state highlight. */}
         <nav className="hidden items-center gap-2 text-sm font-medium text-white/70 md:flex">
           {links.map((link) => {
             const isActive = pathname === link.href;
@@ -57,6 +61,7 @@ export function SiteHeader() {
           })}
         </nav>
 
+        {/* Mobile hamburger toggles the off-canvas drawer. */}
         <button
           className="text-white transition hover:text-[var(--brand-gold)] md:hidden"
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
