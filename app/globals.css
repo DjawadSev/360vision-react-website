@@ -91,6 +91,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
+  pointer-events: none;
   background: radial-gradient(
     240px circle at var(--mouse-x) var(--mouse-y),
     rgba(155, 11, 11, 0.28),
@@ -98,7 +99,7 @@ body {
     transparent 70%
   );
   opacity: 0;
-  transition: opacity 280ms ease;
+  transition: opacity 260ms ease;
 }
 
 .interactive-card:hover::after,

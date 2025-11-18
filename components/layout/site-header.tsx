@@ -16,6 +16,7 @@ import {
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 
+// Centralized nav links so desktop and mobile menus stay in sync.
 const links = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
