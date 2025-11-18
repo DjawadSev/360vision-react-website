@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import type React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
@@ -25,28 +25,31 @@ vi.mock("next/image", () => ({
 }));
 
 describe("SiteHeader mobile drawer", () => {
-  it("opens above all content and closes when toggled", async () => {
+  it("opens the mobile menu above content and closes after selecting a link", async () => {
     const user = userEvent.setup();
     render(<SiteHeader />);
 
-    const toggleButton = screen.getByLabelText(/open menu/i);
-    const drawer = screen.getByTestId("mobile-drawer");
-    const backdrop = screen.getByTestId("mobile-drawer-backdrop");
+    const toggleButton = screen.getByTestId("mobile-menu-trigger");
 
-    expect(drawer.className).toContain("translate-x-full");
-    expect(backdrop.className).toContain("opacity-0");
+    expect(screen.queryByTestId("mobile-menu")).not.toBeInTheDocument();
 
     await user.click(toggleButton);
 
+    const menu = await screen.findByTestId("mobile-menu");
     expect(toggleButton).toHaveAttribute("aria-expanded", "true");
-    expect(drawer.className).toContain("translate-x-0");
-    expect(drawer.className).toContain("z-[11995]");
-    expect(backdrop.className).toContain("opacity-100");
-    expect(backdrop.className).toContain("z-[11990]");
+    expect(menu).toBeVisible();
+    expect(menu.className).toContain("z-[24050]");
 
-    await user.click(screen.getByLabelText(/close menu/i));
+    const menuLinks = within(menu).getAllByRole("link");
+    expect(menuLinks.map((link) => link.textContent)).toEqual([
+      "Home",
+      "Services",
+      "Portfolio",
+      "Contact",
+    ]);
 
-    expect(drawer.className).toContain("translate-x-full");
-    expect(backdrop.className).toContain("opacity-0");
+    await user.click(within(menu).getByRole("link", { name: /contact/i }));
+
+    expect(screen.queryByTestId("mobile-menu")).not.toBeInTheDocument();
   });
 });
