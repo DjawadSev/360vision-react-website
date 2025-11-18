@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
@@ -58,6 +58,14 @@ const TRACK_GAP = 24;
 
 export function HeroVisualCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    if (heroShowcase.length === 0) return;
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % heroShowcase.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <div id="hero-visual-carousel" className="relative">
