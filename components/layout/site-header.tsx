@@ -84,7 +84,7 @@ export function SiteHeader() {
       <div
         id="mobile-nav"
         className={cn(
-          "fixed right-0 top-0 z-50 h-full w-72 translate-x-full border-l border-white/10 bg-black/90 p-6 shadow-[0_25px_80px_rgba(0,0,0,0.55)] transition-transform duration-300 md:hidden",
+          "fixed right-0 top-0 z-30 h-full w-72 translate-x-full border-l border-white/10 bg-black/90 p-6 shadow-[0_25px_80px_rgba(0,0,0,0.55)] transition-transform duration-300 md:hidden",
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
