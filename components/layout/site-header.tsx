@@ -23,7 +23,7 @@ export function SiteHeader() {
   const toggleMenu = () => setIsMenuOpen((open) => !open);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-0 z-[12000] border-b border-white/10 bg-black/70 backdrop-blur-xl">
       <div className="mx-auto flex h-20 w-full max-w-6xl items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-3 text-lg font-semibold tracking-tight text-white">
           {/* Framed square avatar that matches the rounded background of the small logo asset. */}
@@ -75,18 +75,20 @@ export function SiteHeader() {
 
       <div
         className={cn(
-          "fixed inset-0 z-40 bg-black/70 backdrop-blur-sm transition-opacity duration-200 md:hidden",
+          "fixed inset-0 z-[11990] bg-black/70 backdrop-blur-sm transition-opacity duration-200 md:hidden",
           isMenuOpen ? "opacity-100" : "pointer-events-none opacity-0"
         )}
         onClick={toggleMenu}
+        data-testid="mobile-drawer-backdrop"
       />
 
       <div
         id="mobile-nav"
         className={cn(
-          "fixed right-0 top-0 z-30 h-full w-72 translate-x-full border-l border-white/10 bg-black/90 p-6 shadow-[0_25px_80px_rgba(0,0,0,0.55)] transition-transform duration-300 md:hidden",
+          "fixed right-0 top-0 z-[11995] h-full w-72 translate-x-full border-l border-white/10 bg-black/90 p-6 shadow-[0_25px_80px_rgba(0,0,0,0.55)] transition-transform duration-300 md:hidden",
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
+        data-testid="mobile-drawer"
       >
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 text-lg font-semibold tracking-tight text-white" onClick={toggleMenu}>

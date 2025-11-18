@@ -26,16 +26,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} bg-black text-white antialiased`}>
-        <div className="mesh-overlay" aria-hidden />
-        <div className="grid-lines" aria-hidden />
         <SiteHeader />
-        <div className="flex min-h-screen flex-col bg-gradient-to-b from-black/80 via-[#0b0b0d]/90 to-black">
-          <main className="mx-auto w-full max-w-6xl flex-1 px-6 pb-20 pt-24">{children}</main>
-          <footer className="border-t border-white/10 bg-black/60 py-10 text-center text-sm text-white/60">
+        <main className="relative min-h-screen bg-gradient-to-b from-black/80 via-[#0b0b0d]/90 to-black">
+          <div className="mesh-overlay" aria-hidden />
+          <div className="grid-lines" aria-hidden />
+          <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-20 pt-28">{children}</div>
+          <footer className="relative z-10 border-t border-white/10 bg-black/60 py-10 text-center text-sm text-white/60">
             <p className="font-semibold text-white">360 VISION</p>
             <p>© {new Date().getFullYear()} All rights reserved.</p>
           </footer>
-        </div>
+        </main>
       </body>
     </html>
   );
