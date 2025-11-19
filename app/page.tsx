@@ -120,94 +120,89 @@ export default function Home() {
           {services.map((service) => {
             const isThreeD = service.title.includes("3D Visualization");
             const isMeta = service.title.includes("Meta Ads");
-            if (isThreeD) {
-              return (
-                <CardContainer key={service.title} containerClassName="py-0 w-full" className="w-full">
-                  <CardBody className="relative w-full !h-auto min-h-[360px] rounded-2xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/40 via-black/60 to-black/60 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)] space-y-4">
-                    <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[var(--brand-red)]/20 blur-3xl" />
-                    <CardItem translateZ={60} className="overflow-hidden rounded-xl border border-white/10 bg-black/60">
-                      <Image
-                        src="/images/cards/3dserviceimage.png"
-                        alt="3D visualization showcase"
-                        width={640}
-                        height={360}
-                        className="h-40 w-full object-cover"
-                      />
-                    </CardItem>
-                    <CardItem translateZ={75} className="text-[10px] uppercase tracking-[0.35em] text-white/50">
-                      Immersive 3D & Motion
-                    </CardItem>
-                    <CardItem translateZ={85} className="space-y-2 text-white/80">
-                      <h3 className="text-xl font-semibold text-white">{service.title}</h3>
-                      <p className="text-sm leading-relaxed text-white/70">{service.body}</p>
-                    </CardItem>
-                    <CardItem translateZ={95} className="inline-flex text-[11px] font-semibold text-[var(--brand-gold)]">
-                      <Link href="/services" className="flex items-center gap-2">
+            return (
+              <div key={service.title} className="flex h-full">
+                {isThreeD ? (
+                  <CardContainer containerClassName="py-0 w-full" className="w-full">
+                    <CardBody className="relative w-full !h-auto min-h-[360px] rounded-2xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/40 via-black/60 to-black/60 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)] space-y-4">
+                      <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[var(--brand-red)]/20 blur-3xl" />
+                      <CardItem translateZ={60} className="overflow-hidden rounded-xl border border-white/10 bg-black/60">
+                        <Image
+                          src="/images/cards/3dserviceimage.png"
+                          alt="3D visualization showcase"
+                          width={640}
+                          height={360}
+                          className="h-48 w-full object-cover"
+                        />
+                      </CardItem>
+                      <CardItem translateZ={75} className="text-[10px] uppercase tracking-[0.35em] text-white/50">
+                        Immersive 3D & Motion
+                      </CardItem>
+                      <CardItem translateZ={85} className="space-y-2 text-white/80">
+                        <h3 className="text-xl font-semibold text-white">{service.title}</h3>
+                        <p className="text-sm leading-relaxed text-white/70">{service.body}</p>
+                      </CardItem>
+                      <CardItem translateZ={95} className="inline-flex text-[11px] font-semibold text-[var(--brand-gold)]">
+                        <Link href="/services" className="flex items-center gap-2">
+                          Learn more
+                          <span aria-hidden>{"->"}</span>
+                        </Link>
+                      </CardItem>
+                    </CardBody>
+                  </CardContainer>
+                ) : isMeta ? (
+                  <div className="space-y-4 rounded-2xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/40 via-black/60 to-black/60 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)]">
+                    <CreditCard className="w-full">
+                      <CreditCardFlipper>
+                        <CreditCardFront className="bg-gradient-to-br from-[var(--brand-red-dark)] via-[var(--brand-red)] to-[#ff5d5d] text-white">
+                          <div className="flex h-full flex-col justify-between">
+                            <div className="flex items-start justify-between">
+                              <CreditCardChip className="left-2 w-16 bg-[var(--brand-gold)]/90" />
+                              <div className="text-white/90">
+                                <Image src="/logos/secondary-logo-transparent-300px.png" alt="360 Vision logo" width={42} height={42} className="h-10 w-10 object-contain" />
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <CreditCardName className="text-[14px] font-semibold uppercase tracking-[0.35em] text-[#dcdcdc] drop-shadow-[0_0_10px_rgba(255,255,255,0.55)] whitespace-nowrap">
+                                Performance Marketing
+                              </CreditCardName>
+                            </div>
+                          </div>
+                        </CreditCardFront>
+                        <CreditCardBack className="bg-gradient-to-br from-[#040404] via-[#1a1a1a] to-black text-white">
+                          <CreditCardMagStripe className="bg-white/30" />
+                          <div className="mt-16 text-right">
+                            <p className="text-sm font-semibold text-[var(--brand-red)]">CPA ↓31%</p>
+                          </div>
+                        </CreditCardBack>
+                      </CreditCardFlipper>
+                    </CreditCard>
+                    <div className="space-y-2 text-white/80">
+                      <p className="text-xs uppercase tracking-[0.3em] text-white/60">Service</p>
+                      <h3 className="text-2xl font-semibold text-white">{service.title}</h3>
+                      <p className="text-white/70">{service.body}</p>
+                      <Link href="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-gold)]">
                         Learn more
                         <span aria-hidden>{"->"}</span>
                       </Link>
-                    </CardItem>
-                  </CardBody>
-                </CardContainer>
-              );
-            }
-
-            if (isMeta) {
-              return (
-                <div key={service.title} className="space-y-4 rounded-2xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/40 via-black/60 to-black/60 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)]">
-                  <CreditCard className="w-full">
-                    <CreditCardFlipper>
-                      <CreditCardFront className="bg-gradient-to-br from-[var(--brand-red-dark)] via-[var(--brand-red)] to-[#ff5d5d] text-white">
-                        <div className="flex h-full flex-col justify-between">
-                          <div className="flex items-start justify-between">
-                            <CreditCardChip className="left-2 w-16 bg-[var(--brand-gold)]/90" />
-                            <div className="text-white/90">
-                              <Image src="/logos/secondary-logo-transparent-300px.png" alt="360 Vision logo" width={42} height={42} className="h-10 w-10 object-contain" />
-                            </div>
-                          </div>
-                          <div className="text-right">
-                            <CreditCardName className="text-lg font-semibold tracking-[0.4em] text-white">Performance Marketing</CreditCardName>
-                          </div>
-                        </div>
-                      </CreditCardFront>
-                      <CreditCardBack className="bg-gradient-to-br from-[#040404] via-[#1a1a1a] to-black text-white">
-                        <CreditCardMagStripe className="bg-white/30" />
-                        <div className="mt-16 text-right">
-                          <p className="text-sm font-semibold text-[var(--brand-red)]">CPA ↓31%</p>
-                        </div>
-                      </CreditCardBack>
-                    </CreditCardFlipper>
-                  </CreditCard>
-                  <div className="space-y-2 text-white/80">
+                    </div>
+                  </div>
+                ) : (
+                  <article
+                    id={`home-service-${slugify(service.title)}`}
+                    className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/40 via-black/60 to-black/60 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
+                  >
+                    <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[var(--brand-red)]/20 blur-3xl" />
                     <p className="text-xs uppercase tracking-[0.3em] text-white/60">Service</p>
-                    <h3 className="text-2xl font-semibold text-white">{service.title}</h3>
-                    <p className="text-white/70">{service.body}</p>
-                    <Link href="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-gold)]">
+                    <h3 className="mt-3 text-2xl font-semibold text-white">{service.title}</h3>
+                    <p className="mt-3 flex-grow text-white/70">{service.body}</p>
+                    <Link href="/services" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-gold)]">
                       Learn more
                       <span aria-hidden>{"->"}</span>
                     </Link>
-                  </div>
-                </div>
-              );
-            }
-
-            return (
-              <article
-                id={`home-service-${slugify(service.title)}`}
-                key={service.title}
-                className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/40 via-black/60 to-black/60 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
-              >
-                <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[var(--brand-red)]/20 blur-3xl" />
-                <>
-                  <p className="text-xs uppercase tracking-[0.3em] text-white/60">Service</p>
-                  <h3 className="mt-3 text-2xl font-semibold text-white">{service.title}</h3>
-                  <p className="mt-3 text-white/70">{service.body}</p>
-                </>
-                <Link href="/services" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-gold)]">
-                  Learn more
-                  <span aria-hidden>{"->"}</span>
-                </Link>
-              </article>
+                  </article>
+                )}
+              </div>
             );
           })}
         </div>
