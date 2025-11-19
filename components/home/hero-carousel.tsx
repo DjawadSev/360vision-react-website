@@ -21,9 +21,9 @@ const heroShowcase: HeroShowcaseItem[] = [
   {
     id: "growth",
     label: "Boost Your Business",
-    title: "Explode your lead generation",
+    title: "Scale your growth with precision marketing",
     metric: "+214% Total Growth",
-    description: "Paid media engine for regional retail group",
+    description: "Full-funnel performance engine for ambitious brands.",
     image: {
       src: "/images/hero/05.png",
       alt: "360 Vision showcase graphic",
@@ -32,9 +32,9 @@ const heroShowcase: HeroShowcaseItem[] = [
   {
     id: "launch",
     label: "Product Launch",
-    title: "Carve your brand story in 8 weeks",
-    metric: "6 channels live",
-    description: "Launch support for a DTC accessories line",
+    title: "Launch your brand with impact",
+    metric: "+9,400 New Visitors in 48h",
+    description: "Identity systems, launch campaigns, 3D visuals, packaging, and GTM assets.",
     image: {
       src: "/images/hero/Hero.png",
       alt: "360 Vision motion identity",
@@ -43,9 +43,9 @@ const heroShowcase: HeroShowcaseItem[] = [
   {
     id: "experience",
     label: "Immersive Experience",
-    title: "Transform showrooms into destinations",
-    metric: "97% dwell boost",
-    description: "Flagship retail CGI + experiential layer",
+    title: "Transform ideas into interactive experiences",
+    metric: "+3× Engagement vs Static Assets",
+    description: "3D worlds, architectural visuals, and hyper-real product demos.",
     image: {
       src: "/images/hero/360vision_Hero-100.jpg",
       alt: "360 Vision premium environment",
@@ -53,7 +53,8 @@ const heroShowcase: HeroShowcaseItem[] = [
   },
 ];
 
-const SLIDE_HEIGHT = 500;
+const IMAGE_HEIGHT = 380;
+const SLIDE_HEIGHT = 440;
 const TRACK_GAP = 24;
 
 export function HeroVisualCarousel() {
@@ -72,7 +73,7 @@ export function HeroVisualCarousel() {
       <div className="absolute -left-10 -top-10 h-24 w-24 rounded-full border border-[var(--brand-gold)]/40 bg-[var(--brand-gold)]/10 blur-3xl" />
       <div
         id="hero-carousel-viewport"
-        className="relative h-[520px] overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-br from-white/10 via-white/0 to-white/5 p-4 shadow-[0_30px_120px_rgba(0,0,0,0.55)] backdrop-blur"
+        className="relative h-[480px] overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-br from-white/10 via-white/0 to-white/5 p-4 shadow-[0_30px_120px_rgba(0,0,0,0.55)] backdrop-blur"
         aria-label="Hero visual carousel"
       >
         <div
@@ -89,10 +90,10 @@ export function HeroVisualCarousel() {
             <article
               id={`hero-carousel-slide-${item.id}`}
               key={item.id}
-              className="flex h-full flex-col gap-2"
+              className="flex h-full flex-col gap-3"
               style={{ height: `${SLIDE_HEIGHT}px` }}
             >
-              <div className="flex-1 overflow-hidden rounded-[22px] border border-white/10 bg-black/60">
+              <div className="overflow-hidden rounded-[22px] border border-white/10 bg-black/60" style={{ height: `${IMAGE_HEIGHT}px` }}>
                 <Image
                   src={item.image.src}
                   alt={item.image.alt}
@@ -102,7 +103,7 @@ export function HeroVisualCarousel() {
                   priority={item.id === "growth"}
                 />
               </div>
-              <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-3 py-1 text-[11px] text-white/80">
+              <div className="mb-1 flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-3 py-1 text-[11px] text-white/80">
                 <div className="space-y-0.5">
                   <p className="text-[8px] uppercase tracking-[0.25em] text-white/50">{item.label}</p>
                   <p className="text-sm font-semibold text-white">{item.title}</p>

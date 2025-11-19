@@ -42,12 +42,7 @@ describe("SiteHeader mobile drawer", () => {
 
     const nav = within(menu).getByRole("navigation", { name: /primary/i });
     const menuLinks = within(nav).getAllByRole("link");
-    expect(menuLinks.map((link) => link.textContent?.replace("Active", "").trim())).toEqual([
-      "Home",
-      "Services",
-      "Portfolio",
-      "Contact",
-    ]);
+    expect(menuLinks.map((link) => link.textContent?.replace("Active", "").trim())).toEqual(["Home", "Services", "Our Work", "Contact"]);
 
     await user.click(menuLinks[3]);
 

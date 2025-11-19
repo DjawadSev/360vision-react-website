@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils";
 const links = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
-  { href: "/portfolio", label: "Portfolio" },
+  { href: "/portfolio", label: "Our Work" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -196,7 +196,7 @@ function MobileSideNav({ open, onClose, pathname }: MobileSideNavProps) {
               "w-full justify-center rounded-2xl bg-[var(--brand-red)] text-base shadow-[0_20px_80px_rgba(155,11,11,0.45)]"
             )}
           >
-            View Work
+            Portfolio
           </Link>
         </div>
       </aside>
@@ -263,22 +263,13 @@ export function SiteHeader() {
         </NavigationMenu>
         <div id="desktop-cta-group" className="hidden items-center gap-2 md:flex">
           <Link
-            href="/contact"
-            className={cn(
-              buttonVariants({ variant: "ghost", size: "sm" }),
-              "rounded-xl border border-transparent text-sm font-semibold text-white/80 hover:border-[var(--brand-gold)] hover:text-white"
-            )}
-          >
-            Contact
-          </Link>
-          <Link
             href="/portfolio"
             className={cn(
               buttonVariants({ size: "sm" }),
               "rounded-xl bg-[var(--brand-red)] px-4 text-sm font-semibold text-white shadow-[0_0_32px_rgba(155,11,11,0.35)] hover:bg-[var(--brand-red-bright)]"
             )}
           >
-            View Work
+            Portfolio
           </Link>
         </div>
       </div>

@@ -116,7 +116,7 @@ The agent must use logos according to the brand guidelines:
 - **App-style avatar / square icon:**  
   `logo-small-black-rounded-bg.png`
 
-## Current Task — Add Premium Animations & Interactive Glow Effects
+## Current 
 
 
 

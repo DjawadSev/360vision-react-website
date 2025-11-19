@@ -1,17 +1,28 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { HeroVisualCarousel } from "@/components/home/hero-carousel";
+import { CardBody, CardContainer, CardItem } from "@/components/ui/shadcn-io/3d-card";
+import {
+  CreditCard,
+  CreditCardBack,
+  CreditCardChip,
+  CreditCardFlipper,
+  CreditCardFront,
+  CreditCardMagStripe,
+  CreditCardName,
+} from "@/components/ui/shadcn-io/credit-card";
 import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 
 const stats = [
-  { label: "Projects completed", value: "120+" },
-  { label: "Revenue influenced", value: "500m DA" },
-  { label: "Combined years of Exp", value: "40+" },
+  { label: "Projects Delivered", value: "120+" },
+  { label: "Revenue Influenced", value: "500m DA" },
+  { label: "Combined Experience", value: "40+ Years" },
 ];
 
 const contactInfo = {
-  addressLine1: "CitǸ Saidi ahmed CICAD part N47 Bureau N17 Brodj",
+  addressLine1: "CitÇ¸ Saidi ahmed CICAD part N47 Bureau N17 Brodj",
   addressLine2: "el kiffan",
   email: "contact@360vision.io",
   phone: "+213 770072036",
@@ -32,7 +43,7 @@ const services = [
   },
 ];
 
-const highlights = ["3D & Motion for Real Estate & Products", "End-to-End Growth Solutions", "Data-Backed Marketing Decisions"];
+const highlights = ["3D & Motion for Real Estate & Products", "End-to-End Growth Solutions", "Data-Driven Marketing Strategies"];
 
 const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)+/g, "");
 
@@ -40,15 +51,21 @@ export default function Home() {
   return (
     <div id="home-page" className="space-y-20">
       <section id="home-hero" className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/80 via-black to-black px-6 py-16 shadow-[0_40px_120px_rgba(0,0,0,0.6)] sm:px-12">
+        <div className="pointer-events-none absolute inset-0 bg-[url('/logos/background-red.png')] bg-cover opacity-10 mix-blend-screen" style={{ backgroundPosition: "20% center" }} aria-hidden />
         <div className="gradient-spot left-6 top-4 bg-[var(--brand-red)]/40" />
         <div className="gradient-spot right-12 bottom-[-60px] bg-[var(--brand-gold)]/30" />
         <div className="relative grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div className="space-y-6">
-            <Badge>Complete Digital Marketing Solution</Badge>
-            <h1 className="text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">A Modern Digital Marketing Agency Helping Algerian Businesses Grow</h1>
-            <p className="max-w-2xl text-lg text-white/70">
-              360 Vision delivers data-driven marketing solutions for companies across Algeria — from social media ads to 3D visualization and high-impact content creation.
-            </p>
+            <Badge>Modern Digital Marketing Solutions</Badge>
+            <h1 className="text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">A Digital Agency Helping Algerian Businesses Grow Online</h1>
+            <div className="space-y-4 text-white/75">
+              <p className="max-w-2xl text-lg">
+                360 Vision helps companies across Algeria build powerful digital identities — from social media marketing and online advertising to e-commerce strategy, branding, 3D visuals, and high-impact content creation.
+              </p>
+              <p className="max-w-2xl text-lg">
+                We partner with ambitious Algerian businesses looking to digitalize, attract new customers, and scale their revenue through data-backed, conversion-focused marketing.
+              </p>
+            </div>
             <div id="home-hero-highlights" className="flex flex-wrap gap-3">
               {highlights.map((item) => (
                 <span key={item} className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 shadow-[0_0_22px_rgba(255,255,255,0.08)]">
@@ -57,9 +74,9 @@ export default function Home() {
               ))}
             </div>
             <div id="home-hero-ctas" className="flex flex-wrap gap-4 pt-4">
-              <Button size="lg">Launch your brand now</Button>
+              <Button size="lg">🔴 Launch your brand now</Button>
               <Link href="/portfolio" className={buttonVariants({ variant: "outline", size: "lg" })}>
-                Explore more
+                ⚫ Explore more
               </Link>
             </div>
             <dl id="home-hero-stats" className="grid gap-6 pt-8 text-sm text-white/70 sm:grid-cols-3">
@@ -100,22 +117,99 @@ export default function Home() {
         </div>
 
         <div id="home-services-grid" className="mt-8 grid gap-6 lg:grid-cols-3">
-          {services.map((service) => (
-            <article
-              id={`home-service-${slugify(service.title)}`}
-              key={service.title}
-              className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/40 via-black/60 to-black/60 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
-            >
-              <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[var(--brand-red)]/20 blur-3xl" />
-              <p className="text-xs uppercase tracking-[0.3em] text-white/60">Service</p>
-              <h3 className="mt-3 text-2xl font-semibold text-white">{service.title}</h3>
-              <p className="mt-3 text-white/70">{service.body}</p>
-              <Link href="/services" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-gold)]">
-                Learn more
-                <span aria-hidden>{"->"}</span>
-              </Link>
-            </article>
-          ))}
+          {services.map((service) => {
+            const isThreeD = service.title.includes("3D Visualization");
+            const isMeta = service.title.includes("Meta Ads");
+            if (isThreeD) {
+              return (
+                <CardContainer key={service.title} containerClassName="py-0 w-full" className="w-full">
+                  <CardBody className="relative w-full !h-auto min-h-[360px] rounded-2xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/40 via-black/60 to-black/60 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)] space-y-4">
+                    <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[var(--brand-red)]/20 blur-3xl" />
+                    <CardItem translateZ={60} className="overflow-hidden rounded-xl border border-white/10 bg-black/60">
+                      <Image
+                        src="/images/cards/3dserviceimage.png"
+                        alt="3D visualization showcase"
+                        width={640}
+                        height={360}
+                        className="h-40 w-full object-cover"
+                      />
+                    </CardItem>
+                    <CardItem translateZ={75} className="text-[10px] uppercase tracking-[0.35em] text-white/50">
+                      Immersive 3D & Motion
+                    </CardItem>
+                    <CardItem translateZ={85} className="space-y-2 text-white/80">
+                      <h3 className="text-xl font-semibold text-white">{service.title}</h3>
+                      <p className="text-sm leading-relaxed text-white/70">{service.body}</p>
+                    </CardItem>
+                    <CardItem translateZ={95} className="inline-flex text-[11px] font-semibold text-[var(--brand-gold)]">
+                      <Link href="/services" className="flex items-center gap-2">
+                        Learn more
+                        <span aria-hidden>{"->"}</span>
+                      </Link>
+                    </CardItem>
+                  </CardBody>
+                </CardContainer>
+              );
+            }
+
+            if (isMeta) {
+              return (
+                <div key={service.title} className="space-y-4 rounded-2xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/40 via-black/60 to-black/60 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)]">
+                  <CreditCard className="w-full">
+                    <CreditCardFlipper>
+                      <CreditCardFront className="bg-gradient-to-br from-[var(--brand-red-dark)] via-[var(--brand-red)] to-[#ff5d5d] text-white">
+                        <div className="flex h-full flex-col justify-between">
+                          <div className="flex items-start justify-between">
+                            <CreditCardChip className="left-2 w-16 bg-[var(--brand-gold)]/90" />
+                            <div className="text-white/90">
+                              <Image src="/logos/secondary-logo-transparent-300px.png" alt="360 Vision logo" width={42} height={42} className="h-10 w-10 object-contain" />
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <CreditCardName className="text-lg font-semibold tracking-[0.4em] text-white">Performance Marketing</CreditCardName>
+                          </div>
+                        </div>
+                      </CreditCardFront>
+                      <CreditCardBack className="bg-gradient-to-br from-[#040404] via-[#1a1a1a] to-black text-white">
+                        <CreditCardMagStripe className="bg-white/30" />
+                        <div className="mt-16 text-right">
+                          <p className="text-sm font-semibold text-[var(--brand-red)]">CPA ↓31%</p>
+                        </div>
+                      </CreditCardBack>
+                    </CreditCardFlipper>
+                  </CreditCard>
+                  <div className="space-y-2 text-white/80">
+                    <p className="text-xs uppercase tracking-[0.3em] text-white/60">Service</p>
+                    <h3 className="text-2xl font-semibold text-white">{service.title}</h3>
+                    <p className="text-white/70">{service.body}</p>
+                    <Link href="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-gold)]">
+                      Learn more
+                      <span aria-hidden>{"->"}</span>
+                    </Link>
+                  </div>
+                </div>
+              );
+            }
+
+            return (
+              <article
+                id={`home-service-${slugify(service.title)}`}
+                key={service.title}
+                className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/40 via-black/60 to-black/60 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
+              >
+                <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[var(--brand-red)]/20 blur-3xl" />
+                <>
+                  <p className="text-xs uppercase tracking-[0.3em] text-white/60">Service</p>
+                  <h3 className="mt-3 text-2xl font-semibold text-white">{service.title}</h3>
+                  <p className="mt-3 text-white/70">{service.body}</p>
+                </>
+                <Link href="/services" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-gold)]">
+                  Learn more
+                  <span aria-hidden>{"->"}</span>
+                </Link>
+              </article>
+            );
+          })}
         </div>
       </section>
 

@@ -20,16 +20,16 @@ const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-
 
 export default function PortfolioPage() {
   return (
-    <div id="portfolio-page" className="space-y-10">
-      <div id="portfolio-intro" className="rounded-3xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/70 via-black to-black px-6 py-8 shadow-[0_20px_80px_rgba(0,0,0,0.45)] sm:px-10">
-        <p className="text-sm uppercase tracking-[0.4em] text-white/50">Portfolio</p>
+    <div id="our-work-page" className="space-y-10">
+      <div id="our-work-intro" className="rounded-3xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/70 via-black to-black px-6 py-8 shadow-[0_20px_80px_rgba(0,0,0,0.45)] sm:px-10">
+        <p className="text-sm uppercase tracking-[0.4em] text-white/50">Our Work</p>
         <h1 className="mt-4 text-4xl font-semibold text-white">Selected work shaping the next decade of brands.</h1>
         <p className="mt-4 max-w-3xl text-lg text-white/70">
           We collaborate with marketing leaders, founders, and product teams across SaaS, commerce, and industrial innovation. Each engagement blends research, narrative, design, and data.
         </p>
       </div>
 
-      <div id="portfolio-case-studies" className="space-y-6">
+      <div id="our-work-case-studies" className="space-y-6">
         {caseStudies.map((project) => (
           <article
             id={`case-study-${slugify(project.client)}`}

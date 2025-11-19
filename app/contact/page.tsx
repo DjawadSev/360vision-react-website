@@ -26,7 +26,8 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <form id="contact-form" className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-8 shadow-[0_16px_60px_rgba(0,0,0,0.35)]">
+      <form id="contact-form" className="relative space-y-6 overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 shadow-[0_16px_60px_rgba(0,0,0,0.35)]">
+        <div className="pointer-events-none absolute inset-0 bg-[url('/logos/background-red.png')] bg-cover opacity-10 mix-blend-screen" style={{ backgroundPosition: "20% center" }} aria-hidden />
         <div className="space-y-2">
           <label className="text-sm text-white/70" htmlFor="name">
             Name
