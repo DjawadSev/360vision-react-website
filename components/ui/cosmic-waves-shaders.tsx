@@ -1,7 +1,6 @@
 "use client";
 
-import React, { forwardRef } from "react";
-import { Shader } from "react-shaders";
+import React, { forwardRef, useEffect, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -13,7 +12,14 @@ interface CosmicWavesShadersProps extends React.HTMLAttributes<HTMLDivElement> {
   colorShift?: number;
 }
 
-const cosmicWavesFragment = `
+const vertexShaderSource = `
+attribute vec2 a_position;
+void main() {
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}
+`;
+
+const cosmicShaderFragment = `
 float hash(vec2 p) {
   return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
 }
@@ -108,21 +114,147 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
 }
 `;
 
+const fragmentShaderSource = `
+precision highp float;
+uniform vec2 iResolution;
+uniform float iTime;
+uniform float u_speed;
+uniform float u_amplitude;
+uniform float u_frequency;
+uniform float u_starDensity;
+uniform float u_colorShift;
+
+${cosmicShaderFragment}
+
+void main() {
+  vec4 color;
+  mainImage(color, gl_FragCoord.xy);
+  gl_FragColor = color;
+}
+`;
+
+function compileShader(gl: WebGLRenderingContext, type: number, source: string) {
+  const shader = gl.createShader(type);
+  if (!shader) throw new Error("Could not create shader");
+  gl.shaderSource(shader, source);
+  gl.compileShader(shader);
+  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+    const info = gl.getShaderInfoLog(shader);
+    gl.deleteShader(shader);
+    throw new Error(`Shader compile failed: ${info ?? ""}`);
+  }
+  return shader;
+}
+
+function createProgram(gl: WebGLRenderingContext, vertex: WebGLShader, fragment: WebGLShader) {
+  const program = gl.createProgram();
+  if (!program) throw new Error("Could not create program");
+  gl.attachShader(program, vertex);
+  gl.attachShader(program, fragment);
+  gl.linkProgram(program);
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+    const info = gl.getProgramInfoLog(program);
+    gl.deleteProgram(program);
+    throw new Error(`Program link failed: ${info ?? ""}`);
+  }
+  return program;
+}
+
 export const CosmicWavesShaders = forwardRef<HTMLDivElement, CosmicWavesShadersProps>(
   ({ speed = 0.8, amplitude = 1.0, frequency = 1.0, starDensity = 1.0, colorShift = 1.0, className, ...props }, ref) => {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+
+    useEffect(() => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+
+      const gl = canvas.getContext("webgl", {
+        preserveDrawingBuffer: false,
+        premultipliedAlpha: false,
+      });
+      if (!gl) return;
+
+      let animationFrame = 0;
+      let program: WebGLProgram | null = null;
+      let vertexShader: WebGLShader | null = null;
+      let fragmentShader: WebGLShader | null = null;
+
+      try {
+        vertexShader = compileShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
+        fragmentShader = compileShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+        program = createProgram(gl, vertexShader, fragmentShader);
+      } catch (error) {
+        console.error(error);
+        return;
+      }
+
+      gl.useProgram(program);
+
+      const positionBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+      gl.bufferData(
+        gl.ARRAY_BUFFER,
+        new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]),
+        gl.STATIC_DRAW
+      );
+
+      const positionLocation = gl.getAttribLocation(program, "a_position");
+      gl.enableVertexAttribArray(positionLocation);
+      gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+      const resolutionLocation = gl.getUniformLocation(program, "iResolution");
+      const timeLocation = gl.getUniformLocation(program, "iTime");
+      const speedLocation = gl.getUniformLocation(program, "u_speed");
+      const amplitudeLocation = gl.getUniformLocation(program, "u_amplitude");
+      const frequencyLocation = gl.getUniformLocation(program, "u_frequency");
+      const starDensityLocation = gl.getUniformLocation(program, "u_starDensity");
+      const colorShiftLocation = gl.getUniformLocation(program, "u_colorShift");
+
+      const startTime = performance.now();
+
+      const resize = () => {
+        const dpr = window.devicePixelRatio || 1;
+        const width = Math.floor(canvas.clientWidth * dpr);
+        const height = Math.floor(canvas.clientHeight * dpr);
+        if (canvas.width !== width || canvas.height !== height) {
+          canvas.width = width;
+          canvas.height = height;
+          gl.viewport(0, 0, width, height);
+        }
+      };
+
+      const render = (time: number) => {
+        resize();
+        if (resolutionLocation) {
+          gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
+        }
+        if (timeLocation) {
+          gl.uniform1f(timeLocation, (time - startTime) / 1000);
+        }
+        if (speedLocation) gl.uniform1f(speedLocation, speed);
+        if (amplitudeLocation) gl.uniform1f(amplitudeLocation, amplitude);
+        if (frequencyLocation) gl.uniform1f(frequencyLocation, frequency);
+        if (starDensityLocation) gl.uniform1f(starDensityLocation, starDensity);
+        if (colorShiftLocation) gl.uniform1f(colorShiftLocation, colorShift);
+
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+        animationFrame = requestAnimationFrame(render);
+      };
+
+      animationFrame = requestAnimationFrame(render);
+
+      return () => {
+        cancelAnimationFrame(animationFrame);
+        if (program) gl.deleteProgram(program);
+        if (vertexShader) gl.deleteShader(vertexShader);
+        if (fragmentShader) gl.deleteShader(fragmentShader);
+        if (positionBuffer) gl.deleteBuffer(positionBuffer);
+      };
+    }, [speed, amplitude, frequency, starDensity, colorShift]);
+
     return (
       <div ref={ref} className={cn("w-full h-full", className)} {...props}>
-        <Shader
-          fs={cosmicWavesFragment}
-          uniforms={{
-            u_speed: { type: "1f", value: speed },
-            u_amplitude: { type: "1f", value: amplitude },
-            u_frequency: { type: "1f", value: frequency },
-            u_starDensity: { type: "1f", value: starDensity },
-            u_colorShift: { type: "1f", value: colorShift },
-          }}
-          style={{ width: "100%", height: "100%" } as CSSStyleDeclaration}
-        />
+        <canvas ref={canvasRef} className="h-full w-full" />
       </div>
     );
   }
