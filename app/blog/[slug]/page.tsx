@@ -186,11 +186,11 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
             </div>
 
             <div className="grid gap-6 lg:grid-cols-3">
-              {post.outcomes && (
+              {post.content.outcomes && (
                 <div className="lg:col-span-1 space-y-3 rounded-2xl border border-[var(--brand-gold)]/30 bg-[var(--brand-gold)]/5 p-5">
                   <p className="text-xs uppercase tracking-[0.26em] text-[var(--brand-gold)]">Outcomes</p>
                   <ul className="space-y-3 text-sm text-white/80">
-                    {post.outcomes.map((outcome) => (
+                    {post.content.outcomes.map((outcome) => (
                       <li key={outcome} className="flex gap-3">
                         <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-[var(--brand-gold)]" aria-hidden />
                         <span>{outcome}</span>
