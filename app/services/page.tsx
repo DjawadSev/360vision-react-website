@@ -1,4 +1,6 @@
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
+
+import { buttonVariants } from "@/components/ui/button";
 
 const servicePackages = [
   {
@@ -71,9 +73,9 @@ export default function ServicesPage() {
                 </li>
               ))}
             </ul>
-            <Button className="mt-8" variant="outline">
-              Book this service
-            </Button>
+            <Link href="/contact" className={`${buttonVariants({ variant: "outline" })} mt-8 w-full justify-center`}>
+              Contact us
+            </Link>
           </article>
         ))}
       </div>

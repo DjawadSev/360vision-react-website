@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { ContactForm } from "@/components/contact/contact-form";
 
 export default function ContactPage() {
   return (
@@ -16,7 +16,7 @@ export default function ContactPage() {
           </div>
           <div>
             <p className="text-sm uppercase tracking-[0.3em] text-white/50">HQ</p>
-            <p className="text-white">CitǸ Saidi ahmed CICAD part N47 Bureau N17 Brodj</p>
+            <p className="text-white">Cit�� Saidi ahmed CICAD part N47 Bureau N17 Brodj</p>
             <p className="text-white">el kiffan</p>
           </div>
           <div>
@@ -26,47 +26,7 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <form id="contact-form" className="relative space-y-6 overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 shadow-[0_16px_60px_rgba(0,0,0,0.35)]">
-        <div className="pointer-events-none absolute inset-0 bg-[url('/logos/background-red.png')] bg-cover opacity-10 mix-blend-screen" style={{ backgroundPosition: "20% center" }} aria-hidden />
-        <div className="space-y-2">
-          <label className="text-sm text-white/70" htmlFor="name">
-            Name
-          </label>
-          <input
-            id="name"
-            name="name"
-            className="mt-2 w-full rounded-2xl border border-white/20 bg-black/60 px-4 py-3 text-white placeholder:text-white/40 focus:border-[var(--brand-red)]/60 focus:outline-none"
-            placeholder="Ada Lovelace"
-          />
-        </div>
-        <div className="space-y-2">
-          <label className="text-sm text-white/70" htmlFor="email">
-            Email
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            className="mt-2 w-full rounded-2xl border border-white/20 bg-black/60 px-4 py-3 text-white placeholder:text-white/40 focus:border-[var(--brand-red)]/60 focus:outline-none"
-            placeholder="you@company.com"
-          />
-        </div>
-        <div className="space-y-2">
-          <label className="text-sm text-white/70" htmlFor="project">
-            Project details
-          </label>
-          <textarea
-            id="project"
-            name="project"
-            rows={4}
-            className="mt-2 w-full rounded-2xl border border-white/20 bg-black/60 px-4 py-3 text-white placeholder:text-white/40 focus:border-[var(--brand-red)]/60 focus:outline-none"
-            placeholder="Budget, timelines, KPIs..."
-          />
-        </div>
-        <Button className="w-full" variant="secondary">
-          Send message
-        </Button>
-      </form>
+      <ContactForm />
     </div>
   );
 }

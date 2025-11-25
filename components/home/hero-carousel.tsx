@@ -44,7 +44,7 @@ const heroShowcase: HeroShowcaseItem[] = [
     id: "experience",
     label: "Immersive Experience",
     title: "Transform ideas into interactive experiences",
-    metric: "+3× Engagement vs Static Assets",
+    metric: "+3x Engagement vs Static Assets",
     description: "3D worlds, architectural visuals, and hyper-real product demos.",
     image: {
       src: "/images/hero/360vision_Hero-100.jpg",

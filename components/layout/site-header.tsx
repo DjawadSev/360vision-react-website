@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils";
 const links = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
-  { href: "/portfolio", label: "Our Work" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -134,7 +134,7 @@ function MobileSideNav({ open, onClose, pathname }: MobileSideNavProps) {
         aria-modal="true"
         aria-label="Site navigation"
         ref={panelRef}
-        className="fixed inset-y-0 left-0 z-[24050] flex w-[min(88vw,340px)] flex-col gap-6 border-r border-white/15 bg-black/70 p-6 text-white shadow-[0_40px_120px_rgba(0,0,0,0.65)] backdrop-blur-xl"
+        className="fixed inset-y-0 right-0 z-[24050] flex w-[min(88vw,340px)] flex-col gap-6 border-l border-white/15 bg-black/70 p-6 text-white shadow-[0_40px_120px_rgba(0,0,0,0.65)] backdrop-blur-xl"
         data-testid="mobile-menu"
       >
         <div id="mobile-menu-header" className="flex items-center justify-between">
@@ -188,16 +188,6 @@ function MobileSideNav({ open, onClose, pathname }: MobileSideNavProps) {
           >
             Contact
           </Link>
-          <Link
-            href="/portfolio"
-            onClick={onClose}
-            className={cn(
-              buttonVariants({ size: "lg" }),
-              "w-full justify-center rounded-2xl bg-[var(--brand-red)] text-base shadow-[0_20px_80px_rgba(155,11,11,0.45)]"
-            )}
-          >
-            Portfolio
-          </Link>
         </div>
       </aside>
     </>,
@@ -217,19 +207,6 @@ export function SiteHeader() {
     <header id="site-header" className="sticky top-0 z-[24000] w-full border-b border-white/10 bg-black/85 px-4 backdrop-blur supports-[backdrop-filter]:bg-black/70">
       <div id="site-header-inner" className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-4">
         <div id="site-header-left" className="flex items-center gap-3">
-          <button
-            id="mobile-menu-toggle"
-            type="button"
-            className="md:hidden"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={menuOpen}
-            aria-controls="mobile-menu-panel"
-            data-testid="mobile-menu-trigger"
-            onClick={() => setMenuOpen((prev) => !prev)}
-          >
-            <HamburgerIcon open={menuOpen} className="h-10 w-10 rounded-xl border border-white/10 bg-white/5 p-2 text-white" />
-          </button>
-
           <Link id="site-logo-link" href="/" className="flex items-center gap-3 text-white">
             <LogoMark />
             <div className="hidden leading-tight sm:block">
@@ -239,7 +216,7 @@ export function SiteHeader() {
           </Link>
         </div>
 
-        <NavigationMenu id="desktop-navigation" className="hidden md:flex">
+        <NavigationMenu id="desktop-navigation" className="hidden flex-1 justify-center md:flex">
           <NavigationMenuList className="gap-2">
             {links.map((link) => {
               const isActive = pathname === link.href;
@@ -261,16 +238,19 @@ export function SiteHeader() {
               })}
           </NavigationMenuList>
         </NavigationMenu>
-        <div id="desktop-cta-group" className="hidden items-center gap-2 md:flex">
-          <Link
-            href="/portfolio"
-            className={cn(
-              buttonVariants({ size: "sm" }),
-              "rounded-xl bg-[var(--brand-red)] px-4 text-sm font-semibold text-white shadow-[0_0_32px_rgba(155,11,11,0.35)] hover:bg-[var(--brand-red-bright)]"
-            )}
+        <div id="site-header-actions" className="flex items-center gap-2">
+          <button
+            id="mobile-menu-toggle"
+            type="button"
+            className="md:hidden"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu-panel"
+            data-testid="mobile-menu-trigger"
+            onClick={() => setMenuOpen((prev) => !prev)}
           >
-            Portfolio
-          </Link>
+            <HamburgerIcon open={menuOpen} className="h-10 w-10 rounded-xl border border-white/10 bg-white/5 p-2 text-white" />
+          </button>
         </div>
       </div>
       <MobileSideNav open={menuOpen} onClose={() => setMenuOpen(false)} pathname={pathname} />
