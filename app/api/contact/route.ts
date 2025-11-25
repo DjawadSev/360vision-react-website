@@ -43,7 +43,7 @@ export async function POST(request: Request) {
       from: CONTACT_FROM_EMAIL,
       to: [CONTACT_TO_EMAIL],
       subject: `New inquiry from ${name}`,
-      reply_to: email,
+      replyTo: email,
       html: buildHtml(name, email, project),
       text: buildText(name, email, project),
     });
