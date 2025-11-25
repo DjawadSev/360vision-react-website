@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL || "vaguetamashi@gmail.com";
 const CONTACT_FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "360 Vision <onboarding@resend.dev>";
 
@@ -23,6 +21,12 @@ const buildText = (name: string, email: string, project: string) =>
     project,
   ].join("\n");
 
+const getResend = () => {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) return null;
+  return new Resend(key);
+};
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -34,7 +38,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, error: "Missing fields" }, { status: 400 });
     }
 
-    if (!process.env.RESEND_API_KEY) {
+    const resend = getResend();
+    if (!resend) {
       console.error("Missing RESEND_API_KEY environment variable");
       return NextResponse.json({ success: false, error: "Email service not configured" }, { status: 500 });
     }
