@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { NewsletterCTA } from "@/components/blog/newsletter-cta";
 import { Badge } from "@/components/ui/badge";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { blogPosts } from "@/lib/blog-posts";
 import { cn } from "@/lib/utils";
 
@@ -195,22 +196,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <section
-        id="blog-cta"
-        className="overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/80 via-black to-black px-6 py-10 shadow-[0_22px_80px_rgba(0,0,0,0.5)] sm:px-10"
-      >
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="space-y-2">
-            <p className="text-sm uppercase tracking-[0.3em] text-white/60">Newsletter</p>
-            <h3 className="text-2xl font-semibold text-white">Get the weekly drop with new playbooks and case notes.</h3>
-            <p className="text-white/70">One email. No fluff. Only the experiments and results that moved the needle for our clients.</p>
-          </div>
-          <div className="flex flex-col gap-3 sm:min-w-[260px]">
-            <Button className="rounded-xl bg-[var(--brand-red)] text-base shadow-[0_15px_60px_rgba(155,11,11,0.45)] hover:bg-[var(--brand-red-bright)]">Join the list</Button>
-            <p className="text-xs text-white/50">We keep your inbox clean and respect your time.</p>
-          </div>
-        </div>
-      </section>
+      <NewsletterCTA />
     </div>
   );
 }
