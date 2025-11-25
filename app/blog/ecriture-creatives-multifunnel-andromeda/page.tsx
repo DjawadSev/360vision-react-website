@@ -18,7 +18,7 @@ const post = {
     "Le Multi-Funnel Creative Writing suit le consommateur algérien à chaque étape et aligne promesse, preuve, et ton sur ce que l’algorithme Meta valorise depuis Andromeda.",
   tags: ["Meta Ads", "Creative", "Multi-funnel"],
   stat: "CPL -18% en 21 jours",
-  cover: "/images/hero/05.png",
+  cover: "/images/Hero/05.png",
   language: { code: "fr", label: "Français" },
   seo: {
     title: "Multi-Funnel Creative Writing après Andromeda | 360 VISION",

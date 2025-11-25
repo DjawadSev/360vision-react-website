@@ -25,7 +25,7 @@ const heroShowcase: HeroShowcaseItem[] = [
     metric: "+214% Total Growth",
     description: "Full-funnel performance engine for ambitious brands.",
     image: {
-      src: "/images/hero/05.png",
+      src: "/images/Hero/05.png",
       alt: "360 Vision showcase graphic",
     },
   },
@@ -36,7 +36,7 @@ const heroShowcase: HeroShowcaseItem[] = [
     metric: "+9,400 New Visitors in 48h",
     description: "Identity systems, launch campaigns, 3D visuals, packaging, and GTM assets.",
     image: {
-      src: "/images/hero/Hero.png",
+      src: "/images/Hero/Hero.png",
       alt: "360 Vision motion identity",
     },
   },
@@ -47,7 +47,7 @@ const heroShowcase: HeroShowcaseItem[] = [
     metric: "+3x Engagement vs Static Assets",
     description: "3D worlds, architectural visuals, and hyper-real product demos.",
     image: {
-      src: "/images/hero/360vision_Hero-100.jpg",
+      src: "/images/Hero/360vision_Hero-100.jpg",
       alt: "360 Vision premium environment",
     },
   },

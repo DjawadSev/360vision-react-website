@@ -52,7 +52,7 @@ export const blogPosts: BlogPost[] = [
       "Pourquoi le creative writing multi-funnel sur Meta devient indispensable après Andromeda pour capter, convaincre et convertir le public algérien.",
     tags: ["Meta Ads", "Creative", "Multi-funnel"],
     stat: "CPL -18% en 21 jours",
-    cover: "/images/hero/05.png",
+    cover: "/images/Hero/05.png",
     language: { code: "fr", label: "Français" },
     seo: {
       title: "Multi-Funnel Creative Writing après Andromeda | 360 VISION",
