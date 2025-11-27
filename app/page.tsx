@@ -219,7 +219,7 @@ export default function Home() {
             <h2 className="mt-2 text-3xl font-semibold text-white">Platforms and engines we build with daily.</h2>
           </div>
         </div>
-        <div className="mt-8 rounded-2xl border border-white/15 bg-gradient-to-br from-white/85 via-white/75 to-white/65 p-6 shadow-[0_22px_70px_rgba(0,0,0,0.3)]">
+        <div className="mt-8 rounded-2xl border border-white/15 bg-gradient-to-br from-[var(--brand-red-dark)]/35 via-white/10 to-[var(--brand-gold)]/14 p-6 shadow-[0_22px_70px_rgba(0,0,0,0.35)] backdrop-blur-md">
           <LogoCarousel columns={3} />
         </div>
       </section>
