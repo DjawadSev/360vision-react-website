@@ -4,20 +4,35 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
+import enMessages from "@/messages/en.json";
 import { SiteHeader } from "./site-header";
+import { NextIntlClientProvider } from "next-intl";
 
-vi.mock("next/navigation", () => ({
-  usePathname: () => "/",
-}));
+const resolveMessage = (key: string) => key.split(".").reduce((acc: any, part) => (acc ? acc[part] : undefined), enMessages as any) ?? key;
 
-vi.mock("next/link", () => ({
-  __esModule: true,
-  default: ({ href, children, ...props }: React.PropsWithChildren<{ href: string }>) => (
-    <a href={href} {...props}>
-      {children}
-    </a>
-  ),
-}));
+vi.mock(
+  "next-intl",
+  () => ({
+    useTranslations: (namespace?: string) => (key: string) => resolveMessage(namespace ? `${namespace}.${key}` : key),
+    useLocale: () => "en",
+    NextIntlClientProvider: ({ children }: React.PropsWithChildren) => <>{children}</>,
+  }),
+  { virtual: true }
+);
+
+vi.mock(
+  "@/navigation",
+  () => ({
+    Link: ({ href, children, ...props }: React.PropsWithChildren<{ href: string }>) => (
+      <a href={typeof href === "string" ? href : ""} {...props}>
+        {children}
+      </a>
+    ),
+    usePathname: () => "/",
+    useRouter: () => ({ replace: vi.fn() }),
+  }),
+  { virtual: true }
+);
 
 vi.mock("next/image", () => ({
   __esModule: true,
@@ -27,7 +42,11 @@ vi.mock("next/image", () => ({
 describe("SiteHeader mobile drawer", () => {
   it("opens the mobile menu above content and closes after selecting a link", async () => {
     const user = userEvent.setup();
-    render(<SiteHeader />);
+    render(
+      <NextIntlClientProvider locale="en" messages={enMessages}>
+        <SiteHeader />
+      </NextIntlClientProvider>
+    );
 
     const toggleButton = screen.getByTestId("mobile-menu-trigger");
 
@@ -42,7 +61,7 @@ describe("SiteHeader mobile drawer", () => {
 
     const nav = within(menu).getByRole("navigation", { name: /primary/i });
     const menuLinks = within(nav).getAllByRole("link");
-    expect(menuLinks.map((link) => link.textContent?.replace("Active", "").trim())).toEqual(["Home", "Services", "Our Work", "Contact"]);
+    expect(menuLinks.map((link) => link.textContent?.replace("Active", "").trim())).toEqual(["Home", "Services", "Blog", "Contact"]);
 
     await user.click(menuLinks[3]);
 

@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type React from "react";
 
-import { Button, buttonVariants } from "@/components/ui/button";
+import { LanguageSwitcher } from "@/components/layout/language-switcher";
+import { buttonVariants } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -15,20 +15,21 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
+import { Link, usePathname, useRouter } from "@/navigation";
 
 // Centralized nav links so desktop and mobile menus stay in sync.
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
+  { href: "/", key: "home" },
+  { href: "/services", key: "services" },
+  { href: "/blog", key: "blog" },
+  { href: "/contact", key: "contact" },
 ];
 
-const LogoMark = () => (
+const LogoMark = ({ alt }: { alt: string }) => (
   <span className="relative block h-11 w-11 overflow-hidden rounded-2xl border border-white/15 bg-gradient-to-br from-white/5 via-white/0 to-white/10 p-1 shadow-[0_0_28px_rgba(155,11,11,0.35)]">
     <Image
       src="/logos/logo-small-black-rounded-bg.png"
-      alt="360 Vision icon"
+      alt={alt}
       fill
       sizes="44px"
       className="object-contain"
@@ -80,6 +81,7 @@ type MobileSideNavProps = {
 function MobileSideNav({ open, onClose, pathname }: MobileSideNavProps) {
   const panelRef = useRef<HTMLDivElement | null>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const tNav = useTranslations("Nav");
 
   useEffect(() => {
     setIsMounted(true);
@@ -132,30 +134,30 @@ function MobileSideNav({ open, onClose, pathname }: MobileSideNavProps) {
         id="mobile-menu-panel"
         role="dialog"
         aria-modal="true"
-        aria-label="Site navigation"
+        aria-label={tNav("menu")}
         ref={panelRef}
         className="fixed inset-y-0 right-0 z-[24050] flex w-[min(88vw,340px)] flex-col gap-6 border-l border-white/15 bg-black/70 p-6 text-white shadow-[0_40px_120px_rgba(0,0,0,0.65)] backdrop-blur-xl"
         data-testid="mobile-menu"
       >
         <div id="mobile-menu-header" className="flex items-center justify-between">
-          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Menu</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-white/60">{tNav("menu")}</p>
           <div className="flex items-center gap-2">
             <button
               type="button"
-              aria-label="Close menu"
+              aria-label={tNav("close")}
               data-testid="mobile-menu-close"
               onClick={onClose}
               className="rounded-2xl border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/80 backdrop-blur"
             >
-              Exit
+              {tNav("close")}
             </button>
           </div>
         </div>
         <div id="mobile-menu-brand" className="flex items-center gap-3 rounded-2xl border border-white/15 bg-black/60 px-3 py-2">
-          <LogoMark />
+          <LogoMark alt={tNav("brand")} />
           <div>
-            <p className="text-[11px] uppercase tracking-[0.24em] text-white/60">360 Vision</p>
-            <p className="text-lg font-semibold text-white">Creative & Digital</p>
+            <p className="text-[11px] uppercase tracking-[0.24em] text-white/60">{tNav("brand")}</p>
+            <p className="text-lg font-semibold text-white">{tNav("tagline")}</p>
           </div>
         </div>
         <nav id="mobile-primary-nav" aria-label="Primary" className="flex flex-col gap-2">
@@ -171,13 +173,14 @@ function MobileSideNav({ open, onClose, pathname }: MobileSideNavProps) {
                   isActive ? "text-white shadow-[0_10px_60px_rgba(155,11,11,0.35)]" : "text-white/80"
                 )}
               >
-                {link.label}
-                {isActive && <span className="text-xs uppercase tracking-[0.3em] text-[var(--brand-gold)]">Active</span>}
+                {tNav(`links.${link.key}`)}
+                {isActive && <span className="text-xs uppercase tracking-[0.3em] text-[var(--brand-gold)]">{tNav("active")}</span>}
               </Link>
             );
           })}
         </nav>
-        <div id="mobile-nav-cta" className="mt-auto space-y-3 rounded-2xl border border-white/15 bg-black/60 p-4 backdrop-blur">
+        <LanguageSwitcher variant="mobile" />
+        <div id="mobile-nav-cta" className="space-y-3 rounded-2xl border border-white/15 bg-black/60 p-4 backdrop-blur">
           <Link
             href="/contact"
             onClick={onClose}
@@ -186,7 +189,7 @@ function MobileSideNav({ open, onClose, pathname }: MobileSideNavProps) {
               "w-full justify-center rounded-2xl border border-white/30 bg-black/60 text-base font-semibold text-white/90"
             )}
           >
-            Contact
+            {tNav("links.contact")}
           </Link>
         </div>
       </aside>
@@ -197,7 +200,20 @@ function MobileSideNav({ open, onClose, pathname }: MobileSideNavProps) {
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
+  const tNav = useTranslations("Nav");
+
+  useEffect(() => {
+    if (typeof router?.prefetch !== "function") return;
+    links.forEach(({ href }) => {
+      try {
+        router.prefetch(href);
+      } catch {
+        // Ignore prefetch failures (e.g., during dev or when the route was already cached)
+      }
+    });
+  }, [router]);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -208,10 +224,10 @@ export function SiteHeader() {
       <div id="site-header-inner" className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-4">
         <div id="site-header-left" className="flex items-center gap-3">
           <Link id="site-logo-link" href="/" className="flex items-center gap-3 text-white">
-            <LogoMark />
+            <LogoMark alt={tNav("brand")} />
             <div className="hidden leading-tight sm:block">
-              <p className="text-[11px] uppercase tracking-[0.24em] text-white/60">360 Vision</p>
-              <p className="text-lg font-semibold">Creative & Digital</p>
+              <p className="text-[11px] uppercase tracking-[0.24em] text-white/60">{tNav("brand")}</p>
+              <p className="text-lg font-semibold">{tNav("tagline")}</p>
             </div>
           </Link>
         </div>
@@ -220,30 +236,33 @@ export function SiteHeader() {
           <NavigationMenuList className="gap-2">
             {links.map((link) => {
               const isActive = pathname === link.href;
-                return (
-                  <NavigationMenuItem key={link.href}>
-                    <NavigationMenuLink asChild active={isActive}>
-                      <Link
-                        href={link.href}
-                        className={cn(
-                          "group inline-flex h-11 items-center rounded-full px-4 text-sm font-medium text-white/70 hover:text-white",
-                          isActive && "bg-white/10 text-white shadow-[0_0_24px_rgba(155,11,11,0.35)]"
-                        )}
-                      >
-                        {link.label}
-                      </Link>
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
-                );
-              })}
+              return (
+                <NavigationMenuItem key={link.href}>
+                  <NavigationMenuLink asChild active={isActive}>
+                    <Link
+                      href={link.href}
+                      className={cn(
+                        "group inline-flex h-11 items-center rounded-full px-4 text-sm font-medium text-white/70 hover:text-white",
+                        isActive && "bg-white/10 text-white shadow-[0_0_24px_rgba(155,11,11,0.35)]"
+                      )}
+                    >
+                      {tNav(`links.${link.key}`)}
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              );
+            })}
           </NavigationMenuList>
         </NavigationMenu>
         <div id="site-header-actions" className="flex items-center gap-2">
+          <div className="hidden md:block">
+            <LanguageSwitcher />
+          </div>
           <button
             id="mobile-menu-toggle"
             type="button"
             className="md:hidden"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-label={menuOpen ? tNav("close") : tNav("open")}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu-panel"
             data-testid="mobile-menu-trigger"

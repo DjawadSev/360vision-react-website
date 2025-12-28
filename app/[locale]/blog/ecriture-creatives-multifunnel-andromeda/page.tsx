@@ -1,109 +1,115 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import Script from "next/script";
 
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Link } from "@/navigation";
 
 const post = {
-  title: "كتابة إبداعية متعددة القمع بعد تحديث Andromeda على Meta",
-  slug: "andromeda-multifunnel-meta-ar",
+  title: "Pourquoi la stratégie Multi-Funnel Creative Writing donne de meilleurs résultats après la mise à jour Andromeda (Meta) – Spécial marché Algérien",
+  slug: "ecriture-creatives-multifunnel-andromeda",
   category: "Performance Marketing",
   date: "December 2025",
-  isoDate: "2025-12-03",
-  readTime: "7 دقائق قراءة",
-  summary: "نهج كتابة إعلانية متعددة المراحل يحافظ على جودة الإشارة بعد Andromeda ويخفض تكلفة الإجراء في سوق الإعلانات بالجزائر.",
-  tags: ["Meta Ads", "إبداع", "Multi-funnel"],
-  stat: "انخفاض CPA بنسبة 15%",
-  cover: "/images/cards/3dservicecardimage.png",
-  language: { code: "ar", label: "العربية" },
+  isoDate: "2025-12-02",
+  readTime: "7 min read",
+  summary:
+    "Le Multi-Funnel Creative Writing suit le consommateur algérien à chaque étape et aligne promesse, preuve, et ton sur ce que l’algorithme Meta valorise depuis Andromeda.",
+  tags: ["Meta Ads", "Creative", "Multi-funnel"],
+  stat: "CPL -18% en 21 jours",
+  cover: "/images/Hero/05.png",
+  language: { code: "fr", label: "Français" },
   seo: {
-    title: "كتابة متعددة القمع متوافقة مع Andromeda | 360 VISION",
-    description: "منهجية كتابة إعلانات توازن بين الجذب، الإقناع، والتحويل مع الحفاظ على إشارات الجودة التي يفضلها Andromeda في السوق الجزائري.",
+    title: "Multi-Funnel Creative Writing après Andromeda | 360 VISION",
+    description:
+      "Pourquoi le creative writing multi-funnel est devenu indispensable après Andromeda pour Facebook Ads/Instagram Ads en Algérie : cohérence, storytelling, signaux de qualité.",
     keywords: [
-      "Andromeda Meta",
-      "إعلانات فيسبوك الجزائر",
-      "كتابة إعلانية متعددة القمع",
-      "تسويق رقمي الجزائر",
-      "CPA منخفض",
-      "إعلانات إنستغرام الجزائر",
-      "إبداع إعلاني",
-      "وكالة تسويق جزائرية",
-      "تجارة إلكترونية الجزائر",
+      "marketing digital algérie",
+      "publicité facebook algérie",
+      "creative writing algérie",
+      "multi funnel algérie",
+      "andromeda meta algérie",
+      "agence marketing algérienne",
+      "création contenu algérie",
+      "ad creative algérie",
+      "stratégie marketing algérie",
+      "e-commerce algérie",
     ],
   },
   content: {
     intro:
-      "تحديث Andromeda غيّر قواعد اللعبة: الجودة، التماسك، والإشارة بعد النقر أصبحت أساس الأداء. كتابة إبداعية متعددة القمع تعني أن كل مرحلة من رحلة العميل تحصل على رسالة ودليل يناسبانها، بدل الاعتماد على Hook واحد.",
+      "Le paysage du marketing digital en Algérie a changé radicalement depuis Andromeda. Les anciennes méthodes basées sur un hook unique ne suffisent plus. Les entreprises qui réussissent sur Facebook Ads, Instagram Ads, TikTok Ads et l’e-commerce adoptent une stratégie structurée : le Multi-Funnel Creative Writing.",
     keyTakeaways: [
-      "الإعلانات المتسلسلة تعطي إشارات جودة أفضل للألغوريثم وتقلل الارتداد.",
-      "كل مرحلة (TOF/MOF/BOF) تتطلب نصًا مختلفًا يناسب نية المستخدم.",
-      "النسخ الثنائية (عربي/فرنسي) تحافظ على الإشارة إذا بقي الهيكل ثابتًا.",
+      "Andromeda renforce l’importance de la qualité, de la cohérence et des signaux post-clic.",
+      "Chaque étape du funnel réclame un message adapté : attirer, expliquer, rassurer, convertir.",
+      "Le marché algérien répond mieux aux récits complets qu’aux hooks isolés.",
     ],
     sections: [
       {
-        heading: "كيف غيّر Andromeda الأولويات",
+        heading: "La mise à jour Andromeda a changé les règles du jeu",
         body:
-          "الألغوريثم يفضل المحتوى المتماسك والرحلات الكاملة بدل الإعلانات المنفردة. الإشارة تقاس على الجودة القصيرة والطويلة معًا.",
+          "L’algorithme Meta donne désormais plus d’importance à la qualité du contenu, à la cohérence du message et aux signaux d’engagement long terme. Les funnels complets sont favorisés par rapport aux publicités isolées.",
         bullets: [
-          "قصة واضحة ومتصلة من الإعلان إلى صفحة الهبوط.",
-          "سرد يركز على المشكلة + الإثبات + الحل بدل Hook واحد.",
-          "إشارات تفاعل مستمرة أهم من لقطات CTR قصيرة.",
+          "Qualité du contenu et storytelling clair.",
+          "Message cohérent du clic à la conversion.",
+          "Profondeur de la stratégie créative, pas seulement un hook.",
+          "Signaux d’engagement sur la durée.",
+          "Préférence pour des funnels complets plutôt que des annonces isolées.",
         ],
       },
       {
-        heading: "لماذا القمع المتعدد ضروري في الجزائر",
+        heading: "Le Multi-Funnel est devenu indispensable en Algérie",
         body:
-          "المستهلك الجزائري يمر بمراحل قبل الشراء. إعلان واحد لا يكفي، لذلك نقسم الرسائل حسب النية.",
+          "Une seule publicité ne peut plus tout faire. Chaque étape du parcours client algérien a son objectif et son format pour maximiser la conversion.",
         bullets: [
-          "TOF: جذب فضول عبر فيديو ديناميكي ورسائل عامة.",
-          "MOF: شرح القيمة وإثبات الخبرة (عقارات، خدمات، تجارة إلكترونية، تعليم).",
-          "BOF: دفع للعمل مع دليل اجتماعي، عرض محدود، وإعادة استهداف.",
+          "TOF – Découverte : attirer, capter l’attention, créer de la curiosité (vidéos dynamiques, visuels attractifs).",
+          "MOF – Intérêt & Confiance : expliquer la valeur et montrer votre expertise (e-commerce, services, immobilier, formations, restauration).",
+          "BOF – Conversion : pousser à l’action avec preuve sociale, urgences limitées, offres et retargeting.",
         ],
       },
       {
-        heading: "تفوق الكتابة متعددة القمع على الـHook التقليدي",
+        heading: "Pourquoi le Creative Writing Multi-Funnel surpasse le hook traditionnel ?",
         body:
-          "الجمهور يريد فهم القصة كاملة: لماذا المنتج، لمن، كيف يعمل، ولماذا هو الأفضل. الألغوريثم يكافئ التماسك بين المراحل.",
+          "Le public algérien veut comprendre avant d’acheter. Le Multi-Funnel raconte une histoire complète, s’adapte à l’intention et reste cohérent pour l’algorithme.",
         bullets: [
-          "رسالة مختلفة لكل مرحلة بدلاً من نسخة واحدة للجميع.",
-          "تطابق تام بين وعود الإعلان وعناوين الصفحة يقلل الارتداد.",
-          "النسخة تتوسع تدريجيًا من فضول إلى إثبات إلى CTA قوي.",
+          "Raconte pourquoi le produit existe, pour qui, comment il fonctionne, et en quoi il est meilleur que la concurrence.",
+          "Chaque étape = un message différent aligné sur l’intention (découverte, intérêt, conversion).",
+          "La progression narrative est favorisée par l’algorithme Meta.",
         ],
       },
       {
-        heading: "نتائج أفضل في السوق المحلي",
+        heading: "Résultat : de meilleures performances sur le marché algérien",
         body:
-          "تطبيق هذا النهج يعطي استقرارًا للحملات حتى مع تغييرات Meta، ويخفض التكلفة مع الحفاظ على الحجم.",
+          "Les marques qui appliquent cette approche voient des coûts baisser et des conversions plus stables, même avec Andromeda.",
         bullets: [
-          "انخفاض CPA وتكلفة النتيجة مع ارتفاع CTR.",
-          "ثبات أفضل للحملات بفضل إشارات ما بعد النقر.",
-          "نمو طويل المدى بسبب الثقة المضافة في كل مرحلة.",
+          "Baisse du coût par résultat.",
+          "Meilleur taux de clic et meilleur taux de conversion.",
+          "Campagnes plus stables et croissance long terme.",
         ],
       },
       {
-        heading: "حاسم للتجارة الإلكترونية في الجزائر",
+        heading: "Pourquoi c’est crucial pour l'e-commerce en Algérie ?",
         body:
-          "المستخدم يحتاج تطمين قبل الشراء. التسلسل الصحيح: شرح، عرض، تطمين، ثم بيع.",
+          "Le consommateur algérien a besoin d’être rassuré. Le Multi-Funnel suit le parcours naturel : expliquer, montrer, rassurer, puis vendre.",
         bullets: [
-          "شرح صريح للوعد والآلية.",
-          "عرض أدلة وشهادات قريبة من ثقافة الجمهور.",
-          "تطابق لغة الإعلان مع صفحة الهبوط لتقليل التخلي.",
-          "CTA متوافق مع نية الزائر (اكتشف/قارن/احجز).",
+          "Explique la promesse et le fonctionnement.",
+          "Montre des preuves et des démonstrations adaptées au local.",
+          "Rassure avec preuves sociales et cohérence annonce/landing.",
+          "Vend en alignant l’offre et le CTA sur l’intention du visiteur.",
         ],
       },
     ],
     outcomes: [
-      "انخفاض CPA بنسبة 15% مع الحفاظ على الإنفاق.",
-      "تحسن CTR وCR عبر رسائل موجهة لكل مرحلة.",
-      "حملات أكثر استقرارًا بفضل إشارات جودة متواصلة.",
+      "Coût par lead réduit grâce à un tunnel complet cohérent.",
+      "Taux de conversion et CTR en hausse avec messages adaptés par étape.",
+      "Campagnes plus stables via des signaux de qualité constants.",
     ],
     cta: {
-      label: "تواصل معنا",
+      label: "Optimiser vos créas Meta",
       link: "/contact",
-      body: "شارك الهدف والجمهور وميزانيتك. سنرسل لك حزمة نصوص متعددة القمع جاهزة للإطلاق ومتوافقة مع Andromeda.",
+      body:
+        "Brief simple : objectif, audience, KPI. Nous livrons un kit multi-funnel FR/AR prêt à lancer qui respecte Andromeda et le marché algérien.",
     },
   },
 };
@@ -165,15 +171,15 @@ const structuredData = {
   },
 };
 
-export default function BlogArticleArabicPage() {
+export default function BlogArticleStaticPage() {
   return (
-    <div id={`blog-article-${post.slug}`} className="space-y-12" dir="rtl" lang="ar">
+    <div id={`blog-article-${post.slug}`} className="space-y-12">
       <Script id={`structured-data-${post.slug}`} type="application/ld+json" strategy="afterInteractive">
         {JSON.stringify(structuredData)}
       </Script>
 
       <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[var(--brand-red-dark)]/70 via-black to-black px-6 py-12 shadow-[0_32px_120px_rgba(0,0,0,0.55)] sm:px-10">
-        <div className="pointer-events-none absolute inset-0 bg-[url('/logos/background-red.png')] bg-cover bg-left opacity-10 mix-blend-screen" aria-hidden />
+        <div className="pointer-events-none absolute inset-0 bg-[url('/logos/background-red.png')] bg-cover bg-right opacity-10 mix-blend-screen" aria-hidden />
         <div className="absolute inset-0 opacity-40">
           {post.cover ? (
             <Image src={post.cover} alt={post.title} fill sizes="(max-width: 1024px) 100vw, 960px" className="object-cover" priority />
@@ -182,10 +188,10 @@ export default function BlogArticleArabicPage() {
           )}
           <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/70 to-[#1a0a0a]/80" />
         </div>
-        <div className="relative space-y-6 text-right">
-          <div className="flex flex-wrap items-center justify-end gap-3">
+        <div className="relative space-y-6">
+          <div className="flex flex-wrap items-center gap-3">
             <Badge className="bg-[var(--brand-red)] text-white">{post.category}</Badge>
-            <span className="rounded-full border border-white/20 bg-black/60 px-3 py-1 text-xs font-semibold tracking-[0.24em] text-[var(--brand-gold)]">
+            <span className="rounded-full border border-white/20 bg-black/60 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--brand-gold)]">
               {post.language.label} · {post.language.code.toUpperCase()}
             </span>
             <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs text-white/80">{post.readTime}</span>
@@ -193,22 +199,22 @@ export default function BlogArticleArabicPage() {
           </div>
           <div className="space-y-4">
             <h1 className="text-4xl font-semibold leading-tight text-white sm:text-5xl">{post.title}</h1>
-            <p className="max-w-3xl text-lg text-white/75 ml-auto">{post.summary}</p>
+            <p className="max-w-3xl text-lg text-white/75">{post.summary}</p>
           </div>
-          <div className="flex flex-wrap justify-end gap-2">
+          <div className="flex flex-wrap gap-2">
             {post.tags.map((tag) => (
-              <span key={tag} className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-semibold tracking-[0.2em] text-white/70">
+              <span key={tag} className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70">
                 {tag}
               </span>
             ))}
           </div>
-          <div className="flex flex-wrap justify-end gap-3 text-sm text-white/70">
+          <div className="flex flex-wrap gap-3 text-sm text-white/70">
             {post.stat && <span className="rounded-full bg-[var(--brand-gold)]/15 px-3 py-1 font-semibold text-[var(--brand-gold)]">{post.stat}</span>}
-            <span>تاريخ النشر: {post.date}</span>
+            <span>Published {post.date}</span>
             <span aria-hidden>&bull;</span>
-            <span>اللغة: {post.language.label}</span>
+            <span>Language: {post.language.label}</span>
           </div>
-          <div className="flex flex-wrap justify-end gap-3">
+          <div className="flex flex-wrap gap-3">
             <Link
               href="/blog"
               className={cn(
@@ -216,7 +222,7 @@ export default function BlogArticleArabicPage() {
                 "rounded-xl border border-white/30 bg-white/10 text-white hover:border-[var(--brand-gold)]/60"
               )}
             >
-              العودة لكل المقالات
+              Back to all articles
             </Link>
             <Link
               href={post.content.cta?.link ?? "/contact"}
@@ -225,23 +231,23 @@ export default function BlogArticleArabicPage() {
                 "rounded-xl bg-[var(--brand-red)] px-4 text-white shadow-[0_14px_55px_rgba(155,11,11,0.45)] hover:bg-[var(--brand-red-bright)]"
               )}
             >
-              تواصل معنا
+              Contact our team
             </Link>
           </div>
         </div>
       </section>
 
-      <article className="space-y-10 rounded-3xl border border-white/10 bg-white/5 p-6 text-right shadow-[0_24px_100px_rgba(0,0,0,0.45)] sm:p-10">
+      <article className="space-y-10 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_24px_100px_rgba(0,0,0,0.45)] sm:p-10">
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-4">
-            <p className="text-sm uppercase tracking-[0.3em] text-white/50">نظرة عامة</p>
+            <p className="text-sm uppercase tracking-[0.3em] text-white/50">Overview</p>
             <p className="text-lg text-white/80">{post.content.intro}</p>
           </div>
           <div className="space-y-4 rounded-2xl border border-white/10 bg-black/60 p-5 shadow-inner shadow-black/40">
-            <p className="text-xs uppercase tracking-[0.3em] text-white/50">أهم النقاط</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-white/50">Key takeaways</p>
             <ul className="space-y-3 text-sm text-white/80">
               {post.content.keyTakeaways.map((item) => (
-                <li key={item} className="flex items-start gap-3">
+                <li key={item} className="flex gap-3">
                   <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-[var(--brand-gold)]" aria-hidden />
                   <span>{item}</span>
                 </li>
@@ -253,10 +259,10 @@ export default function BlogArticleArabicPage() {
         <div className="grid gap-6 lg:grid-cols-3">
           {post.content.outcomes && (
             <div className="space-y-3 rounded-2xl border border-[var(--brand-gold)]/30 bg-[var(--brand-gold)]/5 p-5 lg:col-span-1">
-              <p className="text-xs uppercase tracking-[0.26em] text-[var(--brand-gold)]">النتائج</p>
+              <p className="text-xs uppercase tracking-[0.26em] text-[var(--brand-gold)]">Outcomes</p>
               <ul className="space-y-3 text-sm text-white/80">
                 {post.content.outcomes.map((outcome) => (
-                  <li key={outcome} className="flex items-start gap-3">
+                  <li key={outcome} className="flex gap-3">
                     <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-[var(--brand-gold)]" aria-hidden />
                     <span>{outcome}</span>
                   </li>
@@ -274,7 +280,7 @@ export default function BlogArticleArabicPage() {
                 {section.bullets && (
                   <ul className="mt-3 space-y-2 text-sm text-white/80">
                     {section.bullets.map((point) => (
-                      <li key={point} className="flex items-start gap-3">
+                      <li key={point} className="flex gap-3">
                         <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-[var(--brand-red)]" aria-hidden />
                         <span>{point}</span>
                       </li>
@@ -289,7 +295,7 @@ export default function BlogArticleArabicPage() {
         {post.content.cta && (
           <section className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-gradient-to-r from-[var(--brand-red-dark)]/70 via-black to-black p-6 sm:flex-row sm:items-center sm:justify-between">
             <div className="space-y-2">
-              <p className="text-sm uppercase tracking-[0.3em] text-white/60">الخطوة التالية</p>
+              <p className="text-sm uppercase tracking-[0.3em] text-white/60">Next step</p>
               <h3 className="text-2xl font-semibold text-white">{post.content.cta.label}</h3>
               <p className="text-white/75">{post.content.cta.body}</p>
             </div>
@@ -300,7 +306,7 @@ export default function BlogArticleArabicPage() {
                 "rounded-xl bg-[var(--brand-red)] px-5 text-white shadow-[0_15px_60px_rgba(155,11,11,0.45)] hover:bg-[var(--brand-red-bright)]"
               )}
             >
-              تواصل معنا
+              Contact us
             </Link>
           </section>
         )}

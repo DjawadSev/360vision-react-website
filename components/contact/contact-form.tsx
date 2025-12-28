@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -11,6 +12,8 @@ export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState<string | null>(null);
   const decayTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const t = useTranslations("ContactForm");
+  const tCommon = useTranslations("Common");
 
   const clearDecayTimer = () => {
     if (decayTimer.current) {
@@ -36,7 +39,7 @@ export function ContactForm() {
 
     if (!name || !email || !project) {
       setStatus("error");
-      setMessage("Please add your name, email, and project details.");
+      setMessage(t("errors.missingFields"));
       return;
     }
 
@@ -54,7 +57,7 @@ export function ContactForm() {
       }
 
       setStatus("success");
-      setMessage("Message sent. We reply within 1 business day.");
+      setMessage(t("success"));
       if (event?.currentTarget) {
         event.currentTarget.reset();
       }
@@ -65,7 +68,7 @@ export function ContactForm() {
     } catch (error) {
       console.error("Contact form error", error);
       setStatus("error");
-      setMessage("We could not send this right now. Please email us directly at contact@360vision.io.");
+      setMessage(t("errors.generic"));
     }
   };
 
@@ -78,39 +81,39 @@ export function ContactForm() {
       <div className="pointer-events-none absolute inset-0 bg-[url('/logos/background-red.png')] bg-cover opacity-10 mix-blend-screen" style={{ backgroundPosition: "20% center" }} aria-hidden />
       <div className="space-y-2">
         <label className="text-sm text-white/70" htmlFor="name">
-          Name
+          {t("labels.name")}
         </label>
         <input
           id="name"
           name="name"
           className="mt-2 w-full rounded-2xl border border-white/20 bg-black/60 px-4 py-3 text-white placeholder:text-white/40 focus:border-[var(--brand-red)]/60 focus:outline-none"
-          placeholder="Ada Lovelace"
+          placeholder={t("placeholders.name")}
           required
         />
       </div>
       <div className="space-y-2">
         <label className="text-sm text-white/70" htmlFor="email">
-          Email
+          {t("labels.email")}
         </label>
         <input
           id="email"
           name="email"
           type="email"
           className="mt-2 w-full rounded-2xl border border-white/20 bg-black/60 px-4 py-3 text-white placeholder:text-white/40 focus:border-[var(--brand-red)]/60 focus:outline-none"
-          placeholder="you@company.com"
+          placeholder={t("placeholders.email")}
           required
         />
       </div>
       <div className="space-y-2">
         <label className="text-sm text-white/70" htmlFor="project">
-          Project details
+          {t("labels.project")}
         </label>
         <textarea
           id="project"
           name="project"
           rows={4}
           className="mt-2 w-full rounded-2xl border border-white/20 bg-black/60 px-4 py-3 text-white placeholder:text-white/40 focus:border-[var(--brand-red)]/60 focus:outline-none"
-          placeholder="Budget, timelines, KPIs..."
+          placeholder={t("placeholders.project")}
           required
         />
       </div>
@@ -121,11 +124,9 @@ export function ContactForm() {
           type="submit"
           disabled={status === "loading"}
         >
-          {status === "loading" ? "Sending..." : "Contact us"}
+          {status === "loading" ? t("sending") : tCommon("contactUs")}
         </Button>
-        <p className="text-sm sm:text-base text-white/70">
-          We answer within 1 business day. Every detail goes straight to the leadership team.
-        </p>
+        <p className="text-sm sm:text-base text-white/70">{t("disclaimer")}</p>
         {message ? (
           <p
             className={cn(

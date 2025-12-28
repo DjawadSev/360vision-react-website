@@ -1,0 +1,420 @@
+{
+  "LanguageSwitcher": {
+    "label": "Language",
+    "change": "Switch to {locale}",
+    "locale": {
+      "en": "English",
+      "fr": "Fran\u00e7ais"
+    }
+  },
+  "Nav": {
+    "menu": "Menu",
+    "close": "Exit",
+    "open": "Open menu",
+    "brand": "360 Vision",
+    "tagline": "Creative & Digital",
+    "links": {
+      "home": "Home",
+      "services": "Services",
+      "blog": "Blog",
+      "contact": "Contact"
+    },
+    "active": "Active"
+  },
+  "Footer": {
+    "label": "360 Vision",
+    "tagline": "Creative & Digital",
+    "addressLine1": "Cite Saidi Ahmed CICAD Part N47 Bureau N17 Bordj El Kiffan",
+    "addressLine2": "Algiers",
+    "email": "contact@360vision.io",
+    "privacy": "Privacy Policy",
+    "rights": "All rights reserved."
+  },
+  "Home": {
+    "hero": {
+      "badge": "Modern Digital Marketing Solutions",
+      "title": "A Digital Agency Helping Algerian Businesses Grow Online",
+      "body1": "360 Vision helps companies across Algeria build powerful digital identities - from social media marketing and online advertising to e-commerce strategy, branding, 3D visuals, and high-impact content creation.",
+      "body2": "We partner with ambitious Algerian businesses looking to digitalize, attract new customers, and scale their revenue through data-backed, conversion-focused marketing.",
+      "highlights": [
+        "3D & Motion for Real Estate & Products",
+        "End-to-End Growth Solutions",
+        "Data-Driven Marketing Strategies"
+      ],
+      "ctaPrimary": "Launch your brand now",
+      "ctaSecondary": "Explore services",
+      "stats": [
+        {
+          "label": "Projects Delivered",
+          "value": "120+"
+        },
+        {
+          "label": "Revenue Influenced",
+          "value": "500m DA"
+        },
+        {
+          "label": "Combined Experience",
+          "value": "40+ Years"
+        }
+      ],
+      "contact": {
+        "visitLabel": "Visit us",
+        "contactLabel": "Contact",
+        "addressLine1": "Cite Saidi Ahmed CICAD Part N47 Bureau N17 Bordj",
+        "addressLine2": "el kiffan",
+        "email": "contact@360vision.io",
+        "phone": "+213770661160"
+      }
+    },
+    "heroCarousel": {
+      "labels": {
+        "live": "Live",
+        "view": "View"
+      },
+      "items": [
+        {
+          "id": "growth",
+          "label": "Boost Your Business",
+          "title": "Scale your growth with precision marketing",
+          "metric": "+214% Total Growth",
+          "description": "Full-funnel performance engine for ambitious brands.",
+          "image": {
+            "src": "/images/Hero/05.png",
+            "alt": "360 Vision showcase graphic"
+          }
+        },
+        {
+          "id": "launch",
+          "label": "Product Launch",
+          "title": "Launch your brand with impact",
+          "metric": "+9,400 New Visitors in 48h",
+          "description": "Identity systems, launch campaigns, 3D visuals, packaging, and GTM assets.",
+          "image": {
+            "src": "/images/Hero/Hero.png",
+            "alt": "360 Vision motion identity"
+          }
+        },
+        {
+          "id": "experience",
+          "label": "Immersive Experience",
+          "title": "Transform ideas into interactive experiences",
+          "metric": "+3x Engagement vs Static Assets",
+          "description": "3D worlds, architectural visuals, and hyper-real product demos.",
+          "image": {
+            "src": "/images/Hero/360vision_Hero-100.jpg",
+            "alt": "360 Vision premium environment"
+          }
+        }
+      ]
+    },
+    "services": {
+      "eyebrow": "Signature services",
+      "title": "Precision-built capabilities for brands that want more than average.",
+      "cta": "Explore services ->",
+      "labels": {
+        "immersive": "Immersive 3D & Motion",
+        "performance": "Performance Marketing",
+        "cpa": "CPA -31%"
+      },
+      "cards": [
+        {
+          "title": "Branding & Creative Direction",
+          "body": "We build visual identities designed for high memorability, brand authority, and long-term positioning. From logo systems to full brand worlds -- everything is built to convert, stand out, and support future scaling.",
+          "variant": "standard"
+        },
+        {
+          "title": "Meta Ads, TikTok Ads & Performance Marketing",
+          "body": "Full-funnel advertising engineered for ROI, low CPA, and consistent scaling. We optimize based on real KPIs: cost per lead, message conversion rate, qualified lead rate, and acquisition cost. More growth, more traffic, more volume -- without wasting budget.",
+          "variant": "meta"
+        },
+        {
+          "title": "3D Visualization & Motion Design",
+          "body": "Premium 3D renders, product visuals, and architectural animations that dramatically increase engagement, trust, and purchase intent. Perfect for real estate, e-commerce, and high-end brands that need a next-level presentation.",
+          "variant": "3d"
+        }
+      ]
+    },
+    "tools": {
+      "eyebrow": "Our Tool Stack",
+      "title": "Platforms and engines we build with daily."
+    },
+    "blog": {
+      "eyebrow": "Insights",
+      "title": "Fresh signals from the 360 Vision team.",
+      "subtitle": "Notes from live campaigns, launches, and experiments so you can move faster with proof.",
+      "visit": "Visit the blog ->",
+      "talk": "Talk to us"
+    },
+    "about": {
+      "eyebrow": "About",
+      "title": "About Us.",
+      "paragraphs": [
+        "We are not just a social media agency. We are a growth partner.",
+        "360 Vision is a full-stack creative and marketing agency built by strategists, designers, developers, and analysts -- all focused on one thing: helping brands grow with precision and impact.",
+        "From content creation to paid media, 3D production to CRM integration, we do not just offer services -- we build systems that convert attention into results."
+      ]
+    }
+  },
+  "Common": {
+    "learnMore": "Learn more",
+    "serviceLabel": "Service",
+    "readBreakdown": "Read the breakdown",
+    "contactUs": "Contact us",
+    "contactTeam": "Contact our team",
+    "featured": "Featured",
+    "backToArticles": "Back to all articles"
+  },
+  "ContactPage": {
+    "eyebrow": "Contact",
+    "title": "Tell us about your next launch.",
+    "body": "Share context on your business goals, team size, and timeline. We typically reply within one business day and can kick off discovery the same week.",
+    "email": {
+      "label": "Email",
+      "value": "contact@360vision.io"
+    },
+    "hq": {
+      "label": "HQ",
+      "address1": "Cit\u00e9 Saidi Ahmed CICAD Part N47 Bureau N17 Bordj",
+      "address2": "el kiffan"
+    },
+    "phone": {
+      "label": "Phone",
+      "value": "+213770661160"
+    }
+  },
+  "ContactForm": {
+    "labels": {
+      "name": "Name",
+      "email": "Email",
+      "project": "Project details"
+    },
+    "placeholders": {
+      "name": "Ada Lovelace",
+      "email": "you@company.com",
+      "project": "Budget, timelines, KPIs..."
+    },
+    "errors": {
+      "missingFields": "Please add your name, email, and project details.",
+      "generic": "We could not send this right now. Please email us directly at contact@360vision.io."
+    },
+    "success": "Message sent. We reply within 1 business day.",
+    "disclaimer": "We answer within 1 business day. Every detail goes straight to the leadership team.",
+    "sending": "Sending..."
+  },
+  "ServicesPage": {
+    "eyebrow": "Services",
+    "title": "Everything you need to go to market with confidence.",
+    "body": "We architect bespoke teams across strategy, creative, media, and lifecycle so you can move faster without hiring a dozen full-time roles. Choose a package or mix modules for a perfect fit.",
+    "badge": "Premium, motion-led experiences - Conversion discipline",
+    "pill": "Elite",
+    "packages": [
+      {
+        "title": "3D Visualization",
+        "description": "Discover captivating 3D visualization and animation services with 360 Vision. From photorealistic product renders to immersive brand experiences, our expert team transforms your concepts into high-impact visuals that boost engagement, increase conversions, and strengthen brand recall.",
+        "deliverables": [
+          "Photorealistic product renders",
+          "Immersive brand experiences",
+          "High-impact visuals that boost engagement and conversions"
+        ]
+      },
+      {
+        "title": "Digital Marketing",
+        "description": "Achieve real results with our full-service digital marketing solutions at 360 Vision. From data-driven SEO and PPC to engaging social campaigns and conversion-focused content, we help brands expand their visibility, attract qualified leads, and improve their return on investment (ROI).",
+        "deliverables": [
+          "Data-driven SEO and PPC",
+          "Engaging social campaigns and conversion-focused content",
+          "Flatlay of a business analytics report, keyboard, pen, and smartphone on a wooden desk."
+        ]
+      },
+      {
+        "title": "Branding & Creative Design Services",
+        "description": "At 360 Vision, we craft brands that stand out and leave a lasting impression. From logo creation to complete visual identity systems, we combine strategic thinking with artistic precision to design visuals that capture attention, build trust, and tell your story with impact.",
+        "deliverables": [
+          "Logo creation and complete visual identity systems",
+          "Strategic thinking with artistic precision",
+          "Visuals that capture attention, build trust, and tell your story"
+        ]
+      }
+    ]
+  },
+  "BlogPage": {
+    "hero": {
+      "badge": "Insights",
+      "tagline": "360 Vision Journal",
+      "title": "Bold strategy notes for brands that move fast.",
+      "body": "We document what works across performance, brand, and 3D so your next launch, campaign, or sales push has proof baked in. No fluff, only playbooks and results.",
+      "highlights": [
+        {
+          "label": "Reports shipped",
+          "value": "120+"
+        },
+        {
+          "label": "Playbooks tested",
+          "value": "48"
+        },
+        {
+          "label": "Avg. uplift",
+          "value": "31%"
+        }
+      ],
+      "cadence": {
+        "label": "Publishing cadence",
+        "value": "Weekly drops with real data."
+      },
+      "seeHow": "See how we execute"
+    },
+    "latest": {
+      "eyebrow": "Latest articles",
+      "title": "Execution notes straight from the studio floor.",
+      "pill": "Updated in real time as we ship."
+    }
+  },
+  "BlogDetail": {
+    "notFoundTitle": "Article not found | 360 VISION",
+    "overview": "Overview",
+    "keyTakeaways": "Key takeaways",
+    "outcomes": "Outcomes",
+    "nextStep": "Next step",
+    "published": "Published {date}",
+    "updated": "Updated for SEO in 2025",
+    "language": "Language: {language}"
+  },
+  "Newsletter": {
+    "eyebrow": "Newsletter",
+    "title": "Get the weekly drop with new playbooks and case notes.",
+    "description": "One email. No fluff. Only the experiments and results that moved the needle for our clients.",
+    "cta": "Join the list",
+    "promise": "We keep your inbox clean and respect your time.",
+    "labels": {
+      "email": "Email address"
+    },
+    "placeholders": {
+      "email": "you@company.com"
+    },
+    "submitting": "Submitting...",
+    "optIn": "Opt in",
+    "control": "Stay in control. We only email when there's signal.",
+    "invalid": "Add a valid email to opt in.",
+    "success": "Thank you for joining. You're on the list. You can opt out anytime; contact us through any channel.",
+    "failure": "We couldn't save this signup right now. Email us and we'll add you manually."
+  },
+  "Privacy": {
+    "eyebrow": "Privacy Policy",
+    "title": "Privacy Policy \u2013 360 Vision",
+    "updated": "Last updated: 11/24/2025",
+    "intro": "360 Vision is committed to protecting your privacy and ensuring transparency about how we collect, use, and safeguard your personal information. This Privacy Policy explains what data we collect, why we collect it, and how we handle it when you use our website or services.",
+    "sections": [
+      {
+        "title": "1. Information We Collect",
+        "body": "We may collect personal data when you:",
+        "bullets": [
+          "Fill out contact forms",
+          "Request a quote or consultation",
+          "Subscribe to newsletters",
+          "Send us a message via social media, WhatsApp, Messenger, etc."
+        ],
+        "secondaryTitle": "This may include:",
+        "secondaryBullets": [
+          "Full name",
+          "Phone number",
+          "Email address",
+          "Company name",
+          "Project details",
+          "Any message or files you send us"
+        ]
+      },
+      {
+        "title": "1.2 Information Collected Automatically",
+        "body": "When you visit our website, we may collect:",
+        "bullets": [
+          "IP address",
+          "Browser type",
+          "Device information",
+          "Pages viewed",
+          "Time spent on the website",
+          "Cookies and tracking data"
+        ]
+      },
+      {
+        "title": "1.3 Information from Third-Party Platforms",
+        "body": "If you interact with our ads or forms on Facebook, Instagram, TikTok, Google, WhatsApp, or other platforms, we may receive basic info you provide through those services."
+      },
+      {
+        "title": "2. How We Use Your Information",
+        "body": "We use your data to:",
+        "bullets": [
+          "Respond to your inquiries and messages",
+          "Provide and improve our services",
+          "Create quotes and project proposals",
+          "Optimize marketing campaigns",
+          "Improve website performance and user experience",
+          "Send relevant updates, offers, or newsletters (only if you opt in)"
+        ],
+        "note": "We do not sell your personal information to anyone."
+      },
+      {
+        "title": "3. Cookies & Tracking Technologies",
+        "body": "We use cookies and similar tools to:",
+        "bullets": [
+          "Analyze website traffic",
+          "Improve performance",
+          "Personalize your browsing experience",
+          "Measure the effectiveness of ads"
+        ],
+        "note": "You can disable cookies through your browser settings at any time."
+      },
+      {
+        "title": "4. Sharing of Information",
+        "body": "We only share your data with:",
+        "bullets": [
+          "Service providers (hosting, analytics, CRM tools, etc.)",
+          "Advertising platforms (Meta, Google, TikTok) only for campaign performance",
+          "Team members working on your project"
+        ],
+        "note": "We do not share or sell your information to unrelated third parties."
+      },
+      {
+        "title": "5. Data Security",
+        "body": "We take reasonable security measures to protect your data from unauthorized access, misuse, or disclosure. However, no online system is 100% secure, so we cannot guarantee absolute protection."
+      },
+      {
+        "title": "6. Data Retention",
+        "body": "We keep your information only as long as necessary for:",
+        "bullets": [
+          "Providing the services you requested",
+          "Complying with legal obligations",
+          "Improving our operations"
+        ],
+        "note": "If you want your data deleted, you can request it at any time (see Section 9)."
+      },
+      {
+        "title": "7. Third-Party Websites",
+        "body": "Our website may link to external websites. We are not responsible for their content or privacy practices."
+      },
+      {
+        "title": "8. Children's Privacy",
+        "body": "Our services are not directed to individuals under 18. We do not knowingly collect personal information from minors."
+      },
+      {
+        "title": "9. Your Rights",
+        "body": "Depending on your region, you may have rights such as:",
+        "bullets": [
+          "Accessing your personal data",
+          "Requesting corrections",
+          "Asking for deletion",
+          "Opting out of marketing communications"
+        ],
+        "note": "To exercise these rights, contact us through the info below."
+      },
+      {
+        "title": "10. Changes to This Policy",
+        "body": "We may update this Privacy Policy occasionally. Any changes will be posted on this page with a new \"Last updated\" date."
+      },
+      {
+        "title": "11. Contact Us",
+        "body": "If you have questions about this Privacy Policy or wish to request access or deletion of your data, you can contact us.",
+        "note": "Email: contact@360vision.io"
+      }
+    ]
+  }
+}

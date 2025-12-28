@@ -1,0 +1,420 @@
+{
+  "LanguageSwitcher": {
+    "label": "Langue",
+    "change": "Passer en {locale}",
+    "locale": {
+      "en": "English",
+      "fr": "Fran\u00e7ais"
+    }
+  },
+  "Nav": {
+    "menu": "Menu",
+    "close": "Fermer",
+    "open": "Ouvrir le menu",
+    "brand": "360 Vision",
+    "tagline": "Cr\u00e9atif & Digital",
+    "links": {
+      "home": "Accueil",
+      "services": "Services",
+      "blog": "Blog",
+      "contact": "Contact"
+    },
+    "active": "Actif"
+  },
+  "Footer": {
+    "label": "360 Vision",
+    "tagline": "Cr\u00e9atif & Digital",
+    "addressLine1": "Cit\u00e9 Saidi Ahmed CICAD Part N47 Bureau N17 Bordj El Kiffan",
+    "addressLine2": "Alger",
+    "email": "contact@360vision.io",
+    "privacy": "Politique de confidentialit\u00e9",
+    "rights": "Tous droits r\u00e9serv\u00e9s."
+  },
+  "Home": {
+    "hero": {
+      "badge": "Solutions modernes de marketing digital",
+      "title": "Une agence digitale qui aide les entreprises alg\u00e9riennes \u00e0 cro\u00eetre en ligne",
+      "body1": "360 Vision aide les entreprises \u00e0 construire des identit\u00e9s digitales puissantes : marketing social, publicit\u00e9 en ligne, strat\u00e9gie e-commerce, branding, visuels 3D et contenu impactant.",
+      "body2": "Nous collaborons avec des \u00e9quipes ambitieuses qui veulent se digitaliser, attirer de nouveaux clients et faire cro\u00eetre leur chiffre d'affaires gr\u00e2ce \u00e0 un marketing data-driven et orient\u00e9 conversion.",
+      "highlights": [
+        "3D & Motion pour l'immobilier et les produits",
+        "Solutions de croissance de bout en bout",
+        "Strat\u00e9gies marketing bas\u00e9es sur les donn\u00e9es"
+      ],
+      "ctaPrimary": "Lancer votre marque",
+      "ctaSecondary": "D\u00e9couvrir les services",
+      "stats": [
+        {
+          "label": "Projets livr\u00e9s",
+          "value": "120+"
+        },
+        {
+          "label": "Revenu influenc\u00e9",
+          "value": "500m DA"
+        },
+        {
+          "label": "Exp\u00e9rience cumul\u00e9e",
+          "value": "40+ ans"
+        }
+      ],
+      "contact": {
+        "visitLabel": "Nous visiter",
+        "contactLabel": "Contact",
+        "addressLine1": "Cit\u00e9 Saidi Ahmed CICAD Part N47 Bureau N17 Bordj",
+        "addressLine2": "el kiffan",
+        "email": "contact@360vision.io",
+        "phone": "+213770661160"
+      }
+    },
+    "heroCarousel": {
+      "labels": {
+        "live": "En cours",
+        "view": "Voir"
+      },
+      "items": [
+        {
+          "id": "growth",
+          "label": "Booster votre business",
+          "title": "Scaler votre croissance avec un marketing de pr\u00e9cision",
+          "metric": "+214% de croissance totale",
+          "description": "Moteur de performance full-funnel pour marques ambitieuses.",
+          "image": {
+            "src": "/images/Hero/05.png",
+            "alt": "Visuel 360 Vision"
+          }
+        },
+        {
+          "id": "launch",
+          "label": "Lancement produit",
+          "title": "Lancez votre marque avec impact",
+          "metric": "+9 400 nouveaux visiteurs en 48h",
+          "description": "Identit\u00e9s, campagnes de lancement, visuels 3D, packaging et assets go-to-market.",
+          "image": {
+            "src": "/images/Hero/Hero.png",
+            "alt": "Identit\u00e9 motion 360 Vision"
+          }
+        },
+        {
+          "id": "experience",
+          "label": "Exp\u00e9rience immersive",
+          "title": "Transformer les id\u00e9es en exp\u00e9riences interactives",
+          "metric": "+3x d'engagement vs assets statiques",
+          "description": "Univers 3D, visuels architecturaux, d\u00e9mos produit ultra-r\u00e9alistes.",
+          "image": {
+            "src": "/images/Hero/360vision_Hero-100.jpg",
+            "alt": "Environnement premium 360 Vision"
+          }
+        }
+      ]
+    },
+    "services": {
+      "eyebrow": "Services signatures",
+      "title": "Des capacit\u00e9s con\u00e7ues pour les marques qui visent plus que la moyenne.",
+      "cta": "Explorer les services ->",
+      "labels": {
+        "immersive": "Immersion 3D & Motion",
+        "performance": "Performance Marketing",
+        "cpa": "CPA -31%"
+      },
+      "cards": [
+        {
+          "title": "Branding & Direction cr\u00e9ative",
+          "body": "Nous construisons des identit\u00e9s visuelles m\u00e9morables, cr\u00e9dibles et pens\u00e9es pour durer. Logos, syst\u00e8mes de marque et univers complets : tout est con\u00e7u pour convertir, marquer et soutenir la croissance future.",
+          "variant": "standard"
+        },
+        {
+          "title": "Meta Ads, TikTok Ads & Performance Marketing",
+          "body": "Publicit\u00e9 full-funnel orient\u00e9e ROI, CPA bas et scalabilit\u00e9 constante. Nous optimisons sur les vrais KPI : co\u00fbt par lead, conversion message, leads qualifi\u00e9s et co\u00fbt d'acquisition.",
+          "variant": "meta"
+        },
+        {
+          "title": "Visualisation 3D & Motion Design",
+          "body": "Rendus 3D premium, visuels produits et animations architecturales qui augmentent fortement l'engagement, la confiance et l'intention d'achat.",
+          "variant": "3d"
+        }
+      ]
+    },
+    "tools": {
+      "eyebrow": "Notre stack",
+      "title": "Les plateformes et moteurs que nous utilisons au quotidien."
+    },
+    "blog": {
+      "eyebrow": "Insights",
+      "title": "Signaux frais de l'\u00e9quipe 360 Vision.",
+      "subtitle": "Notes de campagnes en cours, lancements et exp\u00e9rimentations pour avancer plus vite avec des preuves.",
+      "visit": "Voir le blog ->",
+      "talk": "Discuter avec nous"
+    },
+    "about": {
+      "eyebrow": "\u00c0 propos",
+      "title": "\u00c0 propos de nous.",
+      "paragraphs": [
+        "Nous ne sommes pas qu'une agence social media. Nous sommes un partenaire de croissance.",
+        "360 Vision est une agence cr\u00e9ative et marketing full-stack : strat\u00e8ges, designers, d\u00e9veloppeurs, analystes \u2014 tous align\u00e9s sur la croissance avec pr\u00e9cision et impact.",
+        "Du contenu au paid media, de la 3D au CRM, nous ne vendons pas juste des prestations \u2014 nous b\u00e2tissons des syst\u00e8mes qui transforment l'attention en r\u00e9sultats."
+      ]
+    }
+  },
+  "Common": {
+    "learnMore": "En savoir plus",
+    "serviceLabel": "Service",
+    "readBreakdown": "Lire l'analyse",
+    "contactUs": "Contactez-nous",
+    "contactTeam": "Contacter l'\u00e9quipe",
+    "featured": "\u00c0 la une",
+    "backToArticles": "Retour aux articles"
+  },
+  "ContactPage": {
+    "eyebrow": "Contact",
+    "title": "Parlez-nous de votre prochain lancement.",
+    "body": "Partagez vos objectifs business, la taille de votre \u00e9quipe et vos d\u00e9lais. Nous r\u00e9pondons sous un jour ouvr\u00e9 et lan\u00e7ons la phase d\u00e9couverte la m\u00eame semaine.",
+    "email": {
+      "label": "Email",
+      "value": "contact@360vision.io"
+    },
+    "hq": {
+      "label": "Si\u00e8ge",
+      "address1": "Cit\u00e9 Saidi Ahmed CICAD Part N47 Bureau N17 Bordj",
+      "address2": "el kiffan"
+    },
+    "phone": {
+      "label": "T\u00e9l\u00e9phone",
+      "value": "+213770661160"
+    }
+  },
+  "ContactForm": {
+    "labels": {
+      "name": "Nom",
+      "email": "Email",
+      "project": "D\u00e9tails du projet"
+    },
+    "placeholders": {
+      "name": "Ada Lovelace",
+      "email": "vous@entreprise.com",
+      "project": "Budget, d\u00e9lais, KPI..."
+    },
+    "errors": {
+      "missingFields": "Ajoutez votre nom, email et les d\u00e9tails du projet.",
+      "generic": "Envoi impossible pour le moment. Contactez-nous directement sur contact@360vision.io."
+    },
+    "success": "Message envoy\u00e9. R\u00e9ponse sous un jour ouvr\u00e9.",
+    "disclaimer": "Nous r\u00e9pondons sous un jour ouvr\u00e9. Chaque d\u00e9tail arrive directement \u00e0 la direction.",
+    "sending": "Envoi en cours..."
+  },
+  "ServicesPage": {
+    "eyebrow": "Services",
+    "title": "Tout ce qu'il faut pour aller sur le march\u00e9 avec confiance.",
+    "body": "Nous assemblons des \u00e9quipes sur-mesure (strat\u00e9gie, cr\u00e9a, m\u00e9dia, lifecycle) pour acc\u00e9l\u00e9rer sans recruter 12 profils internes. Choisissez un pack ou composez le v\u00f4tre.",
+    "badge": "Exp\u00e9riences premium et motion - Discipline conversion",
+    "pill": "\u00c9lite",
+    "packages": [
+      {
+        "title": "Visualisation 3D",
+        "description": "D\u00e9couvrez des rendus et animations 3D percutants. De la photor\u00e9alit\u00e9 produit aux exp\u00e9riences immersives, nous transformons vos concepts en visuels \u00e0 fort impact qui renforcent l'engagement et la m\u00e9morisation.",
+        "deliverables": [
+          "Rendus produits photor\u00e9alistes",
+          "Exp\u00e9riences de marque immersives",
+          "Visuels \u00e0 fort impact qui boostent engagement et conversions"
+        ]
+      },
+      {
+        "title": "Marketing Digital",
+        "description": "Des r\u00e9sultats concrets avec nos solutions marketing compl\u00e8tes : SEO/SEA data-driven, campagnes sociales engageantes et contenus orient\u00e9s conversion pour plus de visibilit\u00e9, de leads qualifi\u00e9s et un meilleur ROI.",
+        "deliverables": [
+          "SEO et PPC pilot\u00e9s par la data",
+          "Campagnes sociales engageantes et contenus orient\u00e9s conversion",
+          "Rapport d'analytics, clavier, stylo et smartphone sur bureau"
+        ]
+      },
+      {
+        "title": "Branding & Design cr\u00e9atif",
+        "description": "Nous concevons des marques qui se distinguent et durent. Logo, identit\u00e9s visuelles compl\u00e8tes, direction artistique : strat\u00e9gie + pr\u00e9cision cr\u00e9ative pour capter l'attention, inspirer confiance et raconter votre histoire.",
+        "deliverables": [
+          "Cr\u00e9ation de logo et syst\u00e8mes d'identit\u00e9 complets",
+          "Strat\u00e9gie + pr\u00e9cision artistique",
+          "Visuels qui captent l'attention et renforcent la confiance"
+        ]
+      }
+    ]
+  },
+  "BlogPage": {
+    "hero": {
+      "badge": "Analyses",
+      "tagline": "Journal 360 Vision",
+      "title": "Notes strat\u00e9giques audacieuses pour les marques qui bougent vite.",
+      "body": "Nous documentons ce qui fonctionne en performance, marque et 3D pour que vos lancements, campagnes ou push commerciaux s'appuient sur des preuves. Aucun blabla, seulement des playbooks et des r\u00e9sultats.",
+      "highlights": [
+        {
+          "label": "Rapports livr\u00e9s",
+          "value": "120+"
+        },
+        {
+          "label": "Playbooks test\u00e9s",
+          "value": "48"
+        },
+        {
+          "label": "Gain moyen",
+          "value": "31%"
+        }
+      ],
+      "cadence": {
+        "label": "Cadence \u00e9ditoriale",
+        "value": "Un drop chaque semaine avec des donn\u00e9es r\u00e9elles."
+      },
+      "seeHow": "Voir nos m\u00e9thodes"
+    },
+    "latest": {
+      "eyebrow": "Derniers articles",
+      "title": "Notes d'ex\u00e9cution directement depuis le studio.",
+      "pill": "Mises \u00e0 jour en temps r\u00e9el au fil des livraisons."
+    }
+  },
+  "BlogDetail": {
+    "notFoundTitle": "Article introuvable | 360 VISION",
+    "overview": "Aper\u00e7u",
+    "keyTakeaways": "Points cl\u00e9s",
+    "outcomes": "R\u00e9sultats",
+    "nextStep": "Prochaine \u00e9tape",
+    "published": "Publi\u00e9 {date}",
+    "updated": "Mise \u00e0 jour SEO 2025",
+    "language": "Langue : {language}"
+  },
+  "Newsletter": {
+    "eyebrow": "Newsletter",
+    "title": "Un email hebdo avec nos playbooks et notes terrain.",
+    "description": "Un seul email. Pas de blabla. Seulement les exp\u00e9riences et r\u00e9sultats qui ont fait bouger les KPI de nos clients.",
+    "cta": "S'inscrire",
+    "promise": "Bo\u00eete mail respect\u00e9e, z\u00e9ro spam.",
+    "labels": {
+      "email": "Adresse email"
+    },
+    "placeholders": {
+      "email": "vous@entreprise.com"
+    },
+    "submitting": "Envoi...",
+    "optIn": "S'abonner",
+    "control": "Vous gardez le contr\u00f4le. Nous n'\u00e9crivons que quand il y a du signal.",
+    "invalid": "Ajoutez un email valide pour vous inscrire.",
+    "success": "Merci de vous \u00eatre inscrit. Vous \u00eates sur la liste. D\u00e9sinscription possible \u00e0 tout moment.",
+    "failure": "Impossible d'enregistrer l'inscription pour l'instant. \u00c9crivez-nous et nous vous ajouterons manuellement."
+  },
+  "Privacy": {
+    "eyebrow": "Politique de confidentialit\u00e9",
+    "title": "Politique de confidentialit\u00e9 \u2013 360 Vision",
+    "updated": "Derni\u00e8re mise \u00e0 jour : 24/11/2025",
+    "intro": "360 Vision prot\u00e8ge votre vie priv\u00e9e et reste transparente sur la collecte et l'utilisation de vos donn\u00e9es. Cette politique d\u00e9taille quelles donn\u00e9es nous collectons, pourquoi et comment nous les utilisons lorsque vous consultez notre site ou nos services.",
+    "sections": [
+      {
+        "title": "1. Donn\u00e9es collect\u00e9es",
+        "body": "Nous pouvons collecter des donn\u00e9es personnelles lorsque vous :",
+        "bullets": [
+          "Remplissez un formulaire de contact",
+          "Demandez un devis ou une consultation",
+          "Vous abonnez \u00e0 une newsletter",
+          "Nous \u00e9crivez via r\u00e9seaux sociaux, WhatsApp, Messenger, etc."
+        ],
+        "secondaryTitle": "Ces donn\u00e9es peuvent inclure :",
+        "secondaryBullets": [
+          "Nom complet",
+          "Num\u00e9ro de t\u00e9l\u00e9phone",
+          "Adresse email",
+          "Nom de l'entreprise",
+          "D\u00e9tails du projet",
+          "Messages ou fichiers envoy\u00e9s"
+        ]
+      },
+      {
+        "title": "1.2 Collecte automatique",
+        "body": "Lors de votre visite sur le site, nous pouvons collecter :",
+        "bullets": [
+          "Adresse IP",
+          "Type de navigateur",
+          "Informations appareil",
+          "Pages consult\u00e9es",
+          "Temps pass\u00e9 sur le site",
+          "Cookies et donn\u00e9es de suivi"
+        ]
+      },
+      {
+        "title": "1.3 Donn\u00e9es depuis des plateformes tierces",
+        "body": "Si vous interagissez avec nos publicit\u00e9s ou formulaires sur Facebook, Instagram, TikTok, Google, WhatsApp ou autres, nous pouvons recevoir les informations de base fournies via ces services."
+      },
+      {
+        "title": "2. Utilisation des donn\u00e9es",
+        "body": "Nous utilisons vos donn\u00e9es pour :",
+        "bullets": [
+          "R\u00e9pondre \u00e0 vos demandes",
+          "Fournir et am\u00e9liorer nos services",
+          "\u00c9tablir des devis et propositions",
+          "Optimiser nos campagnes marketing",
+          "Am\u00e9liorer les performances du site",
+          "Envoyer des mises \u00e0 jour ou offres (si vous y avez consenti)"
+        ],
+        "note": "Vos donn\u00e9es ne sont pas vendues."
+      },
+      {
+        "title": "3. Cookies & tracking",
+        "body": "Nous utilisons des cookies et outils similaires pour :",
+        "bullets": [
+          "Analyser le trafic du site",
+          "Am\u00e9liorer les performances",
+          "Personnaliser l'exp\u00e9rience de navigation",
+          "Mesurer l'efficacit\u00e9 publicitaire"
+        ],
+        "note": "Vous pouvez d\u00e9sactiver les cookies dans votre navigateur \u00e0 tout moment."
+      },
+      {
+        "title": "4. Partage des donn\u00e9es",
+        "body": "Nous partageons vos donn\u00e9es uniquement avec :",
+        "bullets": [
+          "Prestataires (h\u00e9bergement, analytics, CRM, etc.)",
+          "Plateformes publicitaires (Meta, Google, TikTok) pour la performance des campagnes",
+          "Membres d'\u00e9quipe impliqu\u00e9s sur votre projet"
+        ],
+        "note": "Aucune vente de donn\u00e9es \u00e0 des tiers non li\u00e9s."
+      },
+      {
+        "title": "5. S\u00e9curit\u00e9",
+        "body": "Nous mettons en \u0153uvre des mesures raisonnables pour prot\u00e9ger vos donn\u00e9es. Aucun syst\u00e8me en ligne n'\u00e9tant infaillible, nous ne pouvons garantir une s\u00e9curit\u00e9 absolue."
+      },
+      {
+        "title": "6. Conservation",
+        "body": "Nous conservons vos donn\u00e9es uniquement le temps n\u00e9cessaire pour :",
+        "bullets": [
+          "Fournir les services demand\u00e9s",
+          "Respecter les obligations l\u00e9gales",
+          "Am\u00e9liorer nos op\u00e9rations"
+        ],
+        "note": "Vous pouvez demander la suppression de vos donn\u00e9es \u00e0 tout moment (voir section 9)."
+      },
+      {
+        "title": "7. Sites tiers",
+        "body": "Notre site peut contenir des liens externes. Nous ne sommes pas responsables de leur contenu ni de leurs pratiques."
+      },
+      {
+        "title": "8. Donn\u00e9es des mineurs",
+        "body": "Nos services ne visent pas les moins de 18 ans. Nous ne collectons pas sciemment leurs donn\u00e9es personnelles."
+      },
+      {
+        "title": "9. Vos droits",
+        "body": "Selon votre r\u00e9gion, vous pouvez avoir le droit de :",
+        "bullets": [
+          "Acc\u00e9der \u00e0 vos donn\u00e9es",
+          "Demander des corrections",
+          "Demander la suppression",
+          "Refuser les communications marketing"
+        ],
+        "note": "Pour exercer ces droits, contactez-nous via les informations ci-dessous."
+      },
+      {
+        "title": "10. Modifications",
+        "body": "Cette politique peut \u00e9voluer. Les mises \u00e0 jour seront publi\u00e9es ici avec une nouvelle date."
+      },
+      {
+        "title": "11. Nous contacter",
+        "body": "Pour toute question ou demande d'acc\u00e8s/suppression de donn\u00e9es, contactez-nous.",
+        "note": "Email : contact@360vision.io"
+      }
+    ]
+  }
+}

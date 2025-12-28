@@ -5,7 +5,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
-type HeroShowcaseItem = {
+export type HeroShowcaseItem = {
   id: string;
   label: string;
   title: string;
@@ -17,7 +17,7 @@ type HeroShowcaseItem = {
   };
 };
 
-const heroShowcase: HeroShowcaseItem[] = [
+const defaultHeroShowcase: HeroShowcaseItem[] = [
   {
     id: "growth",
     label: "Boost Your Business",
@@ -53,20 +53,35 @@ const heroShowcase: HeroShowcaseItem[] = [
   },
 ];
 
+const defaultHeroLabels = {
+  live: "Live",
+  view: "View",
+};
+
 const IMAGE_HEIGHT = 380;
 const SLIDE_HEIGHT = 440;
 const TRACK_GAP = 24;
 
-export function HeroVisualCarousel() {
+type HeroVisualCarouselProps = {
+  items?: HeroShowcaseItem[];
+  labels?: {
+    live: string;
+    view: string;
+  };
+};
+
+export function HeroVisualCarousel({ items = defaultHeroShowcase, labels = defaultHeroLabels }: HeroVisualCarouselProps) {
+  const showcase = items.length > 0 ? items : defaultHeroShowcase;
+  const controlLabels = labels ?? defaultHeroLabels;
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    if (heroShowcase.length === 0) return;
+    if (showcase.length === 0) return;
     const timer = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % heroShowcase.length);
+      setActiveIndex((prev) => (prev + 1) % showcase.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [showcase.length]);
 
   return (
     <div id="hero-visual-carousel" className="relative">
@@ -82,11 +97,11 @@ export function HeroVisualCarousel() {
           style={{
             gap: `${TRACK_GAP}px`,
             transform: `translateY(-${activeIndex * (SLIDE_HEIGHT + TRACK_GAP)}px)`,
-            height: `${heroShowcase.length * SLIDE_HEIGHT + (heroShowcase.length - 1) * TRACK_GAP}px`,
+            height: `${showcase.length * SLIDE_HEIGHT + (showcase.length - 1) * TRACK_GAP}px`,
           }}
           aria-live="polite"
         >
-          {heroShowcase.map((item) => (
+          {showcase.map((item) => (
             <article
               id={`hero-carousel-slide-${item.id}`}
               key={item.id}
@@ -118,7 +133,7 @@ export function HeroVisualCarousel() {
         </div>
       </div>
       <div id="hero-carousel-controls" className="mt-4 flex flex-col gap-2" aria-label="Carousel controls">
-        {heroShowcase.map((item, index) => {
+        {showcase.map((item, index) => {
           const isActive = index === activeIndex;
           return (
             <button
@@ -135,7 +150,7 @@ export function HeroVisualCarousel() {
               aria-current={isActive}
             >
               <span>{item.label}</span>
-              <span className="text-xs uppercase tracking-[0.2em]">{isActive ? "Live" : "View"}</span>
+              <span className="text-xs uppercase tracking-[0.2em]">{isActive ? controlLabels.live : controlLabels.view}</span>
             </button>
           );
         })}

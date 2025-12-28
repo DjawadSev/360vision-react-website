@@ -1,21 +1,25 @@
 import Image from "next/image";
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
 import { NewsletterCTA } from "@/components/blog/newsletter-cta";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { blogPosts } from "@/lib/blog-posts";
 import { cn } from "@/lib/utils";
+import { Link } from "@/navigation";
+import { defaultLocale, type Locale } from "@/i18n";
 
-const heroHighlights = [
-  { label: "Reports shipped", value: "120+" },
-  { label: "Playbooks tested", value: "48" },
-  { label: "Avg. uplift", value: "31%" },
-];
+type Highlight = { label: string; value: string };
 
 const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)+/g, "");
 
-export default function BlogPage() {
+export default async function BlogPage({ params }: { params: Promise<{ locale?: Locale }> }) {
+  const { locale = defaultLocale } = await params;
+
+  const t = await getTranslations({ locale, namespace: "BlogPage" });
+  const tCommon = await getTranslations({ locale, namespace: "Common" });
+
+  const heroHighlights = t.raw("hero.highlights") as Highlight[];
   const featured = blogPosts.find((post) => post.featured) ?? blogPosts[0];
   const rest = blogPosts.filter((post) => post.slug !== featured.slug);
 
@@ -31,14 +35,12 @@ export default function BlogPage() {
         <div className="relative grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div className="space-y-6">
             <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-4 py-2">
-              <Badge className="bg-white/10 text-white">Insights</Badge>
-              <span className="text-xs uppercase tracking-[0.3em] text-white/60">360 Vision Journal</span>
+              <Badge className="bg-white/10 text-white">{t("hero.badge")}</Badge>
+              <span className="text-xs uppercase tracking-[0.3em] text-white/60">{t("hero.tagline")}</span>
             </div>
             <div className="space-y-4">
-              <h1 className="text-4xl font-semibold leading-tight text-white sm:text-5xl">Bold strategy notes for brands that move fast.</h1>
-              <p className="max-w-2xl text-lg text-white/70">
-                We document what works across performance, brand, and 3D so your next launch, campaign, or sales push has proof baked in. No fluff, only playbooks and results.
-              </p>
+              <h1 className="text-4xl font-semibold leading-tight text-white sm:text-5xl">{t("hero.title")}</h1>
+              <p className="max-w-2xl text-lg text-white/70">{t("hero.body")}</p>
             </div>
             <div className="flex flex-wrap gap-3">
               <Link
@@ -48,7 +50,7 @@ export default function BlogPage() {
                   "rounded-xl bg-[var(--brand-red)] px-5 shadow-[0_15px_60px_rgba(155,11,11,0.45)] hover:bg-[var(--brand-red-bright)]"
                 )}
               >
-                Contact our team
+                {tCommon("contactTeam")}
               </Link>
               <Link
                 href="/services"
@@ -57,7 +59,7 @@ export default function BlogPage() {
                   "rounded-xl border-white/40 bg-white/5 px-5 text-white hover:border-[var(--brand-gold)]/60 hover:text-white"
                 )}
               >
-                See how we execute
+                {t("hero.seeHow")}
               </Link>
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
@@ -94,10 +96,10 @@ export default function BlogPage() {
             </div>
             <div className="relative space-y-4">
               <div className="flex items-center gap-3">
-                <Badge className="bg-[var(--brand-red)] text-white">Featured</Badge>
+                <Badge className="bg-[var(--brand-red)] text-white">{tCommon("featured")}</Badge>
                 <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs text-white/80">{featured.category}</span>
-                <span className="rounded-full border border-white/20 bg-black/50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--brand-gold)]">
-                  {featured.language.label} · {featured.language.code.toUpperCase()}
+                <span className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-white/20 bg-black/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--brand-gold)] leading-tight">
+                  {featured.language.label} / {featured.language.code.toUpperCase()}
                 </span>
               </div>
               <h2 className="text-3xl font-semibold text-white">{featured.title}</h2>
@@ -114,8 +116,8 @@ export default function BlogPage() {
               </div>
               <div className="flex items-center justify-between rounded-2xl border border-white/15 bg-black/60 px-4 py-3 text-sm text-white/80">
                 <div className="space-y-1">
-                  <p className="text-[11px] uppercase tracking-[0.28em] text-white/50">Publishing cadence</p>
-                  <p className="text-white">Weekly drops with real data.</p>
+                  <p className="text-[11px] uppercase tracking-[0.28em] text-white/50">{t("hero.cadence.label")}</p>
+                  <p className="text-white">{t("hero.cadence.value")}</p>
                 </div>
                 {featured.stat && <span className="rounded-full bg-[var(--brand-gold)]/20 px-3 py-1 text-xs font-semibold text-[var(--brand-gold)]">{featured.stat}</span>}
               </div>
@@ -125,7 +127,7 @@ export default function BlogPage() {
                 <span>{featured.readTime}</span>
                 <span aria-hidden>&bull;</span>
                 <Link href={`/blog/${featured.slug}`} className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--brand-gold)] hover:border-[var(--brand-gold)]/60">
-                  Read the breakdown
+                  {tCommon("readBreakdown")}
                   <span aria-hidden>{"->"}</span>
                 </Link>
               </div>
@@ -137,12 +139,12 @@ export default function BlogPage() {
       <section id="blog-grid" className="space-y-6">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-sm uppercase tracking-[0.32em] text-white/50">Latest articles</p>
-            <h2 className="mt-2 text-3xl font-semibold text-white">Execution notes straight from the studio floor.</h2>
+            <p className="text-sm uppercase tracking-[0.32em] text-white/50">{t("latest.eyebrow")}</p>
+            <h2 className="mt-2 text-3xl font-semibold text-white">{t("latest.title")}</h2>
           </div>
           <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-2 text-xs uppercase tracking-[0.2em] text-white/60">
             <span className="h-2 w-2 rounded-full bg-[var(--brand-gold)]" />
-            Updated in real time as we ship.
+            {t("latest.pill")}
           </div>
         </div>
         <div className="grid gap-6 md:grid-cols-2">
@@ -163,7 +165,7 @@ export default function BlogPage() {
               <div className="relative flex h-full flex-col gap-4">
                 <div className="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-white/60">
                   <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-white/70">{post.category}</span>
-                  <span className="rounded-full border border-white/20 bg-black/50 px-3 py-1 text-[var(--brand-gold)] font-semibold">
+                  <span className="inline-flex items-center justify-center whitespace-nowrap rounded-full border border-white/20 bg-black/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--brand-gold)] leading-tight">
                     {post.language.code.toUpperCase()}
                   </span>
                   <span className="text-white/50">{post.date}</span>
@@ -187,7 +189,7 @@ export default function BlogPage() {
                   href={`/blog/${post.slug}`}
                   className="mt-auto flex items-center justify-between rounded-2xl border border-white/10 bg-black/60 px-4 py-2 text-sm text-white/75 transition hover:border-[var(--brand-gold)]/50 hover:text-white"
                 >
-                  <span className="font-semibold text-white">Read the breakdown</span>
+                  <span className="font-semibold text-white">{tCommon("readBreakdown")}</span>
                   {post.stat && <span className="rounded-full bg-[var(--brand-gold)]/20 px-3 py-1 text-[11px] font-semibold text-[var(--brand-gold)]">{post.stat}</span>}
                 </Link>
               </div>

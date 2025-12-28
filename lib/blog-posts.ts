@@ -238,3 +238,4 @@ export const getPostBySlug = (slug?: string) => {
   if (!target) return undefined;
   return blogPosts.find((post) => normalizeSlug(post.slug) === target);
 };
+

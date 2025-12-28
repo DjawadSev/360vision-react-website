@@ -1,33 +1,38 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import Script from "next/script";
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
+import { defaultLocale, locales, type Locale } from "@/i18n";
 import { blogPosts, getPostBySlug } from "@/lib/blog-posts";
 import { cn } from "@/lib/utils";
+import { Link } from "@/navigation";
 
 type BlogArticlePageProps = {
-  params: { slug: string };
+  params: Promise<{ locale?: Locale; slug: string }>;
 };
 
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }));
+  return locales.flatMap((locale) => blogPosts.map((post) => ({ locale, slug: post.slug })));
 }
 
 export async function generateMetadata({ params }: BlogArticlePageProps): Promise<Metadata> {
-  const post = getPostBySlug(params.slug);
+  const { locale = defaultLocale, slug } = await params;
+  const post = getPostBySlug(slug);
+  const t = await getTranslations({ locale, namespace: "BlogDetail" });
 
   if (!post) {
     return {
-      title: "Article not found | 360 VISION",
+      title: t("notFoundTitle"),
       robots: { index: false, follow: false },
     };
   }
 
-  const url = `/blog/${post.slug}`;
+  const prefix = locale === defaultLocale ? "" : `/${locale}`;
+  const url = `${prefix}/blog/${post.slug}`;
 
   return {
     title: post.seo.title,
@@ -60,12 +65,17 @@ export async function generateMetadata({ params }: BlogArticlePageProps): Promis
   };
 }
 
-export default function BlogArticlePage({ params }: BlogArticlePageProps) {
-  const post = getPostBySlug(params.slug);
+export default async function BlogArticlePage({ params }: BlogArticlePageProps) {
+  const { locale = defaultLocale, slug } = await params;
+  const post = getPostBySlug(slug);
+  const t = await getTranslations({ locale, namespace: "BlogDetail" });
+  const tCommon = await getTranslations({ locale, namespace: "Common" });
 
   if (!post) {
     notFound();
   }
+
+  const prefix = locale === defaultLocale ? "" : `/${locale}`;
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -90,7 +100,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
     keywords: post.seo.keywords,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `/blog/${post.slug}`,
+      "@id": `${prefix}/blog/${post.slug}`,
     },
   };
 
@@ -115,8 +125,8 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
             <div className="relative space-y-6">
               <div className="flex flex-wrap items-center gap-3">
                 <Badge className="bg-[var(--brand-red)] text-white">{post.category}</Badge>
-                <span className="rounded-full border border-white/20 bg-black/60 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--brand-gold)]">
-                  {post.language.label} · {post.language.code.toUpperCase()}
+                <span className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-white/20 bg-black/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--brand-gold)] leading-tight">
+                  {post.language.label} / {post.language.code.toUpperCase()}
                 </span>
                 <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs text-white/80">{post.readTime}</span>
                 <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs text-white/70">{post.date}</span>
@@ -137,11 +147,11 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
               </div>
               <div className="flex flex-wrap gap-3 text-sm text-white/70">
                 {post.stat && <span className="rounded-full bg-[var(--brand-gold)]/15 px-3 py-1 font-semibold text-[var(--brand-gold)]">{post.stat}</span>}
-                <span>Published {post.date}</span>
+                <span>{t("published", { date: post.date })}</span>
                 <span aria-hidden>&bull;</span>
-                <span>Updated for SEO in 2025</span>
+                <span>{t("updated")}</span>
                 <span aria-hidden>&bull;</span>
-                <span>Language: {post.language.label}</span>
+                <span>{t("language", { language: post.language.label })}</span>
               </div>
               <div className="flex flex-wrap gap-3">
                 <Link
@@ -151,7 +161,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
                     "rounded-xl border border-white/30 bg-white/10 text-white hover:border-[var(--brand-gold)]/60"
                   )}
                 >
-                  Back to all articles
+                  {tCommon("backToArticles")}
                 </Link>
                 <Link
                   href={post.content.cta?.link ?? "/contact"}
@@ -160,7 +170,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
                     "rounded-xl bg-[var(--brand-red)] px-4 text-white shadow-[0_14px_55px_rgba(155,11,11,0.45)] hover:bg-[var(--brand-red-bright)]"
                   )}
                 >
-                  Contact our team
+                  {tCommon("contactTeam")}
                 </Link>
               </div>
             </div>
@@ -169,11 +179,11 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
           <article className="space-y-10 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_24px_100px_rgba(0,0,0,0.45)] sm:p-10">
             <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
               <div className="space-y-4">
-                <p className="text-sm uppercase tracking-[0.3em] text-white/50">Overview</p>
+                <p className="text-sm uppercase tracking-[0.3em] text-white/50">{t("overview")}</p>
                 <p className="text-lg text-white/80">{post.content.intro}</p>
               </div>
               <div className="space-y-4 rounded-2xl border border-white/10 bg-black/60 p-5 shadow-inner shadow-black/40">
-                <p className="text-xs uppercase tracking-[0.3em] text-white/50">Key takeaways</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-white/50">{t("keyTakeaways")}</p>
                 <ul className="space-y-3 text-sm text-white/80">
                   {post.content.keyTakeaways.map((item) => (
                     <li key={item} className="flex gap-3">
@@ -188,7 +198,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
             <div className="grid gap-6 lg:grid-cols-3">
               {post.content.outcomes && (
                 <div className="lg:col-span-1 space-y-3 rounded-2xl border border-[var(--brand-gold)]/30 bg-[var(--brand-gold)]/5 p-5">
-                  <p className="text-xs uppercase tracking-[0.26em] text-[var(--brand-gold)]">Outcomes</p>
+                  <p className="text-xs uppercase tracking-[0.26em] text-[var(--brand-gold)]">{t("outcomes")}</p>
                   <ul className="space-y-3 text-sm text-white/80">
                     {post.content.outcomes.map((outcome) => (
                       <li key={outcome} className="flex gap-3">
@@ -227,19 +237,19 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
             {post.content.cta && (
               <section className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-gradient-to-r from-[var(--brand-red-dark)]/70 via-black to-black p-6 sm:flex-row sm:items-center sm:justify-between">
                 <div className="space-y-2">
-                  <p className="text-sm uppercase tracking-[0.3em] text-white/60">Next step</p>
+                  <p className="text-sm uppercase tracking-[0.3em] text-white/60">{t("nextStep")}</p>
                   <h3 className="text-2xl font-semibold text-white">{post.content.cta.label}</h3>
                   <p className="text-white/75">{post.content.cta.body}</p>
                 </div>
-            <Link
-              href={post.content.cta.link}
-              className={cn(
-                buttonVariants({ size: "lg" }),
-                "rounded-xl bg-[var(--brand-red)] px-5 text-white shadow-[0_15px_60px_rgba(155,11,11,0.45)] hover:bg-[var(--brand-red-bright)]"
-              )}
-            >
-              Contact us
-            </Link>
+                <Link
+                  href={post.content.cta.link}
+                  className={cn(
+                    buttonVariants({ size: "lg" }),
+                    "rounded-xl bg-[var(--brand-red)] px-5 text-white shadow-[0_15px_60px_rgba(155,11,11,0.45)] hover:bg-[var(--brand-red-bright)]"
+                  )}
+                >
+                  {tCommon("contactUs")}
+                </Link>
               </section>
             )}
           </article>

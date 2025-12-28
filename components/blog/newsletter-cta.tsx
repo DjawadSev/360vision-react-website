@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState, type FormEvent } from "react";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -15,6 +16,7 @@ export function NewsletterCTA() {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const t = useTranslations("Newsletter");
 
   const handleJoinClick = () => {
     setIsFormOpen(true);
@@ -29,7 +31,7 @@ export function NewsletterCTA() {
 
     if (!isValidEmail(trimmed)) {
       setStatus("error");
-      setMessage("Add a valid email to opt in.");
+      setMessage(t("invalid"));
       return;
     }
 
@@ -49,12 +51,12 @@ export function NewsletterCTA() {
       }
 
       setStatus("success");
-      setMessage("Thank you for joining. You're on the list. You can opt out anytime; contact us through any channel.");
+      setMessage(t("success"));
       setEmail("");
     } catch (error) {
       console.error("Newsletter CTA error", error);
       setStatus("error");
-      setMessage("We couldn't save this signup right now. Email us and we'll add you manually.");
+      setMessage(t("failure"));
     }
   };
 
@@ -65,9 +67,9 @@ export function NewsletterCTA() {
     >
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="space-y-2">
-          <p className="text-sm uppercase tracking-[0.3em] text-white/60">Newsletter</p>
-          <h3 className="text-2xl font-semibold text-white">Get the weekly drop with new playbooks and case notes.</h3>
-          <p className="text-white/70">One email. No fluff. Only the experiments and results that moved the needle for our clients.</p>
+          <p className="text-sm uppercase tracking-[0.3em] text-white/60">{t("eyebrow")}</p>
+          <h3 className="text-2xl font-semibold text-white">{t("title")}</h3>
+          <p className="text-white/70">{t("description")}</p>
         </div>
         <div className="flex w-full flex-col gap-3 sm:max-w-md">
           {!isFormOpen ? (
@@ -76,15 +78,15 @@ export function NewsletterCTA() {
                 className="rounded-xl bg-[var(--brand-red)] text-base shadow-[0_15px_60px_rgba(155,11,11,0.45)] hover:bg-[var(--brand-red-bright)]"
                 onClick={handleJoinClick}
               >
-                Join the list
+                {t("cta")}
               </Button>
-              <p className="text-sm text-white/60 sm:text-base">We keep your inbox clean and respect your time.</p>
+              <p className="text-sm text-white/60 sm:text-base">{t("promise")}</p>
             </>
           ) : (
             <>
               <form onSubmit={handleSubmit} className="flex flex-row flex-wrap items-center gap-3">
                 <label className="sr-only" htmlFor="newsletter-email">
-                  Email address
+                  {t("labels.email")}
                 </label>
                 <input
                   ref={inputRef}
@@ -94,7 +96,7 @@ export function NewsletterCTA() {
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
                   className="flex-1 min-w-[200px] rounded-2xl border border-white/20 bg-black/60 px-4 py-3 text-white placeholder:text-white/40 focus:border-[var(--brand-red)]/60 focus:outline-none"
-                  placeholder="you@company.com"
+                  placeholder={t("placeholders.email")}
                   required
                 />
                 <Button
@@ -102,10 +104,10 @@ export function NewsletterCTA() {
                   className="shrink-0 rounded-xl bg-[var(--brand-gold)] px-6 text-base text-black shadow-[0_15px_60px_rgba(212,175,55,0.45)] hover:bg-[#e1c75c]"
                   disabled={status === "loading"}
                 >
-                  {status === "loading" ? "Submitting..." : "Opt in"}
+                  {status === "loading" ? t("submitting") : t("optIn")}
                 </Button>
               </form>
-              <p className="text-sm text-white/60 sm:text-base">Stay in control. We only email when there's signal.</p>
+              <p className="text-sm text-white/60 sm:text-base">{t("control")}</p>
             </>
           )}
           {message ? (
