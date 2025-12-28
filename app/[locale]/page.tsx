@@ -16,7 +16,6 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { blogPosts } from "@/lib/blog-posts";
-import { resolveParam } from "@/lib/route-params";
 import { Link } from "@/navigation";
 import { defaultLocale, locales, type Locale } from "@/i18n";
 
@@ -31,9 +30,8 @@ type ContactCard = {
   phone: string;
 };
 
-export default async function Home({ params }: { params?: Promise<{ locale?: string | string[] }> }) {
-  const resolvedParams = await params;
-  const localeParam = resolveParam(resolvedParams?.locale);
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: localeParam } = await params;
   const locale = locales.includes(localeParam as Locale) ? (localeParam as Locale) : defaultLocale;
 
   const tHome = await getTranslations({ locale, namespace: "Home" });

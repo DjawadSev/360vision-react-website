@@ -8,7 +8,6 @@ import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/layout/site-header";
 import { CosmicWavesShaders } from "@/components/ui/cosmic-waves-shaders";
 import { defaultLocale, type Locale, locales } from "@/i18n";
-import { resolveParam } from "@/lib/route-params";
 import { Link } from "@/navigation";
 import "../globals.css";
 
@@ -36,10 +35,9 @@ export default async function RootLayout({
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params?: Promise<{ locale?: string | string[] }>;
+  params: Promise<{ locale: string }>;
 }>) {
-  const resolvedParams = await params;
-  const rawLocale = resolveParam(resolvedParams?.locale);
+  const { locale: rawLocale } = await params;
   const locale = locales.includes(rawLocale as Locale) ? (rawLocale as Locale) : defaultLocale;
 
   if (!locales.includes(locale)) {

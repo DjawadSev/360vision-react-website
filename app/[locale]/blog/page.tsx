@@ -5,7 +5,6 @@ import { NewsletterCTA } from "@/components/blog/newsletter-cta";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { blogPosts } from "@/lib/blog-posts";
-import { resolveParam } from "@/lib/route-params";
 import { cn } from "@/lib/utils";
 import { Link } from "@/navigation";
 import { defaultLocale, locales, type Locale } from "@/i18n";
@@ -14,9 +13,8 @@ type Highlight = { label: string; value: string };
 
 const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)+/g, "");
 
-export default async function BlogPage({ params }: { params?: Promise<{ locale?: string | string[] }> }) {
-  const resolvedParams = await params;
-  const localeParam = resolveParam(resolvedParams?.locale);
+export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: localeParam } = await params;
   const locale = locales.includes(localeParam as Locale) ? (localeParam as Locale) : defaultLocale;
 
   const t = await getTranslations({ locale, namespace: "BlogPage" });

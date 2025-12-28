@@ -8,12 +8,11 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { defaultLocale, locales, type Locale } from "@/i18n";
 import { blogPosts, getPostBySlug } from "@/lib/blog-posts";
-import { resolveParam } from "@/lib/route-params";
 import { cn } from "@/lib/utils";
 import { Link } from "@/navigation";
 
 type BlogArticlePageProps = {
-  params?: Promise<{ locale?: string | string[]; slug?: string | string[] }>;
+  params: Promise<{ locale: string; slug: string }>;
 };
 
 export async function generateStaticParams() {
@@ -21,11 +20,9 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: BlogArticlePageProps): Promise<Metadata> {
-  const resolvedParams = await params;
-  const localeParam = resolveParam(resolvedParams?.locale);
-  const slug = resolveParam(resolvedParams?.slug);
+  const { locale: localeParam, slug } = await params;
   const locale = locales.includes(localeParam as Locale) ? (localeParam as Locale) : defaultLocale;
-  const post = slug ? getPostBySlug(slug) : undefined;
+  const post = getPostBySlug(slug);
   const t = await getTranslations({ locale, namespace: "BlogDetail" });
 
   if (!post) {
@@ -70,11 +67,9 @@ export async function generateMetadata({ params }: BlogArticlePageProps): Promis
 }
 
 export default async function BlogArticlePage({ params }: BlogArticlePageProps) {
-  const resolvedParams = await params;
-  const localeParam = resolveParam(resolvedParams?.locale);
-  const slug = resolveParam(resolvedParams?.slug);
+  const { locale: localeParam, slug } = await params;
   const locale = locales.includes(localeParam as Locale) ? (localeParam as Locale) : defaultLocale;
-  const post = slug ? getPostBySlug(slug) : undefined;
+  const post = getPostBySlug(slug);
   const t = await getTranslations({ locale, namespace: "BlogDetail" });
   const tCommon = await getTranslations({ locale, namespace: "Common" });
 
