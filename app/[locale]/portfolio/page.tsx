@@ -1,13 +1,14 @@
 import { redirect } from "next/navigation";
 
-import { defaultLocale, type Locale } from "@/i18n";
+import { defaultLocale, locales, type Locale } from "@/i18n";
 
 type PortfolioPageProps = {
-  params: Promise<{ locale?: Locale }>;
+  params: Promise<{ locale: string }>;
 };
 
 export default async function PortfolioPage({ params }: PortfolioPageProps) {
-  const { locale = defaultLocale } = await params;
+  const { locale: localeParam } = await params;
+  const locale = locales.includes(localeParam as Locale) ? (localeParam as Locale) : defaultLocale;
   const prefix = locale === defaultLocale ? "" : `/${locale}`;
   redirect(`${prefix}/services`);
 }

@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 import { Link } from "@/navigation";
 
 type BlogArticlePageProps = {
-  params: Promise<{ locale?: Locale; slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 };
 
 export async function generateStaticParams() {
@@ -20,7 +20,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: BlogArticlePageProps): Promise<Metadata> {
-  const { locale = defaultLocale, slug } = await params;
+  const { locale: localeParam, slug } = await params;
+  const locale = locales.includes(localeParam as Locale) ? (localeParam as Locale) : defaultLocale;
   const post = getPostBySlug(slug);
   const t = await getTranslations({ locale, namespace: "BlogDetail" });
 
@@ -66,7 +67,8 @@ export async function generateMetadata({ params }: BlogArticlePageProps): Promis
 }
 
 export default async function BlogArticlePage({ params }: BlogArticlePageProps) {
-  const { locale = defaultLocale, slug } = await params;
+  const { locale: localeParam, slug } = await params;
+  const locale = locales.includes(localeParam as Locale) ? (localeParam as Locale) : defaultLocale;
   const post = getPostBySlug(slug);
   const t = await getTranslations({ locale, namespace: "BlogDetail" });
   const tCommon = await getTranslations({ locale, namespace: "Common" });

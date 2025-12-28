@@ -2,7 +2,7 @@ import { getTranslations } from "next-intl/server";
 
 import { buttonVariants } from "@/components/ui/button";
 import { Link } from "@/navigation";
-import { defaultLocale, type Locale } from "@/i18n";
+import { defaultLocale, locales, type Locale } from "@/i18n";
 
 type ServicePackage = {
   title: string;
@@ -12,8 +12,9 @@ type ServicePackage = {
 
 const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)+/g, "");
 
-export default async function ServicesPage({ params }: { params: Promise<{ locale?: Locale }> }) {
-  const { locale = defaultLocale } = await params;
+export default async function ServicesPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: localeParam } = await params;
+  const locale = locales.includes(localeParam as Locale) ? (localeParam as Locale) : defaultLocale;
 
   const t = await getTranslations({ locale, namespace: "ServicesPage" });
   const tCommon = await getTranslations({ locale, namespace: "Common" });

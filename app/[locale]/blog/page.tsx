@@ -7,14 +7,15 @@ import { buttonVariants } from "@/components/ui/button";
 import { blogPosts } from "@/lib/blog-posts";
 import { cn } from "@/lib/utils";
 import { Link } from "@/navigation";
-import { defaultLocale, type Locale } from "@/i18n";
+import { defaultLocale, locales, type Locale } from "@/i18n";
 
 type Highlight = { label: string; value: string };
 
 const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)+/g, "");
 
-export default async function BlogPage({ params }: { params: Promise<{ locale?: Locale }> }) {
-  const { locale = defaultLocale } = await params;
+export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: localeParam } = await params;
+  const locale = locales.includes(localeParam as Locale) ? (localeParam as Locale) : defaultLocale;
 
   const t = await getTranslations({ locale, namespace: "BlogPage" });
   const tCommon = await getTranslations({ locale, namespace: "Common" });

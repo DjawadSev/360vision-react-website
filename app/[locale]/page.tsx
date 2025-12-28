@@ -17,7 +17,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { blogPosts } from "@/lib/blog-posts";
 import { Link } from "@/navigation";
-import { defaultLocale, type Locale } from "@/i18n";
+import { defaultLocale, locales, type Locale } from "@/i18n";
 
 const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)+/g, "");
 type ServiceCard = { title: string; body: string; variant?: "3d" | "meta" | "standard" };
@@ -30,8 +30,9 @@ type ContactCard = {
   phone: string;
 };
 
-export default async function Home({ params }: { params: Promise<{ locale?: Locale }> }) {
-  const { locale = defaultLocale } = await params;
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: localeParam } = await params;
+  const locale = locales.includes(localeParam as Locale) ? (localeParam as Locale) : defaultLocale;
 
   const tHome = await getTranslations({ locale, namespace: "Home" });
   const tCommon = await getTranslations({ locale, namespace: "Common" });
