@@ -21,6 +21,22 @@
     },
     "active": "Active"
   },
+  "NotFound": {
+    "eyebrow": "Error 404",
+    "title": "This page slipped out of orbit.",
+    "body": "The link may be outdated, or the page has moved. Let us get you back to a known route.",
+    "ctaPrimary": "Back to home",
+    "ctaSecondary": "Contact us",
+    "linksLabel": "Popular destinations",
+    "links": {
+      "home": "Home",
+      "services": "Services",
+      "blog": "Blog",
+      "contact": "Contact"
+    },
+    "panelTitle": "Signal lost",
+    "panelBody": "We could not resolve that address. Choose a destination or reset to the homepage."
+  },
   "Footer": {
     "label": "360 Vision",
     "tagline": "Creative & Digital",

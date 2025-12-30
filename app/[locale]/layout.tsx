@@ -38,13 +38,14 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale: rawLocale } = await params;
-  const locale = locales.includes(rawLocale as Locale) ? (rawLocale as Locale) : defaultLocale;
-
-  if (!locales.includes(locale)) {
-    notFound();
-  }
+  const isKnownLocale = locales.includes(rawLocale as Locale);
+  const locale = isKnownLocale ? (rawLocale as Locale) : defaultLocale;
 
   setRequestLocale(locale);
+
+  if (!isKnownLocale) {
+    notFound();
+  }
 
   const messages = await getMessages({ locale });
   const tFooter = await getTranslations({ locale, namespace: "Footer" });

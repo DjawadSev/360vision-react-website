@@ -21,6 +21,22 @@
     },
     "active": "Actif"
   },
+  "NotFound": {
+    "eyebrow": "Erreur 404",
+    "title": "Cette page est hors orbite.",
+    "body": "Le lien est peut-être obsolète ou la page a changé. Repartons vers une destination sûre.",
+    "ctaPrimary": "Retour à l'accueil",
+    "ctaSecondary": "Nous contacter",
+    "linksLabel": "Destinations populaires",
+    "links": {
+      "home": "Accueil",
+      "services": "Services",
+      "blog": "Blog",
+      "contact": "Contact"
+    },
+    "panelTitle": "Signal perdu",
+    "panelBody": "Adresse introuvable. Choisissez une destination ou revenez à l'accueil."
+  },
   "Footer": {
     "label": "360 Vision",
     "tagline": "Cr\u00e9atif & Digital",
