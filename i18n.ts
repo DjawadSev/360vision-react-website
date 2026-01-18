@@ -4,7 +4,9 @@ export const locales = ["en", "fr"] as const;
 
 export const defaultLocale = "en";
 
-export const localePrefix = "as-needed";
+export type LocalePrefix = "as-needed" | "always" | "never";
+
+export const localePrefix: LocalePrefix = "as-needed";
 
 export type Locale = (typeof locales)[number];
 
