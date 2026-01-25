@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 
@@ -8,10 +9,34 @@ import { blogPosts } from "@/lib/blog-posts";
 import { cn } from "@/lib/utils";
 import { Link } from "@/navigation";
 import { defaultLocale, locales, type Locale } from "@/i18n";
+import { generatePageMetadata } from "../metadata";
 
 type Highlight = { label: string; value: string };
 
 const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)+/g, "");
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: localeParam } = await params;
+  const locale = locales.includes(localeParam as Locale) ? (localeParam as Locale) : defaultLocale;
+
+  const t = await getTranslations({ locale, namespace: "BlogPage" });
+
+  return generatePageMetadata({
+    locale,
+    title: t("seo.title") || "Blog | Digital Marketing Insights | 360 VISION",
+    description: t("seo.description") || "Discover expert insights on digital marketing, 3D visualization, performance campaigns, and creative strategies. Stay ahead with 360 VISION's latest articles and case studies.",
+    path: "/blog",
+    keywords: [
+      "marketing blog",
+      "digital marketing insights",
+      "marketing tips",
+      "performance marketing",
+      "case studies",
+      "marketing strategy",
+      "social media tips",
+    ],
+  });
+}
 
 export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: localeParam } = await params;

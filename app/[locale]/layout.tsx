@@ -4,6 +4,7 @@ import { Facebook, Instagram } from "lucide-react";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 
 import { SiteHeader } from "@/components/layout/site-header";
 import { CosmicWavesShaders } from "@/components/ui/cosmic-waves-shaders";
@@ -21,9 +22,72 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://360vision.io";
+
 export const metadata: Metadata = {
-  title: "360Vision Studio",
-  description: "Marketing agency website for bold, modern brands.",
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: "360 VISION | Digital Marketing & Creative Agency",
+    template: "%s | 360 VISION",
+  },
+  description: "Transform your brand with cutting-edge digital marketing, 3D visualization, and performance-driven campaigns. 360 VISION delivers bold, modern marketing solutions.",
+  keywords: [
+    "digital marketing",
+    "marketing agency",
+    "3D visualization",
+    "performance marketing",
+    "creative agency",
+    "brand development",
+    "meta ads",
+    "google ads",
+    "social media marketing",
+  ],
+  authors: [{ name: "360 VISION" }],
+  creator: "360 VISION",
+  publisher: "360 VISION",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    alternateLocale: ["fr_FR"],
+    url: baseUrl,
+    siteName: "360 VISION",
+    title: "360 VISION | Digital Marketing & Creative Agency",
+    description: "Transform your brand with cutting-edge digital marketing, 3D visualization, and performance-driven campaigns.",
+    images: [
+      {
+        url: `${baseUrl}/logos/secondary-logo-transparent-300px.png`,
+        width: 1200,
+        height: 630,
+        alt: "360 VISION Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "360 VISION | Digital Marketing & Creative Agency",
+    description: "Transform your brand with cutting-edge digital marketing, 3D visualization, and performance-driven campaigns.",
+    images: [`${baseUrl}/logos/secondary-logo-transparent-300px.png`],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    // Add Google Search Console verification here when available
+    // google: 'your-verification-code',
+  },
 };
 
 export function generateStaticParams() {
@@ -50,11 +114,57 @@ export default async function RootLayout({
   const messages = await getMessages({ locale });
   const tFooter = await getTranslations({ locale, namespace: "Footer" });
 
+  // Structured Data for Organization
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "360 VISION",
+    url: baseUrl,
+    logo: `${baseUrl}/logos/secondary-logo-transparent-300px.png`,
+    description: "Digital marketing and creative agency specializing in 3D visualization, performance marketing, and brand development.",
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: "contact@360vision.io",
+      contactType: "Customer Service",
+    },
+    sameAs: [
+      "https://www.facebook.com/profile.php?id=61578708776363",
+      "https://www.instagram.com/360vision_dz/",
+    ],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Oran",
+      addressCountry: "DZ",
+    },
+  };
+
+  // Structured Data for WebSite
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "360 VISION",
+    url: baseUrl,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${baseUrl}/blog?search={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
     <html lang={locale}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Script id="organization-schema" type="application/ld+json" strategy="beforeInteractive">
+          {JSON.stringify(organizationSchema)}
+        </Script>
+        <Script id="website-schema" type="application/ld+json" strategy="beforeInteractive">
+          {JSON.stringify(websiteSchema)}
+        </Script>
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} bg-black text-white antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>

@@ -1,4 +1,8 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+
+import { generatePageMetadata } from "../metadata";
+import { defaultLocale, locales, type Locale } from "@/i18n";
 
 type PolicySection = {
   title: string;
@@ -9,6 +13,20 @@ type PolicySection = {
   secondaryBullets?: string[];
   note?: string;
 };
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: localeParam } = await params;
+  const locale = locales.includes(localeParam as Locale) ? (localeParam as Locale) : defaultLocale;
+
+  const t = await getTranslations({ locale, namespace: "Privacy" });
+
+  return generatePageMetadata({
+    locale,
+    title: t("seo.title") || "Privacy Policy | 360 VISION",
+    description: t("seo.description") || "Read 360 VISION's privacy policy to understand how we collect, use, and protect your personal information.",
+    path: "/privacy",
+  });
+}
 
 export default async function PrivacyPage() {
   const t = await getTranslations("Privacy");

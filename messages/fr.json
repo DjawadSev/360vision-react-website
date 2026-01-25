@@ -47,6 +47,10 @@
     "rights": "Tous droits r\u00e9serv\u00e9s."
   },
   "Home": {
+    "seo": {
+      "title": "360 VISION | Transformez votre marque avec le marketing digital",
+      "description": "Découvrez des services de marketing digital de pointe incluant la visualisation 3D, les publicités Meta, Google Ads et le marketing de performance. Transformez votre marque avec 360 VISION."
+    },
     "hero": {
       "badge": "Solutions modernes de marketing digital",
       "title": "Une agence digitale qui aide les entreprises alg\u00e9riennes \u00e0 cro\u00eetre en ligne",
@@ -181,6 +185,10 @@
     "backToArticles": "Retour aux articles"
   },
   "ContactPage": {
+    "seo": {
+      "title": "Contactez-nous | 360 VISION",
+      "description": "Prêt à transformer votre marque ? Contactez 360 VISION dès aujourd'hui pour des solutions de marketing digital de pointe. Discutons de votre projet et de vos objectifs."
+    },
     "eyebrow": "Contact",
     "title": "Parlez-nous de votre prochain lancement.",
     "body": "Partagez vos objectifs business, la taille de votre \u00e9quipe et vos d\u00e9lais. Nous r\u00e9pondons sous un jour ouvr\u00e9 et lan\u00e7ons la phase d\u00e9couverte la m\u00eame semaine.",
@@ -218,6 +226,10 @@
     "sending": "Envoi en cours..."
   },
   "ServicesPage": {
+    "seo": {
+      "title": "Nos Services | Solutions de marketing digital | 360 VISION",
+      "description": "Découvrez nos services complets de marketing digital : visualisation 3D, marketing de performance, développement de marque et campagnes créatives adaptées à vos besoins."
+    },
     "eyebrow": "Services",
     "title": "Tout ce qu'il faut pour aller sur le march\u00e9 avec confiance.",
     "body": "Nous assemblons des \u00e9quipes sur-mesure (strat\u00e9gie, cr\u00e9a, m\u00e9dia, lifecycle) pour acc\u00e9l\u00e9rer sans recruter 12 profils internes. Choisissez un pack ou composez le v\u00f4tre.",
@@ -254,6 +266,10 @@
     ]
   },
   "BlogPage": {
+    "seo": {
+      "title": "Blog | Analyses marketing digital | 360 VISION",
+      "description": "Découvrez des analyses d'experts sur le marketing digital, la visualisation 3D, les campagnes de performance et les stratégies créatives. Restez à jour avec les derniers articles et études de cas de 360 VISION."
+    },
     "hero": {
       "badge": "Analyses",
       "tagline": "Journal 360 Vision",
@@ -315,6 +331,10 @@
     "failure": "Impossible d'enregistrer l'inscription pour l'instant. \u00c9crivez-nous et nous vous ajouterons manuellement."
   },
   "Privacy": {
+    "seo": {
+      "title": "Politique de confidentialité | 360 VISION",
+      "description": "Consultez la politique de confidentialité de 360 VISION pour comprendre comment nous collectons, utilisons et protégeons vos informations personnelles."
+    },
     "eyebrow": "Politique de confidentialit\u00e9",
     "title": "Politique de confidentialit\u00e9 \u2013 360 Vision",
     "updated": "Derni\u00e8re mise \u00e0 jour : 24/11/2025",

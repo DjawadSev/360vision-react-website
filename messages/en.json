@@ -47,6 +47,10 @@
     "rights": "All rights reserved."
   },
   "Home": {
+    "seo": {
+      "title": "360 VISION | Transform Your Brand with Digital Marketing",
+      "description": "Discover cutting-edge digital marketing services including 3D visualization, Meta ads, Google ads, and performance marketing. Transform your brand with 360 VISION."
+    },
     "hero": {
       "badge": "Modern Digital Marketing Solutions",
       "title": "A Digital Agency Helping Algerian Businesses Grow Online",
@@ -181,6 +185,10 @@
     "backToArticles": "Back to all articles"
   },
   "ContactPage": {
+    "seo": {
+      "title": "Contact Us | Get in Touch | 360 VISION",
+      "description": "Ready to transform your brand? Contact 360 VISION today for cutting-edge digital marketing solutions. Let's discuss your project and goals."
+    },
     "eyebrow": "Contact",
     "title": "Tell us about your next launch.",
     "body": "Share context on your business goals, team size, and timeline. We typically reply within one business day and can kick off discovery the same week.",
@@ -218,6 +226,10 @@
     "sending": "Sending..."
   },
   "ServicesPage": {
+    "seo": {
+      "title": "Our Services | Digital Marketing Solutions | 360 VISION",
+      "description": "Explore our comprehensive digital marketing services: 3D visualization, performance marketing, brand development, and creative campaigns tailored to your business needs."
+    },
     "eyebrow": "Services",
     "title": "Everything you need to go to market with confidence.",
     "body": "We architect bespoke teams across strategy, creative, media, and lifecycle so you can move faster without hiring a dozen full-time roles. Choose a package or mix modules for a perfect fit.",
@@ -254,6 +266,10 @@
     ]
   },
   "BlogPage": {
+    "seo": {
+      "title": "Blog | Digital Marketing Insights | 360 VISION",
+      "description": "Discover expert insights on digital marketing, 3D visualization, performance campaigns, and creative strategies. Stay ahead with 360 VISION's latest articles and case studies."
+    },
     "hero": {
       "badge": "Insights",
       "tagline": "360 Vision Journal",
@@ -315,6 +331,10 @@
     "failure": "We couldn't save this signup right now. Email us and we'll add you manually."
   },
   "Privacy": {
+    "seo": {
+      "title": "Privacy Policy | 360 VISION",
+      "description": "Read 360 VISION's privacy policy to understand how we collect, use, and protect your personal information."
+    },
     "eyebrow": "Privacy Policy",
     "title": "Privacy Policy \u2013 360 Vision",
     "updated": "Last updated: 11/24/2025",

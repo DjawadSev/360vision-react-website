@@ -1,8 +1,10 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { buttonVariants } from "@/components/ui/button";
 import { Link } from "@/navigation";
 import { defaultLocale, locales, type Locale } from "@/i18n";
+import { generatePageMetadata } from "../metadata";
 
 type ServicePackage = {
   title: string;
@@ -11,6 +13,30 @@ type ServicePackage = {
 };
 
 const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)+/g, "");
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: localeParam } = await params;
+  const locale = locales.includes(localeParam as Locale) ? (localeParam as Locale) : defaultLocale;
+
+  const t = await getTranslations({ locale, namespace: "ServicesPage" });
+
+  return generatePageMetadata({
+    locale,
+    title: t("seo.title") || "Our Services | Digital Marketing Solutions | 360 VISION",
+    description: t("seo.description") || "Explore our comprehensive digital marketing services: 3D visualization, performance marketing, brand development, and creative campaigns tailored to your business needs.",
+    path: "/services",
+    keywords: [
+      "marketing services",
+      "digital marketing solutions",
+      "3D services",
+      "performance marketing",
+      "brand development",
+      "creative campaigns",
+      "social media marketing",
+      "meta advertising",
+    ],
+  });
+}
 
 export default async function ServicesPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: localeParam } = await params;

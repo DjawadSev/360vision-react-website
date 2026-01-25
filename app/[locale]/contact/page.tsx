@@ -1,6 +1,30 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { ContactForm } from "@/components/contact/contact-form";
+import { generatePageMetadata } from "../metadata";
+import { defaultLocale, locales, type Locale } from "@/i18n";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: localeParam } = await params;
+  const locale = locales.includes(localeParam as Locale) ? (localeParam as Locale) : defaultLocale;
+
+  const t = await getTranslations({ locale, namespace: "ContactPage" });
+
+  return generatePageMetadata({
+    locale,
+    title: t("seo.title") || "Contact Us | Get in Touch | 360 VISION",
+    description: t("seo.description") || "Ready to transform your brand? Contact 360 VISION today for cutting-edge digital marketing solutions. Let's discuss your project and goals.",
+    path: "/contact",
+    keywords: [
+      "contact marketing agency",
+      "get quote",
+      "marketing consultation",
+      "contact 360 vision",
+      "digital marketing inquiry",
+    ],
+  });
+}
 
 export default async function ContactPage() {
   const t = await getTranslations("ContactPage");

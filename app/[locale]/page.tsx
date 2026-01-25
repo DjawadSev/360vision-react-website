@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 
@@ -18,6 +19,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { blogPosts } from "@/lib/blog-posts";
 import { Link } from "@/navigation";
 import { defaultLocale, locales, type Locale } from "@/i18n";
+import { generatePageMetadata } from "./metadata";
 
 const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)+/g, "");
 type ServiceCard = { title: string; body: string; variant?: "3d" | "meta" | "standard" };
@@ -29,6 +31,30 @@ type ContactCard = {
   email: string;
   phone: string;
 };
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: localeParam } = await params;
+  const locale = locales.includes(localeParam as Locale) ? (localeParam as Locale) : defaultLocale;
+
+  const t = await getTranslations({ locale, namespace: "Home" });
+
+  return generatePageMetadata({
+    locale,
+    title: t("seo.title") || "360 VISION | Transform Your Brand with Digital Marketing",
+    description: t("seo.description") || "Discover cutting-edge digital marketing services including 3D visualization, Meta ads, Google ads, and performance marketing. Transform your brand with 360 VISION.",
+    path: "/",
+    keywords: [
+      "digital marketing",
+      "marketing agency",
+      "3D visualization",
+      "meta ads",
+      "google ads",
+      "performance marketing",
+      "creative agency",
+      "brand development",
+    ],
+  });
+}
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: localeParam } = await params;
